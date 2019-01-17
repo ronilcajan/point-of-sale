@@ -7,6 +7,6 @@ $password	= '';
 
 $db 	= mysqli_connect($host,$username,$password,$database);
 
-if(!$db){
+if($db == false){
 	die("Connection Failed: ".mysql_connect_error());
 }
