@@ -2,7 +2,7 @@
 	padding: 0px;
 	margin:  0px;
 }
-body . html{
+html,body{
 	height: 100%;
 }
 .main{
@@ -15,4 +15,69 @@ body . html{
 }
 #admin:hover,#user:hover{
 	background-color: green;
+}
+#container{
+	display: grid;
+	grid-template-columns: auto 38%;
+	grid-template-rows: 20% auto 10%;
+	grid-template-areas: 
+	"header header"
+	"content sidebar"
+	"footer footer";
+}
+#header{
+	grid-area: header;
+	display: grid;
+	grid-template-columns: 25% auto 40%;
+}
+#header_image{
+	height: 100px;
+}
+ul{
+	list-style-type: none;
+}
+ul li{
+	margin-bottom: 10px;
+}
+.header_price{
+	border:1px white;
+	background-color: black;
+	margin: 10px;
+	color: #39FF14;
+}
+#content{
+	grid-area: content;
+	display: grid;
+	grid-template-rows: auto 15%;
+}
+#price_column{
+	border:2px solid black;
+	background-color: white;
+}
+#table_buttons{
+	display: grid;
+	grid-template-columns: 20% 20% auto ;
+	grid-gap:10px;
+}
+#buttons{
+	height:50px;
+}
+#sidebar{
+	margin: 8px;
+	grid-area: sidebar;
+	display: grid;
+	grid-template-rows: 10% auto;
+}
+#search{
+	float: right;
+}
+#product_area{
+	background-color: white;
+	border:2px solid black;
+	margin-top: 0px;
+}
+#footer{
+	grid-area: footer;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
