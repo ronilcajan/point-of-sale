@@ -66,7 +66,7 @@ ul li{
 	margin: 8px;
 	grid-area: sidebar;
 	display: grid;
-	grid-template-rows: 10% auto;
+	grid-template-rows: 10% 74% auto;
 }
 #search{
 	float: right;
@@ -75,6 +75,11 @@ ul li{
 	background-color: white;
 	border:2px solid black;
 	margin-top: 0px;
+}
+#enter_area{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 10px;
 }
 #footer{
 	grid-area: footer;
