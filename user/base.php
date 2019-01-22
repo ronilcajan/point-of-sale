@@ -9,10 +9,10 @@
 </div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username='">List</button>
-	<button id="sidebar_button" onclick="window.location.href='../user/add_user.php?username='">Add</button>
+	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $_GET['username']; ?>'">List</button>
+	<button id="sidebar_button" onclick="window.location.href='../user/add_user.php?username=<?php echo $_GET['username'];?>'">Add</button>
 	<button id="sidebar_button" type="button" data-toggle="popover" title="User Management" data-content="Here you will create, update, delete and view user profiles." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username='"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username=<?php echo $_GET['username'];?>'"><img src="../images/reply.svg"></button>
 	</div>
 </div>
