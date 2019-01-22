@@ -1,4 +1,12 @@
 <?php include('server/connection.php');?>
+<?php 
+	if(isset($_GET['username'])){
+		$user = $_GET['username'];
+		$sql = "SELECT position FROM users WHERE username='$user'";
+		$result	= mysqli_query($db, $sql);
+		if (mysqli_num_rows($result) > 0){
+			while($row = mysqli_fetch_assoc($result)){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +23,7 @@
 					<tbody>
 						<tr>
 							<td valign="baseline"><small>User Logged on:<small></td>
-							<td valign="baseline"><small><p class="pt-3 ml-5">Admin</p><small></td>
+							<td valign="baseline"><small><p class="pt-3 ml-5"><?php echo $row['position'];}}}?></p><small></td>
 						</tr>
 						<tr>
 							<td valign="baseline"><small class="pb-1">Date:<small></td>
@@ -80,15 +88,15 @@
 			</div>
 		</div>
 		<div id="footer" class="w-100">
-			<button id="buttons" onclick="window.location.href='user/user.php?username='" class="btn btn-secondary border mr-2 ml-2">User</button>
-			<button id="buttons" onclick="window.location.href='products/products.php?username='" class="btn btn-secondary border mr-2">Product</button>
-			<button id="buttons" onclick="window.location.href='supplier/supplier.php?username='" class="btn btn-secondary border mr-2">Supplier</button>
-			<button id="buttons" onclick="window.location.href='costumer/costumer.php?username='" class="btn btn-secondary border mr-2">Costumer</button>
-			<button id="buttons" onclick="window.location.href='logs/logs.php?username='" class="btn btn-secondary border mr-2">Logs</button>
-			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username='" class="btn btn-secondary border mr-2">Cash-Flow</button>
-			<button id="buttons" onclick="window.location.href='sales/sales.php?username='" class="btn btn-secondary border mr-2">Sales</button>
-			<button id="buttons" onclick="window.location.href='inventory/inventory.php?username='" class="btn btn-secondary border mr-2">Inventory</button>
-			<button id="buttons" onclick=" return confirm('Are you sure you want to logout?')" class="btn btn-danger border mr-2">Logout</button>
+			<button id="buttons" onclick="window.location.href='user/user.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2 ml-2">User</button>
+			<button id="buttons" onclick="window.location.href='products/products.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Product</button>
+			<button id="buttons" onclick="window.location.href='supplier/supplier.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Supplier</button>
+			<button id="buttons" onclick="window.location.href='costumer/costumer.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Costumer</button>
+			<button id="buttons" onclick="window.location.href='logs/logs.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Logs</button>
+			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Cash-Flow</button>
+			<button id="buttons" onclick="window.location.href='sales/sales.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Sales</button>
+			<button id="buttons" onclick="window.location.href='inventory/inventory.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Inventory</button>
+			<a id="buttons" onclick=" return confirm('Are you sure you want to logout?')" href="index.php?logout='1'" class="btn btn-danger border mr-2" style="padding-top: 12px;">Logout</a>
 		</div>
 	</div>
 	<?php include('templates/js_popper.php');?>
