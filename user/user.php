@@ -16,11 +16,11 @@
 	<div class="contain h-100">
 		<?php include('../user/base.php');?>
 		<div>
-			<h1 class="ml-4">User Management</h1>
+			<h1 class="ml-4 pt-2">User Management</h1>
 			<hr>
 			<div class="d-flex justify-content-center mt-4">
 				<?php include('../alert.php');?>
-			<table class="table table-striped w-75 border">
+			<table class="table table-striped w-100 border" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
 						<th scope="row"><h4>Users</h4></th>
