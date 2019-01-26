@@ -91,7 +91,7 @@
 			<button id="buttons" onclick="window.location.href='user/user.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2 ml-2">User</button>
 			<button id="buttons" onclick="window.location.href='products/products.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Product</button>
 			<button id="buttons" onclick="window.location.href='supplier/supplier.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Supplier</button>
-			<button id="buttons" onclick="window.location.href='costumer/costumer.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Costumer</button>
+			<button id="buttons" onclick="window.location.href='customer/customer.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Customer</button>
 			<button id="buttons" onclick="window.location.href='logs/logs.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Logs</button>
 			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Cash-Flow</button>
 			<button id="buttons" onclick="window.location.href='sales/sales.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Sales</button>
