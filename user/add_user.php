@@ -14,7 +14,7 @@
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
 				<div style="border:1px dashed black; width: 250px;height: 250px;">
-					<img class="img-fluid p-2 h-100 w-100" src="../images/contact.png">
+					<img class="img-fluid p-2 h-100 w-100" src="../images/user.png">
 				</div>
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="size" class="form-control-sm" value="1000000">
