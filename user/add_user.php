@@ -23,7 +23,7 @@
 			</div>
 			<dir class="second_side">
 					<table class="table-responsive mt-5">
-						<p style="position: absolute; margin-top: 20px;"><?php include('../error.php');?></p>
+						<p><?php include('../error.php');?></p>
 						<tbody>
 							<tr>
 								<td  valign="baseline">Username:</td>

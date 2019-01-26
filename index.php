@@ -6,8 +6,8 @@
 	<?php include('templates/head.php'); ?>
 </head>
 <body class="bg-dark">
-	<div class="text-center">
-		<div class="main h-100">
+	<div class="text-center border border-dark">
+		<div class="main">
 			<img class="img-fluid" src="images/logo.png"/>
   			<center><?php include('error.php');?></center>
 		</div>

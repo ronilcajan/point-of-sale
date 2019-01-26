@@ -1,12 +1,12 @@
 <?php include("../server/connection.php");
-	  include('../user/update.php');
+	  include('../products/update.php');
 
 	$query  = "SELECT username FROM users WHERE position = 'admin'";
 	$res 	= mysqli_query($db, $query);
 	$row1 	= mysqli_fetch_assoc($res);
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
-		$sql  =   "SELECT * FROM users WHERE id = '$id'";
+		$sql  =   "SELECT * FROM products WHERE id = '$id'";
 		$result   = mysqli_query($db, $sql);
 		$row  =   mysqli_fetch_array($result);
 
@@ -29,16 +29,16 @@
 </div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'">List</button>
-	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'">Add</button>
-	<button id="sidebar_button" type="button" data-toggle="popover" title="User Management" data-content="Here you will create, update, delete and view user profiles." data-placement="bottom">Help?</button>
+	<button id="sidebar_button" onclick="window.location.href='../products/products.php?username=<?php echo $row1['username'];?>'">List</button>
+	<button id="sidebar_button" onclick="window.location.href='../products/products.php?username=<?php echo $row1['username'];?>'">Add</button>
+	<button id="sidebar_button" type="button" data-toggle="popover" title="Product Management" data-content="Here you will create, update, delete and view products." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
 		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username=<?php echo $row1['username'];?>'"><img src="../images/reply.svg"></button>
 	</div>
 </div>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">User Management</h1>
+				<h1 class="ml-4">Product Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -52,26 +52,25 @@
 					<p class="bg-danger w-50"><?php echo $msg;?></p>
 					<table class="table-responsive mt-5">
 						<tbody>
-							<tr>
-								<td  valign="baseline">Username:</td>
-								<td class="pl-5 pb-2"><input type="text" name="username" value="<?php echo $row['username'];?>" required></td>
+														<tr>
+								<td  valign="baseline">Name:</td>
+								<td class="pl-5 pb-2"><input type="text" name="product_name" value="<?php echo $row['product_name'];?>"required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="firstname" value="<?php echo $row['firstname'];?>" required></td>
+								<td  valign="baseline">Sell Price:</td>
+								<td class="pl-5 pb-2"><input type="number" name="price" value="<?php echo $row['sell_price'];?>" required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="lastname" value="<?php echo $row['lastname'];?>" required></td>
+								<td  valign="baseline">Quantity:</td>
+								<td class="pl-5 pb-2"><input type="number" name="qty" value="<?php echo $row['quantity'];?>" required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Contact number:</td>
-								<td class="pl-5 pb-2"><input type="number" name="number" value="<?php echo $row['contact_number'];?>" required></td>
+								<td  valign="baseline">Unit:</td>
+								<td class="pl-5 pb-2"><input type="text" name="unit" value="<?php echo $row['unit'];?>" required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Position:</td>
-								<td class="pl-5 pb-2"><input class="form-check-input ml-2" type="radio" name="position" value="admin" checked><label class="ml-4">Admin</label>
-									<input class="form-check-input ml-2" type="radio" name="position" value="employee"><label class="ml-4">Employee</label></td>
+								<td  valign="baseline">Minimum stocks:</td>
+								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row['min_stocks'];?>" required></td>
 							</tr>
 							<tr>
 								<td>Change Photo:</td>
@@ -82,7 +81,7 @@
 					<div class="text-left mt-3">
 						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 						<button type="submit" name="update" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'" >Cancel</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php?username=<?php echo $row1['username'];?>'" >Cancel</button>
 					<?php } ?>
 					</div>
 				</form>

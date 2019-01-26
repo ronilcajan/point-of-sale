@@ -1,5 +1,4 @@
-<?php
-	$db 	= mysqli_connect('localhost','root','','PointOfSale');
+<?php include('../server/connection.php');
 	$msg 	= '';
 	$error  = array();
 	if(isset($_POST['add'],$_GET['username'])){
