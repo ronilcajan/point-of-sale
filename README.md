@@ -1,5 +1,5 @@
-<h1>Point of Sale on Django Framework</h1>
-<h5>The intention of this project is to create simple web-based Point of Sale system using Django Frameworks. 
+<h1>Point of Sale on PHP</h1>
+<h5>The intention of this project is to create simple web-based Point of Sale system using PHP. 
 The expected ouput of this project are:</h5>
 <ul>
 <li>Login system</li>
