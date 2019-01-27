@@ -27,13 +27,11 @@
 						</tr>
 						<tr>
 							<td valign="baseline"><small class="pb-1">Date:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5">Jan.31,2019</p><small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
 						</tr>
 						<tr>
 							<td><small>Customer Name:<small></td>
-							<td><small><select class="form-control-sm ml-5">
-									<option>Costumer</option>
-								</select> <small>
+							<td><small><input type="" name="" class="p-0 ml-5"/ placeholder="Search customer.."><small>
 							</td>
 						</tr>
 					</tbody>
@@ -100,5 +98,6 @@
 		</div>
 	</div>
 	<?php include('templates/js_popper.php');?>
+	<script src="bootstrap4/js/time.js"></script>
 </body>
 </html>
