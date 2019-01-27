@@ -1,4 +1,4 @@
-<?php include('../cashflow/add.php');?>
+<?php include('../cashflow/abs(number)dd.php');?>
 <!DOCTYPE html>
 <html>
 <head>
