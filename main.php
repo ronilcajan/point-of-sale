@@ -11,6 +11,7 @@
 <html>
 <head>
 	<?php include('templates/head.php'); ?>
+
 </head>
 <body>
 	<div class="h-100 bg-dark" id="container">
@@ -31,7 +32,7 @@
 						</tr>
 						<tr>
 							<td><small>Customer Name:<small></td>
-							<td><small><input type="" name="" class="p-0 ml-5"/ placeholder="Search customer.."><small>
+							<td><div class="ui-widget"><small><input type="text" id="cus_search" class="p-0 ml-5" placeholder="Search customer.."><small></div>
 							</td>
 						</tr>
 					</tbody>
@@ -99,5 +100,13 @@
 	</div>
 	<?php include('templates/js_popper.php');?>
 	<script src="bootstrap4/js/time.js"></script>
+	<script type="text/javascript">
+	$(function() 
+	{
+ $( "#cus_search" ).autocomplete({
+  source: 'customer_search.php'
+ });
+});
+</script>
 </body>
-</html>
+</html> 
