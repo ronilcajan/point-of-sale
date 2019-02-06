@@ -2,6 +2,7 @@
 	$msg 	= '';
 	$error  = array();
 	if(isset($_POST['add_customer'],$_GET['username'])){
+		$user 		= $_GET['username'];
 		$fname 		= mysqli_real_escape_string($db, $_POST['fname']);
 		$lname 		= mysqli_real_escape_string($db, $_POST['lname']);
 		$address	= mysqli_real_escape_string($db, $_POST['address']);

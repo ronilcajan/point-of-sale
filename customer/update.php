@@ -13,19 +13,22 @@
 	  	$result = mysqli_query($db, $query);
 	  	if (mysqli_num_rows($result)>0){
 			while ($row = mysqli_fetch_assoc($result)){
-		  			if (!empty($image)){
-		  				$sql  = "UPDATE customer SET firstname='$fname',lastname='$lname',address='$address',contact_number='$number',image='$image' WHERE customer_id = '$id'";
-		  				mysqli_query($db, $sql);
-					}else{
-		  				$sql  = "UPDATE customer SET firstname='$fname',lastname='$lname',address='$address',contact_number='$number' WHERE customer_id = '$id'";
-		  				mysqli_query($db, $sql);
-					}
-		  			if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
-		  				$msg = "Image successfully uploaded!";
-		  			}else{
-		  				$msg = "There was a problem uploading the image!";
-		  			}
-		  			header('location: ../customer/customer.php?username='.$row['username'].'&updated');
+				$user = $row['username'];
+				mysqli_query($db,"CREATE TRIGGER `updateLogs` AFTER UPDATE ON `customer`
+ 				FOR EACH ROW INSERT INTO logs VALUES (null,'$user',NEW.customer_id,'Customer Updated',NOW())");
+		  		if (!empty($image)){
+					$sql  = "UPDATE customer SET firstname='$fname',lastname='$lname',address='$address',contact_number='$number',image='$image' WHERE customer_id = '$id'";
+		  			mysqli_query($db, $sql);
+				}else{
+		  			$sql  = "UPDATE customer SET firstname='$fname',lastname='$lname',address='$address',contact_number='$number' WHERE customer_id = '$id'";
+		  			mysqli_query($db, $sql);
+				}
+		  		if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+		  			$msg = "Image successfully uploaded!";
+		  		}else{
+		  			$msg = "There was a problem uploading the image!";
+		  		}
+		  		header('location: ../customer/customer.php?username='.$user.'&updated');
 		  		}
 	  		}
 	  	}	
