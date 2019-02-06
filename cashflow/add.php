@@ -2,19 +2,15 @@
 	$msg 	= '';
 	$error  = array();
 	if(isset($_POST['add_customer'],$_GET['username'])){
-		$fname 		= mysqli_real_escape_string($db, $_POST['fname']);
-		$lname 		= mysqli_real_escape_string($db, $_POST['lname']);
-		$address	= mysqli_real_escape_string($db, $_POST['address']);
-		$number		= mysqli_real_escape_string($db, $_POST['number']);
-	  	$image   	= $_FILES['image']['name'];
-		$target   	= "../images/".basename($_FILES['image']['name']);
+		$user 		= $_GET['username'];
+		$purpose 	= mysqli_real_escape_string($db, $_POST['purpose']);
+		$amount 	= mysqli_real_escape_string($db, $_POST['amount']);
 		
-		$sql  = "INSERT INTO customer (firstname,lastname,address,contact_number,image) VALUES ('$fname','$lname','$address','$number','$image')";
+		$sql  = "INSERT INTO cashflow (description,amount,username,transaction_date) VALUES ('$purpose','$amount','$user',NOW())";
 	  	$result = mysqli_query($db, $sql);
- 		if(move_uploaded_file($_FILES['image']['tmp_name'], $target) && $result == true){
-			$msg = "Image successfully uploaded!";
-			header('location: ../customer/customer.php?username='.$_GET['username'].'&added');
+ 		if($result == true){
+			header('location: ../cashflow/cashflow.php?username='.$_GET['username'].'&added');
 	  	}else{
-			$msg = "There was a problem uploading the image!";
+			$msg = "There was a problem in the system!".$user.$purpose.$amount;
 	  	}
 	}

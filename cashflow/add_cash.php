@@ -1,4 +1,4 @@
-<?php include('../cashflow/abs(number)dd.php');?>
+<?php include('../cashflow/add.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 		<?php include('../cashflow/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">Customer Management</h1>
+				<h1 class="ml-4">Cash Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">

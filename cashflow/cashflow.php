@@ -19,7 +19,7 @@
 			<hr>
 			<div class="d-flex justify-content-center mt-4">
 				<?php include('../alert.php');?>
-			<table class="table table-striped w-75 border" style="margin-top: -22px;">
+			<table class="table table-striped border" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
 						<th scope="row"><h4>Cash Flow</h4></th>
@@ -42,18 +42,18 @@
 							while($row = mysqli_fetch_assoc($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['Username'];?></td>
+						<td><?php echo $row['username'];?></td>
 						<td><?php echo $row['description'];?></td>
-						<td><?php echo $row['amount'];?></td>
+						<td>P<?php echo $row['amount'];?></td>
 						<td><?php echo $row['transaction_date'];?></td>
 						<td>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['customer_id'];?>" class="btn btn-success btn-xs view_data">
+							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-success btn-xs view_data">
 						</td>
 					</tr>
 					<?php
 								} 
 							}else{ 
-								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td>";
+								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td><td></td><td></td>";
 								echo "<td></td>";
 								echo "</tr>";
 							}?>
@@ -89,7 +89,7 @@
 		var id = $(this).attr("id");  
 		if(id != ''){  
 			$.ajax({  
-				url:"view_customer.php",  
+				url:"view_cashflow.php",  
 				method:"POST",  
 				data:{id:id},  
 				success:function(data){  
