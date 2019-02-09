@@ -74,7 +74,8 @@
 			</div>
 		</div>
 	</div>
-	<?php include('../templates/js_popper.php');?>
+	<script src="../bootstrap4/jquery/jquery.js"></script>
+	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../products/delete_products.php');?>
 </body>
 </html>

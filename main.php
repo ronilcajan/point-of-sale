@@ -1,5 +1,7 @@
 <?php include('server/connection.php');?>
 <?php 
+	$query 	= "SELECT * FROM `customer`";
+	$show	= mysqli_query($db,$query);
 	if(isset($_GET['username'])){
 		$user = $_GET['username'];
 		$sql = "SELECT position FROM users WHERE username='$user'";
@@ -11,7 +13,30 @@
 <html>
 <head>
 	<?php include('templates/head.php'); ?>
-
+	<script>
+			 function loadproducts()
+	{
+		var name = $("#search").val();
+		if(name)
+		{
+			$.ajax({
+				type: 'post',
+				cache: false,
+				data: {
+					products:name,
+				},
+				url: 'loadproducts.php',
+				success: function (Response){
+					$('#products').html(Response);
+				}
+			});
+		}
+		else
+		{
+			$('#products').html("No Products found!");
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="h-100 bg-dark" id="container">
@@ -31,8 +56,14 @@
 							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
 						</tr>
 						<tr>
-							<td><small>Customer Name:<small></td>
-							<td><div class="ui-widget"><small><input type="text" id="cus_search" class="p-0 ml-5" placeholder="Search customer.."><small></div>
+							<td valign="baseline"><small>Customer Name:<small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><select name="customer">
+								<?php 
+									if (mysqli_num_rows($show)>0){
+										while ($row = mysqli_fetch_array($show)) {	?>
+								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
+							<?php }}?>
+							</p></small></select>
 							</td>
 						</tr>
 					</tbody>
@@ -45,7 +76,7 @@
 		</div>
 		<div id="content" class="mr-2">
 			<div id="price_column" class="m-2 table-responsive-sm">
-				<table class="table-striped table-bordered w-100">
+				<table class="table-striped table-bordered w-100" id="table">
 					<thead>
 						<tr>
 							<th>&nbsp&nbsp</th>
@@ -72,14 +103,22 @@
 			</div>
 		</div>
 		<div id="sidebar">
-			<div id="search">
-  				<form class="form-inline form-group">
-   					 <input class="form-control w-75" type="search" placeholder="Search" aria-label="Search">
-    				<button class="btn btn-secondary my-2 my-sm-0 border ml-2" type="submit">Search</button>
-  				</form>
-			</div>
-			<div class="mt-0" id="product_area">
-				<p>Products here!</p>
+			<div>
+   				<input class="form-control w-100" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
+   			</div>
+			<div class="mt-0" id="product_area" class="table-responsive-sm" >
+				<table class="w-100 table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>No.</td>
+							<td>Product Name</td>
+							<td>Price</td>
+						</tr>
+						<tbody id="products">
+							
+						</tbody>
+					</thead>
+				</table>
 			</div>
 			<div class="w-100 mt-2" id="enter_area">
 				<button id="buttons" type="button" class="btn btn-secondary border">Enter</button>
@@ -100,13 +139,5 @@
 	</div>
 	<?php include('templates/js_popper.php');?>
 	<script src="bootstrap4/js/time.js"></script>
-	<script type="text/javascript">
-	$(function() 
-	{
- $( "#cus_search" ).autocomplete({
-  source: 'customer_search.php'
- });
-});
-</script>
 </body>
 </html> 

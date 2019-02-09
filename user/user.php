@@ -69,7 +69,8 @@
 			</div>
 		</div>
 	</div>
-	<?php include('../templates/js_popper.php');?>
+	<script src="../bootstrap4/jquery/jquery.js"></script>
+	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../user/delete_user.php');?>
 </body>
 </html>
