@@ -1,10 +1,13 @@
 <?php 
 	include("../server/connection.php");
-	$sql = "SELECT * FROM products ORDER BY id ASC ";
-	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
+
+	if(isset($_POST['search'])){
+		$search 	= mysqli_real_escape_string($db,$_POST['search']);
+		$sql 		= "SELECT * FROM products WHERE product_name LIKE '$search%' ";
+		$result 	= mysqli_query($db,$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,10 +64,10 @@
 					<?php
 								} 
 							}else{ 
-								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td>";
+								echo "<tr><td></td><td><p style='color:red;'>No&nbsp<u>".$search."</u>&nbspFound!</p></td>";
 								echo "<td></td>";
 								echo "</tr>";
-							}?>
+							}}?>
 				</tbody>
 				<tfoot>
 					

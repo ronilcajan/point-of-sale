@@ -21,7 +21,7 @@
 				<input class="form-control-sm" type="file" name="image" required>
 				<p class="bg-danger mt-3"><?php echo $msg;?></p>
 			</div>
-			<dir class="second_side">
+			<div class="second_side">
 					<table class="table-responsive mt-5">
 						<p><?php include('../error.php');?></p>
 						<tbody>
@@ -51,8 +51,12 @@
 							</tr>
 							<tr>
 								<td  valign="baseline">Position:</td>
-								<td class="pl-5 pb-2"><input class="form-check-input ml-2" type="radio" name="position" value="admin"><label class="ml-4">Admin</label>
-									<input class="form-check-input ml-2" type="radio" name="position" value="employee" checked><label class="ml-4">Employee</label></td>
+								<td class="pl-5 pb-2">
+									<select name="position">
+										<option value="Admin">Admin</option>
+										<option value="Employee">Employee</option>
+									</select>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -61,8 +65,8 @@
 						<button class="btn btn-danger" onclick="window.location.href='../user/user.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
 					</div>
 				</form>
-			</dir>
-		</div>
+			</div>
+		</div> 
 	</div>
 	<script src="../bootstrap4/jquery/jquery.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>

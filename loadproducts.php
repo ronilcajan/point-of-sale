@@ -14,4 +14,7 @@
 				$num++;
 			}
 		}
+		else{
+			echo "<td></td><td>No Products found!</td><td></td>";
+		}
 	}

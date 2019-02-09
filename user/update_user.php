@@ -19,14 +19,14 @@
 <body>
 	<div class="contain h-100">
 		<div class="header bg-dark">
-	<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
-	<div class="w-50">
-  		<form class="form-inline form-group-sm mt-4">
-  			<input class="form-control w-75 mr-1" type="search" placeholder="Search" aria-label="Search">
-   			<button class="btn btn-secondary my-2 my-sm-0 border" type="submit">Search</button>
-  		</form>
-	</div>
-</div>
+			<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
+			<div class="w-100" >
+  				<form class="form-inline form-group-sm mt-4" method="post" action="search.php?username=<?php echo $row1['username'];?>">
+  					<input class="form-control w-25 mr-1"  type="search" placeholder="Search" aria-label="Search" name="search">
+   					<button class="btn btn-secondary my-2 my-sm-0 border" type="submit">Search</button>
+  				</form>
+			</div>
+		</div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
 	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'">List</button>
@@ -70,8 +70,13 @@
 							</tr>
 							<tr>
 								<td  valign="baseline">Position:</td>
-								<td class="pl-5 pb-2"><input class="form-check-input ml-2" type="radio" name="position" value="admin" checked><label class="ml-4">Admin</label>
-									<input class="form-check-input ml-2" type="radio" name="position" value="employee"><label class="ml-4">Employee</label></td>
+								<td class="pl-5 pb-2">
+									<select name="position">
+										<option value="<?php echo $row['position'];?>"><?php echo $row['position'];?></option>
+										<option value="Admin">Admin</option>
+										<option value="Employee">Employee</option>
+									</select>
+								</td>
 							</tr>
 							<tr>
 								<td>Change Photo:</td>

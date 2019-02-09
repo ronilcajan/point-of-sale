@@ -14,28 +14,24 @@
 <head>
 	<?php include('templates/head.php'); ?>
 	<script>
-			 function loadproducts()
-	{
-		var name = $("#search").val();
-		if(name)
+		function loadproducts()
 		{
-			$.ajax({
-				type: 'post',
-				cache: false,
-				data: {
-					products:name,
-				},
-				url: 'loadproducts.php',
-				success: function (Response){
+			var name = $("#search").val();
+			if(name)
+			{
+				$.ajax({
+					type: 'post',
+					cache: false,
+					data: {
+						products:name,
+					},
+					url: 'loadproducts.php',
+					success: function (Response){
 					$('#products').html(Response);
-				}
-			});
+					}
+				});
+			}
 		}
-		else
-		{
-			$('#products').html("No Products found!");
-		}
-	}
 </script>
 </head>
 <body>
