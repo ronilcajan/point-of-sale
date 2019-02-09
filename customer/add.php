@@ -13,8 +13,10 @@
 		$sql  = "INSERT INTO customer (firstname,lastname,address,contact_number,image) VALUES ('$fname','$lname','$address','$number','$image')";
 	  	$result = mysqli_query($db, $sql);
  		if(move_uploaded_file($_FILES['image']['tmp_name'], $target) && $result == true){
+ 			$query 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Customer $fname Added',CURRENT_TIMESTAMP)";
+ 			$insert 	= mysqli_query($db,$query);
 			$msg = "Image successfully uploaded!";
-			header('location: ../customer/customer.php?username='.$_GET['username'].'&added');
+			header('location: ../customer/customer.php?username='.$user.'&added');
 	  	}else{
 			$msg = "There was a problem uploading the image!";
 	  	}

@@ -14,19 +14,27 @@
 	  	$result = mysqli_query($db, $query);
 	  	if (mysqli_num_rows($result)>0){
 			while ($row = mysqli_fetch_assoc($result)){
+				$user = $row['username'];
 		  			if (!empty($image)){
 		  				$sql  = "UPDATE products SET product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks,image='$image' WHERE id = '$id'";
 		  				mysqli_query($db, $sql);
+		  				if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+		  					$msg = "Image successfully uploaded!";
+		  					$msg = "Image successfully uploaded!";
+		  					$sql 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Product $pro_name updated',CURRENT_TIMESTAMP)";
+ 							$insert = mysqli_query($db,$sql);
+ 							header('location: ../products/products.php?username='.$user.'&updated');
+ 						}
 					}else{
 		  				$sql  = "UPDATE products SET product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks WHERE id = '$id'";
 		  				mysqli_query($db, $sql);
-					}
-		  			if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
 		  				$msg = "Image successfully uploaded!";
-		  			}else{
-		  				$msg = "There was a problem uploading the image!";
-		  			}
-		  			header('location: ../products/products.php?username='.$row['username'].'&updated');
-		  		}
-	  		}
-	  	}	
+		  				$sql 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Product $pro_name updated',CURRENT_TIMESTAMP)";
+ 						$insert = mysqli_query($db,$sql);
+ 						header('location: ../products/products.php?username='.$user.'&updated');
+					}
+		  	}
+		}else{
+		  	$msg = "There was a problem uploading the image!";
+		}
+	}

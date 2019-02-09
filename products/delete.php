@@ -6,9 +6,12 @@
 
     	if(mysqli_num_rows($result)==1){
 			while ($row = mysqli_fetch_assoc($result)){
+				$user = $row['username'];
 				$query = "DELETE FROM products WHERE id = '$id'"; 
     			$result1 = mysqli_query($db, $query);
-				header("location: products.php?username=".$row['username']."&deleted");
+    			$logs	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Product deleted',CURRENT_TIMESTAMP)";
+ 				$insert = mysqli_query($db,$logs);
+				header("location: products.php?username=".$user."&deleted");
 			}
     	}else{
     		echo "something went wrong";

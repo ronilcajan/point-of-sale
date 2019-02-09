@@ -21,11 +21,9 @@
 						<th scope="row"><h4>Logs</h4></th>
 						<th scope="row"></th>
 						<th scope="row"></th>
-						<th scope="row"></th>
 					</tr>
 					<tr>
-						<th scope="col" class="column-text">ID</th>
-						<th scope="col" class="column-text">Table ID</th>
+						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Activity</th>
 						<th scope="col" class="column-text">Date</th>
 					</tr>
@@ -36,10 +34,9 @@
 							while($row = mysqli_fetch_assoc($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['id'];?></td>
-						<td><?php echo $row['table_id'];?></td>
-						<td><?php echo $row['activity'];?></td>
-						<td><?php echo $row['logs_date'];?></td>	
+						<td><?php echo $row['username'];?></td>
+						<td><?php echo $row['purpose'];?></td>
+						<td><?php echo $row['logs_time'];?></td>	
 					<?php
 								} 
 							}else{ 

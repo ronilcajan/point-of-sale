@@ -2,6 +2,7 @@
 	$msg 	= '';
 	$error  = array();
 	if(isset($_POST['addproducts'],$_GET['username'])){
+		$user 			= $_GET['username'];
 		$product_name 	= mysqli_real_escape_string($db, $_POST['product_name']);
 		$price 			= mysqli_real_escape_string($db, $_POST['price']);
 		$qty 			= mysqli_real_escape_string($db, $_POST['qty']);
@@ -13,8 +14,10 @@
 		$sql  = "INSERT INTO products (product_name,sell_price,quantity,unit,min_stocks,image) VALUES ('$product_name',$price,$qty,'$unit',$min_stocks,'$image')";
 	  	$result = mysqli_query($db, $sql);
  		if(move_uploaded_file($_FILES['image']['tmp_name'], $target) && $result == true){
+ 			$query 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Product $product_name Added',CURRENT_TIMESTAMP)";
+ 			$insert 	= mysqli_query($db,$query);
 			$msg = "Image successfully uploaded!";
-			header('location: ../products/products.php?username='.$_GET['username'].'&added');
+			header('location: ../products/products.php?username='.$user.'&added');
 	  	}else{
 			$msg = "There was a problem uploading the image!";
 	  	}
