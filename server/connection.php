@@ -10,7 +10,10 @@ if($db == false){
 	die("Connection Failed: ".mysql_connect_error());
 }
 
-if (isset($_GET['logout'])){
+if (isset($_GET['logout'],$_GET['username'])){
+	$user = $_GET['username'];
+	$insert	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','User $user logout',CURRENT_TIMESTAMP)";
+ 	$logs = mysqli_query($db,$insert);
 	session_destroy();
 	unset($_SESSION['username']);
 	header('location: index.php');

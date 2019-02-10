@@ -130,7 +130,7 @@
 			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Cash-Flow</button>
 			<button id="buttons" onclick="window.location.href='sales/sales.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Sales</button>
 			<button id="buttons" onclick="window.location.href='inventory/inventory.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Inventory</button>
-			<a id="buttons" onclick=" return confirm('Are you sure you want to logout?')" href="index.php?logout='1'" class="btn btn-danger border mr-2" style="padding-top: 12px;">Logout</a>
+			<a id="buttons" onclick=" return confirm('Are you sure you want to logout?')" href="index.php?username=<?php echo $_GET['username'];?>&logout='1'" class="btn btn-danger border mr-2" style="padding-top: 12px;">Logout</a>
 		</div>
 	</div>
 	<?php include('templates/js_popper.php');?>

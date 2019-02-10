@@ -13,10 +13,16 @@ if (isset($_POST['login'])){
 		while ($row = mysqli_fetch_assoc($result)) {
 			if ($row['position'] == $position){
 				$_SESSION['username'];
-				header('location: main.php?username='.$row['username'].'');
+				$user = $row['username'];
+				$insert	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','User $user login',CURRENT_TIMESTAMP)";
+ 				$logs = mysqli_query($db,$insert);
+				header('location: main.php?username='.$user.'');
 			}elseif ($row['position'] != $position) {
 				$_SESSION['username'];
-				header('location: home1.php?username='.$row['username'].'');
+				$user = $row['username'];
+				$insert	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','User $user login',CURRENT_TIMESTAMP)";
+ 				$logs = mysqli_query($db,$insert);
+				header('location: home1.php?username='.$user.'');
 			}else{
 				array_push($error, "No user found!");
 			}
