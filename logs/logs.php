@@ -1,8 +1,3 @@
-<?php 
-	include("../server/connection.php");
-	$sql = "SELECT * FROM logs ";
-	$result	= mysqli_query($db, $sql);
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,43 +8,9 @@
 		<?php include('../logs/base.php');?>
 		<div>
 			<h1 class="ml-4 pt-2">Logs Management</h1>
-			<hr>
-			<div class="d-flex justify-content-center mt-4">
-			<table class="table table-striped w-100 border" style="margin-top: -22px;">
-				<thead class="bg-info">
-					<tr>
-						<th scope="row"><h4>Logs</h4></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-					</tr>
-					<tr>
-						<th scope="col" class="column-text">Username</th>
-						<th scope="col" class="column-text">Activity</th>
-						<th scope="col" class="column-text">Date</th>
-					</tr>
-				</thead>
-				<tbody id="myTable">
-					<?php 
-						if (mysqli_num_rows($result) > 0){
-							while($row = mysqli_fetch_assoc($result)){
-				  	?>
-					<tr class="table-active">
-						<td><?php echo $row['username'];?></td>
-						<td><?php echo $row['purpose'];?></td>
-						<td><?php echo $row['logs_time'];?></td>	
-					<?php
-								} 
-							}else{ 
-								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td>";
-								echo "<td></td>";
-								echo "</tr>";
-							}?>
-				</tbody>
-				<tfoot>
-					
-				</tfoot>
-			</table>
-
+			<hr class="mt-0 mb-0">
+			<div class="justify-content-center table-responsive" id="pagination_data">
+			
 			</div>
 		</div>
 	</div>
@@ -71,5 +32,24 @@
 <script>
 	$(function () {
   		$('[data-toggle="popover"]').popover()
+	});
+
+	$(document).ready(function(){
+		load_data();
+		function load_data(page)
+		{
+			$.ajax({
+				url:"pagination.php",
+				method:"POST",
+				data:{page:page},
+				success:function(data){
+					$('#pagination_data').html(data);
+				}
+			});
+		}
+		$(document).on('click','.pagination_link',function(){
+			var page = $(this).attr("id");
+			load_data(page);
+		});
 	});
 </script>
