@@ -40,8 +40,7 @@
 					<tr class='table-active'>
 						<td>".$row['username']."</td>
 						<td>".$row['purpose']."</td>
-						<td>".$row['logs_time']."</td>
-			";
+						<td>".$row['logs_time']."</td>";
 				} 
 			}else{ 
 	$output.= "<tr><td></td><td><p style='color:red;'>No data available!</p></td>
@@ -50,14 +49,14 @@
 				</tbody>
 			</table><br>";
 }
-$output .="<div align='center' class='mb-1 mt-2'>";
+$output .="<div align='center' class='mt-2 d-flex justify-content-center'><p ml-1><small>Page:&nbsp</small></p>";
 $page_query = "SELECT * FROM logs";
 $page_result = mysqli_query($db,$page_query);
 $total_records = mysqli_num_rows($page_result);
 $total_pages = ceil($total_records/$record);
 for($i=1;$i<=$total_pages;$i++)
 {
-	$output .= "<span class='pagination_link' style='cursor:pointer; padding:6px;border:1px solid #ccc;' id='".$i."'>".$i."</span>";
+	$output .= "<small><span class='pagination_link inline' style='cursor:pointer; padding:6px;border:1px solid #ccc;' id='".$i."'>".$i."</span></small>";
 }
 
 echo $output;

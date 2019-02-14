@@ -9,7 +9,7 @@
 				<div>
 					<input type="hidden" name="username"/>
 					<input type="hidden" name="position" value="admin"/>
-					<input class="form-control-sm mb-2" type="password" name="password" placeholder="Enter Password" required/>
+					<input class="form-control-sm mb-2" id="pass" type="password" name="password" placeholder="Enter Password" required/>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

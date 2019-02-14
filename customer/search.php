@@ -86,4 +86,4 @@
 	   </div>  
 	</div>  
 </div>
-<script src="../customer/javascript.js"></script>
+<script src="../customer/javascript.min.js"></script>

@@ -14,7 +14,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="../bootstrap4/jquery/jquery.js"></script>
+	<script src="../bootstrap4/jquery/jquery.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../customer/delete_customer.php');?>
 </body>

@@ -43,13 +43,14 @@ html,body{
 .second_side{
 	grid-area: second_side;
 }
-button{
+button {
 	padding-left: 20px;
 	text-align: left;
 	background-color: #5D718F;
 	border:1px solid #5D719F;
 	border-left:none;
 	border-right: none;
+	cursor:pointer;
 }
  #sidebar_button:hover{
 	background-color: #06521E;

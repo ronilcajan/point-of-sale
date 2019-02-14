@@ -13,26 +13,6 @@
 <html>
 <head>
 	<?php include('templates/head.php'); ?>
-	<script>
-		function loadproducts()
-		{
-			var name = $("#search").val();
-			if(name)
-			{
-				$.ajax({
-					type: 'post',
-					cache: false,
-					data: {
-						products:name,
-					},
-					url: 'loadproducts.php',
-					success: function (Response){
-					$('#products').html(Response);
-					}
-				});
-			}
-		}
-</script>
 </head>
 <body>
 	<div class="h-100 bg-dark" id="container">
@@ -53,7 +33,7 @@
 						</tr>
 						<tr>
 							<td valign="baseline"><small>Customer Name:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><select name="customer">
+							<td valign="baseline"><small><p class="p-0 ml-5"><select name="customer" style='cursor:pointer'>
 								<?php 
 									if (mysqli_num_rows($show)>0){
 										while ($row = mysqli_fetch_array($show)) {	?>
@@ -67,33 +47,35 @@
 			</div>
 			<div class="header_price border p-0">
 				<h5>Sale Total</h5>
-				<p class="pb-0 mr-2" style="float: right; font-size: 40px;">P 1000.00</p>
+				<p class="pb-0 mr-2" style="float: right; font-size: 40px;">₱ 1000.00</p>
 			</div>
 		</div>
 		<div id="content" class="mr-2">
 			<div id="price_column" class="m-2 table-responsive-sm">
-				<table class="table-striped table-bordered w-100" id="table">
+				<form method="POST" action="">
+				<table class="table-striped table-bordered w-100 font-weight-bold" style="cursor: pointer;" id="table2">
 					<thead>
 						<tr>
-							<th>&nbsp&nbsp</th>
+							<th>Barcode</th>
 							<th>Description</th>
 							<th>Price</th>
-							<th>Qty</th>
 							<th>Unit</th>
+							<th>Qty</th>
 							<th>Sub.Total</th>
+							<th>Action</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr></tr>
+					<tbody id="tableData">
 					</tbody>
 				</table>
+				</form>
 			</div>
 			<div id="table_buttons">
 				<button id="buttons" type="button" class="btn btn-secondary border ml-2">Clear Selected</button>
 				<button id="buttons" type="button" class="btn btn-secondary border">Quantity</button>
 				<div>
 					<ul class="text-white d-flex justify-content-center mt-3">
-						<li>Total : P 1000.00</li>
+						<li id="num">Total  ₱ 1000.00</li>
 					</ul>
 				</div>
 			</div>
@@ -103,13 +85,15 @@
    				<input class="form-control w-100" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
    			</div>
 			<div class="mt-0" id="product_area" class="table-responsive-sm" >
-				<table class="w-100 table-striped table-bordered">
+				<table class="w-100 table-striped table-bordered font-weight-bold" style="cursor: pointer;" id="table1" border>
 					<thead>
-						<tr>
-							<td>No.</td>
+						<tr><b>
+							<td>Barcode</td>
 							<td>Product Name</td>
 							<td>Price</td>
-						</tr>
+							<td>Unit</td>
+							<td>Stocks</td>
+						</tr></b>
 						<tbody id="products">
 							
 						</tbody>
@@ -133,7 +117,10 @@
 			<a id="buttons" onclick=" return confirm('Are you sure you want to logout?')" href="index.php?username=<?php echo $_GET['username'];?>&logout='1'" class="btn btn-danger border mr-2" style="padding-top: 12px;">Logout</a>
 		</div>
 	</div>
+
 	<?php include('templates/js_popper.php');?>
+	<script type="text/javascript" src="script.js"></script>
 	<script src="bootstrap4/js/time.js"></script>
+
 </body>
 </html> 

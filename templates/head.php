@@ -4,4 +4,3 @@
 <link rel="icon" type="image/png" sizes="180x180" href="images/icon.png"/>
 <link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="bootstrap4/css/style.css" />
-<link rel="stylesheet" href="bootstrap4/css/jquery-ui.css">

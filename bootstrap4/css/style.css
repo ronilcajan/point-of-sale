@@ -86,3 +86,9 @@ ul li{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+#tableData tr:hover,#products tr:hover{
+	background-color: #ffff99;
+}
+#table1 th{
+	font-style: bold;
+}
