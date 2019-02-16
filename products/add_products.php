@@ -21,7 +21,7 @@
 				<input class="form-control-sm" type="file" name="image" required>
 				<p class="bg-danger mt-3"><?php echo $msg;?></p>
 			</div>
-			<dir class="second_side">
+			<div class="second_side">
 					<table class="table-responsive mt-5">
 						<p><?php include('../error.php');?></p>
 						<tbody>
@@ -52,7 +52,7 @@
 						<button class="btn btn-danger" onclick="window.location.href='../products/products.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
 					</div>
 				</form>
-			</dir>
+			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>

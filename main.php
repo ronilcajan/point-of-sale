@@ -32,30 +32,31 @@
 							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
 						</tr>
 						<tr>
-							<td valign="baseline"><small>Customer Name:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><select name="customer" style='cursor:pointer'>
+							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" class="user" /><small>Customer Name:<small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5">
+								<select id='custom_id' name="customer" style='cursor:pointer'>
 								<?php 
 									if (mysqli_num_rows($show)>0){
 										while ($row = mysqli_fetch_array($show)) {	?>
 								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
-							<?php }}?>
-							</p></small></select>
+								<?php }}?>
+								</p></small></select>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="header_price border p-0">
-				<h5>Sale Total</h5>
-				<p class="pb-0 mr-2" style="float: right; font-size: 40px;">₱ 1000.00</p>
+				<h5>Grand Total</h5>
+				<p class="pb-0 mr-2" style="float: right; font-size: 40px;" id="totalValue">₱ 0.00</p>
 			</div>
 		</div>
 		<div id="content" class="mr-2">
 			<div id="price_column" class="m-2 table-responsive-sm">
 				<form method="POST" action="">
-				<table class="table-striped table-bordered w-100 font-weight-bold" style="cursor: pointer;" id="table2">
+				<table class="table-striped w-100 font-weight-bold" style="cursor: pointer;" id="table2">
 					<thead>
-						<tr>
+						<tr class='text-center'>
 							<th>Barcode</th>
 							<th>Description</th>
 							<th>Price</th>
@@ -71,11 +72,10 @@
 				</form>
 			</div>
 			<div id="table_buttons">
-				<button id="buttons" type="button" class="btn btn-secondary border ml-2">Clear Selected</button>
-				<button id="buttons" type="button" class="btn btn-secondary border">Quantity</button>
+				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2">Finish</button>
 				<div>
 					<ul class="text-white d-flex justify-content-center mt-3">
-						<li id="num">Total  ₱ 1000.00</li>
+						<p>Total:&nbsp&nbsp<li id="totalValue1">₱ 0.00</li></p>
 					</ul>
 				</div>
 			</div>
@@ -85,9 +85,9 @@
    				<input class="form-control w-100" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
    			</div>
 			<div class="mt-0" id="product_area" class="table-responsive-sm" >
-				<table class="w-100 table-striped table-bordered font-weight-bold" style="cursor: pointer;" id="table1" border>
+				<table class="w-100 table-striped font-weight-bold" style="cursor: pointer;" id="table1">
 					<thead>
-						<tr><b>
+						<tr claclass='text-center'><b>
 							<td>Barcode</td>
 							<td>Product Name</td>
 							<td>Price</td>
@@ -101,8 +101,7 @@
 				</table>
 			</div>
 			<div class="w-100 mt-2" id="enter_area">
-				<button id="buttons" type="button" class="btn btn-secondary border">Enter</button>
-				<button id="buttons" type="button" class="btn btn-secondary border">Cancel</button>
+				<button id="buttons" type="button" class="cancel btn btn-secondary border">Cancel Sale</button>
 			</div>
 		</div>
 		<div id="footer" class="w-100">

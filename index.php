@@ -4,12 +4,13 @@
 <html>
 <head>
 	<?php include('templates/head.php'); ?>
+	<script src="bootstrap4/jquery/sweetalert.min.js"></script>
 </head>
 <body class="bg-dark">
 	<div class="text-center border border-dark">
 		<div class="main">
 			<img class="img-fluid" src="images/logo.png"/>
-  			<center><?php include('error.php');?></center>
+  			<?php include('error.php');?>
 		</div>
 		<div class="fixed-bottom mb-2">
 			<div class="d-inline">

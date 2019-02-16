@@ -1,4 +1,5 @@
 <?php 
+	include("../cashflow/add.php");
 	include("../server/connection.php");
 	$sql = "SELECT * FROM cashflow ORDER BY transaction_id ASC ";
 	$result	= mysqli_query($db, $sql);
@@ -13,12 +14,14 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../cashflow/base.php');?>
+		<?php 
+			include('../cashflow/base.php');
+			include('../alert.php');
+		?>
 		<div>
 			<h1 class="ml-4 pt-2">Cash Management</h1>
 			<hr>
 			<div class="d-flex justify-content-center mt-4">
-				<?php include('../alert.php');?>
 			<table class="table table-striped border" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
@@ -44,7 +47,7 @@
 					<tr class="table-active">
 						<td><?php echo $row['username'];?></td>
 						<td><?php echo $row['description'];?></td>
-						<td>P<?php echo $row['amount'];?></td>
+						<td>₱&nbsp<?php echo number_format($row['amount']);?></td>
 						<td><?php echo $row['transaction_date'];?></td>
 						<td>
 							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-success btn-xs view_data">
@@ -62,7 +65,6 @@
 					
 				</tfoot>
 			</table>
-
 			</div>
 		</div>
 	</div>

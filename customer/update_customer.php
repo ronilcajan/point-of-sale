@@ -40,6 +40,7 @@
 			<div class="side">
 				<h1 class="ml-4">Customer Management</h1>
 				<hr>
+				<?php include '../alert/alert.php';?>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
 				<div style="border:1px dashed black; width: 250px;height: 250px;">
@@ -48,25 +49,25 @@
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="size" value="1000000">
 			</div>
-			<div class="second_side table-responsive">
-					<p class="bg-danger w-50"><?php echo $msg;?></p>
-					<table class="table-responsive mt-5">
+			<div class="second_side">
+					<p class="bg-danger w-50">
+					<table class=" table-responsive mt-5">
 						<tbody>
 							<tr>
-								<td  valign="baseline">First Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="fname" value="<?php echo $row['firstname'];?>" required></td>
+								<td valign="baseline">First Name:</td>
+								<td class="pl-5 pb-1"><input type="text" name="fname" value="<?php echo $row['firstname'];?>" required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Last Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="lname" value="<?php echo $row['lastname'];?>" required></td>
+								<td valign="baseline">Last Name:</td>
+								<td class="pl-5 pb-1"><input type="text" name="lname" value="<?php echo $row['lastname'];?>" required></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Address:</td>
-								<td class="pl-5 pb-2"><textarea name="address" required cols="23"><?php echo $row['address'];?></textarea></td>
+								<td valign="baseline">Address:</td>
+								<td class="pl-5 pb-1"><textarea name="address" required cols="23"><?php echo $row['address'];?></textarea></td>
 							</tr>
 							<tr>
-								<td  valign="baseline">Contact Number:</td>
-								<td class="pl-5 pb-2"><input type="text" name="number" value="<?php echo $row['contact_number'];?>" required></td>
+								<td valign="baseline">Contact Number:</td>
+								<td class="pl-5 pb-1"><input type="text" name="number" value="<?php echo $row['contact_number'];?>" required></td>
 							</tr>
 							<tr>
 								<td>Change Photo:</td>
@@ -74,7 +75,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="text-left mt-3">
+					<div class="text-left mt-2">
 						<input type="hidden" name="id" value="<?php echo $row['customer_id'];?>">
 						<button type="submit" name="update_customer" class="btn btn-secondary">Update</button>
 						<button type="button" class="btn btn-danger" onclick="window.location.href='../customer/customer.php?username=<?php echo $row1['username'];?>'" >Cancel</button>

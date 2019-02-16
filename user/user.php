@@ -18,7 +18,7 @@
 		<div>
 			<h1 class="ml-4 pt-2">User Management</h1>
 			<hr>
-			<div class="d-flex justify-content-center mt-4">
+			<div class="d-flex justify-content-center mt-4  table-responsive">
 				<?php include('../alert.php');?>
 			<table class="table table-striped w-100 border" style="margin-top: -22px;">
 				<thead class="bg-info">

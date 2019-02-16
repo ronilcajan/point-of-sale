@@ -6,7 +6,10 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../customer/base.php');?>
+		<?php 
+			include('../customer/base.php');
+			include '../alert/alert.php';
+		?>
 		<div class="main">
 			<div class="side">
 				<h1 class="ml-4">Customer Management</h1>
@@ -19,11 +22,10 @@
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="size" class="form-control-sm" value="1000000">
 				<input class="form-control-sm" type="file" name="image" required>
-				<p class="bg-danger mt-3"><?php echo $msg;?></p>
+				<p class="bg-danger mt-3">
 			</div>
 			<dir class="second_side">
 					<table class="table-responsive mt-5">
-						<p><?php include('../error.php');?></p>
 						<tbody>
 							<tr>
 								<td  valign="baseline">First Name:</td>

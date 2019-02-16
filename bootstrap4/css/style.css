@@ -56,7 +56,7 @@ ul li{
 }
 #table_buttons{
 	display: grid;
-	grid-template-columns: 20% 20% auto ;
+	grid-template-columns: 60% auto ;
 	grid-gap:10px;
 }
 #buttons{
@@ -78,8 +78,7 @@ ul li{
 }
 #enter_area{
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 10px;
+	grid-template-columns: 1fr;
 }
 #footer{
 	grid-area: footer;

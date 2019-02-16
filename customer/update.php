@@ -1,5 +1,6 @@
 <?php
-	$msg 		= '';
+	include('../server/connection.php');
+	$alert		= array();
   	if(isset($_POST['update_customer'])){
 		$target   	= "../images/".basename($_FILES['image']['name']);
 	  	$image    	= $_FILES['image']['name'];
@@ -35,6 +36,6 @@
 
 		  	}
 		  }else{
-		  		$msg = "There was a problem uploading the image!";
+		  		array_push($alert,"There was a problem uploading the image!");
 	  	}
   	}		

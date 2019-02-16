@@ -6,7 +6,9 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../cashflow/base.php');?>
+		<?php 
+			include('../cashflow/base.php');
+		?>
 		<div class="main">
 			<div class="side">
 				<h1 class="ml-4">Cash Management</h1>
@@ -17,11 +19,10 @@
 					<img class="img-fluid p-2 h-100 w-100" src="../images/cashflow.png">
 				</div>
 			<form method="post">
-				<p class="bg-danger mt-3"><?php echo $msg;?></p>
+				<p class="bg-danger mt-3">
 			</div>
 			<dir class="second_side">
 					<table class="table-responsive mt-5">
-						<p><?php include('../error.php');?></p>
 						<tbody>
 							<tr>
 								<td  valign="baseline">Purpose:</td>
@@ -29,7 +30,7 @@
 							</tr>
 							<tr>
 								<td  valign="baseline">Amount:</td>
-								<td class="pl-5 pb-2"><input type="text" name="amount"></td>
+								<td class="pl-5 pb-2"><input type="number" name="amount"></td>
 							</tr>
 						</tbody>
 					</table>

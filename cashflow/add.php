@@ -1,6 +1,5 @@
 <?php include('../server/connection.php');
-	$msg 	= '';
-	$error  = array();
+	$alert  = array();
 	if(isset($_POST['add_customer'],$_GET['username'])){
 		$user 		= $_GET['username'];
 		$purpose 	= mysqli_real_escape_string($db, $_POST['purpose']);
@@ -11,8 +10,8 @@
  		if($result == true){
  			$query 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','$purpose',CURRENT_TIMESTAMP)";
  			$insert = mysqli_query($db,$query);
-			header('location: ../cashflow/cashflow.php?username='.$user.'&added');
+ 			header('location: ../cashflow/cashflow.php?username='.$user.'&added');
 	  	}else{
-			$msg = "There was a problem in the system!";
+			array_push($alert,"Something went wrong!");
 	  	}
 	}

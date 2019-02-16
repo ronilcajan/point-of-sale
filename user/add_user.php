@@ -19,7 +19,6 @@
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="size" class="form-control-sm" value="1000000">
 				<input class="form-control-sm" type="file" name="image" required>
-				<p class="bg-danger mt-3"><?php echo $msg;?></p>
 			</div>
 			<div class="second_side">
 					<table class="table-responsive mt-5">
@@ -69,6 +68,7 @@
 		</div> 
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<script>
 		$(function () {

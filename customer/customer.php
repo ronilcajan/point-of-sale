@@ -3,22 +3,26 @@
 	$sql = "SELECT * FROM customer ORDER BY customer_id ASC ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
+	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include('../templates/head1.php');?>
+	<?php include('../templates/head1.php');
+	?>
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../customer/base.php');?>
+		<?php 
+			include('../customer/base.php');
+			include('../alert.php');
+		?>
 		<div>
 			<h1 class="ml-4 pt-2">Customer Management</h1>
 			<hr>
 			<div class="d-flex justify-content-center mt-4">
-				<?php include('../alert.php');?>
 			<table class="table table-striped w-100 border" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
