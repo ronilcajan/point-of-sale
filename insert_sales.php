@@ -1,7 +1,4 @@
 <?php include 'server/connection.php';
-/*ini_set('display_errors', 1); 
-ini_set('log_errors',1); 
-error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);*/
 if(isset($_POST['product'])){
 	$user = $_POST['user'];
 	$product = $_POST['product'];
@@ -16,7 +13,11 @@ if(isset($_POST['product'])){
 		if($user_clean != '' && $product_clean != '' && $customer_clean != '' && $quantity_clean != ''){
 			$query .= "
 					INSERT INTO sales(username,product_id,customer_id,quantity) 
-					VALUES('$user_clean',$product_clean,$customer_clean,$quantity_clean);";
+					VALUES('$user_clean',$product_clean,$customer_clean,$quantity_clean);
+					";
+			$query .= "
+					INSERT INTO product_sale(sales_id,)
+			";
 		} 
 	}
 	if ($query != ''){
