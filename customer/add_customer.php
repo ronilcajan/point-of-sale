@@ -8,7 +8,7 @@
 	<div class="contain h-100">
 		<?php 
 			include('../customer/base.php');
-			include '../alert/alert.php';
+			include '../customer/alert.php';
 		?>
 		<div class="main">
 			<div class="side">
