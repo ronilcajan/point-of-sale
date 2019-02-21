@@ -1,4 +1,5 @@
-<?php include('../server/connection.php');
+<?php 
+	include('../server/connection.php');
 	$alert  = array();
 	if(isset($_POST['add_customer'],$_GET['username'])){
 		$user 		= $_GET['username'];

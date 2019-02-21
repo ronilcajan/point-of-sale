@@ -8,7 +8,7 @@
 	<div class="contain h-100">
 		<?php 
 			include('../customer/base.php');
-			include '../customer/alert.php';
+			include('../customer/alert.php');
 		?>
 		<div class="main">
 			<div class="side">
@@ -24,7 +24,7 @@
 				<input class="form-control-sm" type="file" name="image" required>
 				<p class="bg-danger mt-3">
 			</div>
-			<dir class="second_side">
+			<div class="second_side">
 					<table class="table-responsive mt-5">
 						<tbody>
 							<tr>
@@ -50,7 +50,7 @@
 						<button class="btn btn-danger" onclick="window.location.href='../customer/customer.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
 					</div>
 				</form>
-			</dir>
+			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>

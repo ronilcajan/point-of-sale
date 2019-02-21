@@ -20,12 +20,6 @@
 	<div class="contain h-100">
 		<div class="header bg-dark">
 			<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
-			<div class="w-100" >
-  				<form class="form-inline form-group-sm mt-4" method="post" action="search.php?username=<?php echo $row1['username'];?>">
-  					<input class="form-control w-25 mr-1"  type="search" placeholder="Search" aria-label="Search" name="search">
-   					<button class="btn btn-secondary my-2 my-sm-0 border" type="submit">Search</button>
-  				</form>
-			</div>
 		</div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
@@ -48,9 +42,9 @@
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="size" value="1000000">
 			</div>
-			<div class="second_side table-responsive">
+			<div class="second_side">
 					<p class="bg-danger w-50"><?php echo $msg;?></p>
-					<table class="table-responsive mt-5">
+					<table class="mt-5">
 						<tbody>
 							<tr>
 								<td  valign="baseline">Username:</td>

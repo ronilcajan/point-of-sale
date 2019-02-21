@@ -3,7 +3,6 @@
 	$sql = "SELECT * FROM customer ORDER BY customer_id ASC ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
-	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
 ?>
@@ -22,16 +21,9 @@
 		<div>
 			<h1 class="ml-4 pt-2">Customer Management</h1>
 			<hr>
-			<div class="d-flex justify-content-center mt-4">
-			<table class="table table-striped w-100 border" style="margin-top: -22px;">
-				<thead class="bg-info">
-					<tr>
-						<th scope="row"><h4>Products</h4></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-					</tr>
+			<div class="table-responsive mt-4 pl-5 pr-5">
+			<table class="table table-striped border" id="customer_table" style="margin-top: -22px;">
+				<thead class="bg-info"> 
 					<tr>
 						<th scope="col" class="column-text">Customer ID</th>
 						<th scope="col" class="column-text">Customer Name</th>
@@ -40,10 +32,8 @@
 						<th scope="col" class="column-text">Actions</th>
 					</tr>
 				</thead>
-				<tbody id="myTable">
 					<?php 
-						if (mysqli_num_rows($result) > 0){
-							while($row = mysqli_fetch_assoc($result)){
+						while($row = mysqli_fetch_assoc($result)){
 				  	?>
 					<tr class="table-active">
 						<td><?php echo $row['customer_id'];?></td>
@@ -56,25 +46,22 @@
 							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['customer_id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
 						</td>
 					</tr>
-					<?php
-								} 
-							}else{ 
-								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td>";
-								echo "<td></td>";
-								echo "</tr>";
-							}?>
-				</tbody>
-				<tfoot>
-					
-				</tfoot>
+					<?php } ?>
 			</table>
 
 			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
+	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../customer/delete_customer.php');?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#customer_table').dataTable();
+		})
+	</script>
 </body>
 </html>
 <div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  

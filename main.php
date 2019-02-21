@@ -1,5 +1,7 @@
-<?php include('server/connection.php');?>
-<?php 
+<?php include('server/connection.php');
+	$added = isset($_GET['added']);
+	$updated = '';
+	$deleted = '';
 	$query 	= "SELECT * FROM `customer`";
 	$show	= mysqli_query($db,$query);
 	if(isset($_GET['username'])){
@@ -17,6 +19,7 @@
 <body>
 	<div class="h-100 bg-dark" id="container">
 		<div id="header">
+			<?php include('alert.php'); ?>
 			<div>
 				<img class="img-fluid m-2 w-100" src="images/logo1.jpg"/>
 			</div>
@@ -32,15 +35,16 @@
 							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
 						</tr>
 						<tr>
-							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" class="user" /><small>Customer Name:<small></td>
+							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
 							<td valign="baseline"><small><p class="p-0 ml-5">
-								<select id='custom_id' name="customer" style='cursor:pointer'>
+								<select id='custom_id' style='cursor:pointer'>
 								<?php 
 									if (mysqli_num_rows($show)>0){
 										while ($row = mysqli_fetch_array($show)) {	?>
 								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
 								<?php }}?>
 								</p></small></select>
+								<button class="btn-sm btn-info border" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info">+New</span></button>
 							</td>
 						</tr>
 					</tbody>
@@ -112,14 +116,13 @@
 			<button id="buttons" onclick="window.location.href='logs/logs.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Logs</button>
 			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Cash-Flow</button>
 			<button id="buttons" onclick="window.location.href='sales/sales.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Sales</button>
-			<button id="buttons" onclick="window.location.href='inventory/inventory.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Inventory</button>
-			<a id="buttons" onclick=" return confirm('Are you sure you want to logout?')" href="index.php?username=<?php echo $_GET['username'];?>&logout='1'" class="btn btn-danger border mr-2" style="padding-top: 12px;">Logout</a>
+			<button id="buttons" onclick="window.location.href='delivery/delivery.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Deliveries</button>
+			<button id="buttons" class="logout btn btn-danger border mr-2">Logout</button> 
 		</div>
 	</div>
-
+	<?php include('add.php');?>
 	<?php include('templates/js_popper.php');?>
 	<script type="text/javascript" src="script.js"></script>
 	<script src="bootstrap4/js/time.js"></script>
-
 </body>
 </html> 

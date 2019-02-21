@@ -4,7 +4,7 @@
 		$sql 	= "SELECT username FROM users WHERE position = 'admin'";
 		$result = mysqli_query($db, $sql);
 
-    	if(mysqli_num_rows($result)==1){
+    	if(mysqli_num_rows($result)>0){
 			while ($row = mysqli_fetch_assoc($result)){
 				$user = $row['username'];
 				$query = "DELETE FROM products WHERE id = '$id'"; 

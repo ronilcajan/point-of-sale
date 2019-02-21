@@ -1,11 +1,7 @@
-<?php 
-	include("../cashflow/add.php");
+<?php
 	include("../server/connection.php");
-	$sql = "SELECT * FROM cashflow ORDER BY transaction_id ASC ";
-	$result	= mysqli_query($db, $sql);
-	$deleted = isset($_GET['deleted']);
-	$added  = isset($_GET['added']);
-	$updated = isset($_GET['updated']);
+	$sql = "SELECT * FROM sales,customer,sales_product,products WHERE sales.reciept_no = sales_product.reciept_no AND sales.customer_id=customer.customer_id AND sales_product.product_id=products.id";
+	$result = mysqli_query($db,$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,37 +11,39 @@
 <body>
 	<div class="contain h-100">
 		<?php 
-			include('../cashflow/base.php');
-			include('../alert.php');
+			include('../sales/base.php');
 		?>
-		<div>
-			<h1 class="ml-4 pt-2">Cash Management</h1>
-			<hr>
-			<div class="table-responsive mt-4 pl-5 pr-5">
-			<table class="table table-striped" id="cashflow_table" style="margin-top: -22px;">
+		<div align="center">
+			<div>
+				<h1 class="ml-4 pt-2" align="left">Sales Records</h1>
+			</div>
+			<div class="table-responsive pl-5 pr-5">
+			<table class="table table-striped border" id="sales_table" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
 						<th scope="col" class="column-text">Username</th>
-						<th scope="col" class="column-text">Purpose</th>
-						<th scope="col" class="column-text">Amount</th>
+						<th scope="col" class="column-text">Receipt No.</th>
+						<th scope="col" class="column-text">Customer Name</th>
+						<th scope="col" class="column-text">Products</th>
+						<th scope="col" class="column-text">Price</th>
+						<th scope="col" class="column-text">Quantity</th>
 						<th scope="col" class="column-text">Date</th>
-						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
 					<?php 
-						while($row = mysqli_fetch_assoc($result)){
+						while($row = mysqli_fetch_array($result)){
 				  	?>
 					<tr class="table-active">
 						<td><?php echo $row['username'];?></td>
-						<td><?php echo $row['description'];?></td>
-						<td>₱&nbsp<?php echo number_format($row['amount']);?></td>
-						<td><?php echo $row['transaction_date'];?></td>
-						<td>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-success btn-xs view_data">
-						</td>
+						<td><?php echo $row['reciept_no'];?></td>
+						<td><?php echo $row['firstname'].'&nbsp'.$row['lastname'];?></td>
+						<td><?php echo $row['product_name'];?></td>
+						<td>₱<?php echo $row['price'];?></td>
+						<td><?php echo $row['qty'];?></td>
+						<td><?php echo $row['date'];?></td>
 					</tr>
 					<?php } ?>
-			</table>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -55,13 +53,14 @@
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#cashflow_table').dataTable();
-		})
+			$('#sales_table').dataTable();
+			
+		});
 	</script>
 </body>
 </html>
 <div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  
-	<div class="modal-dialog modal-md"  role="document">  
+	<div class="modal-dialog modal-md" role="document">  
 		<div class="modal-content">   
 		<div class="modal-body d-inline" id="Contact_Details"></div> 
 			<div class="modal-footer"> 

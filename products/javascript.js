@@ -27,3 +27,7 @@ $(function () {
 		}            
 	});   
  });  
+
+$(document).ready(function(){
+	$('#product_table').dataTable();
+})

@@ -32,8 +32,6 @@
  					$insert = mysqli_query($db,$sql);
  					header('location: ../customer/customer.php?username='.$user.'&updated');
 				}
-	
-
 		  	}
 		  }else{
 		  		array_push($alert,"There was a problem uploading the image!");

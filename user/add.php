@@ -29,7 +29,7 @@
 				$msg = "Image successfully uploaded!";
 				$insert	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','User $firstname added',CURRENT_TIMESTAMP)";
  				$logs = mysqli_query($db,$insert);
-				header('location: ../user/user.php?username='.$_GET['username'].'&added');
+				header('location: ../user/user.php?username='.$user.'&added');
 	  		}else{
 				$msg = "There was a problem uploading the image!";
 	  		}

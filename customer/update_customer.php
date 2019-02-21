@@ -3,7 +3,7 @@
 
 	$query  = "SELECT username FROM users WHERE position = 'admin'";
 	$res 	= mysqli_query($db, $query);
-	$row1 	= mysqli_fetch_assoc($res);
+	$row1 	= mysqli_fetch_array($res);
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
 		$sql  =   "SELECT * FROM customer WHERE customer_id = '$id'";
@@ -20,12 +20,6 @@
 	<div class="contain h-100">
 		<div class="header bg-dark">
 	<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
-	<div class="w-100" >
-  		<form class="form-inline form-group-sm mt-4" method="post" action="search.php?username=<?php echo $_row1['username'];?>">
-  			<input class="form-control w-25 mr-1"  type="search" placeholder="Search" aria-label="Search" name="search">
-   			<button class="btn btn-secondary my-2 my-sm-0 border" type="submit">Search</button>
-  		</form>
-	</div>
 </div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
@@ -40,7 +34,7 @@
 			<div class="side">
 				<h1 class="ml-4">Customer Management</h1>
 				<hr>
-				<?php include '../alert/alert.php';?>
+				<?php include '../customer/alert.php';?>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
 				<div style="border:1px dashed black; width: 250px;height: 250px;">
@@ -51,7 +45,7 @@
 			</div>
 			<div class="second_side">
 					<p class="bg-danger w-50">
-					<table class=" table-responsive mt-5">
+					<table class="mt-5">
 						<tbody>
 							<tr>
 								<td valign="baseline">First Name:</td>

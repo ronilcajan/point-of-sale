@@ -1,3 +1,8 @@
+<?php 
+	include("../server/connection.php");
+	$sql = "SELECT * FROM logs";
+	$result	= mysqli_query($db, $sql);
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +14,41 @@
 		<div>
 			<h1 class="ml-4 pt-2">Logs Management</h1>
 			<hr class="mt-0 mb-0">
-			<div class="justify-content-center table-responsive" id="pagination_data">
-			
+			<div class="table-responsive mt-4 pl-5 pr-5">
+				<table class="table table-striped border" id="logs_table" style="margin-top: -22px;">
+				<thead class="bg-info"> 
+					<tr>
+						<th scope="col" class="column-text">Username</th>
+						<th scope="col" class="column-text">Activity</th>
+						<th scope="col" class="column-text">Date</th>
+					</tr>
+				</thead>
+					<?php 
+						while($row = mysqli_fetch_assoc($result)){
+				  	?>
+					<tr class="table-active">
+						<td><?php echo $row['username'];?></td>
+						<td><?php echo $row['purpose'];?></td>
+						<td><?php echo $row['logs_time'];?></td>
+					</tr>
+					<?php } ?>
+			</table>
 			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
+	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../customer/delete_customer.php');?>
+	<script>
+		$(function () {
+  			$('[data-toggle="popover"]').popover()
+		});
+		$(document).ready(function(){
+			$('#logs_table').dataTable();
+		})
+</script>
 </body>
 </html>
 <div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  
@@ -29,27 +61,3 @@
 	   </div>  
 	</div>  
 </div>
-<script>
-	$(function () {
-  		$('[data-toggle="popover"]').popover()
-	});
-
-	$(document).ready(function(){
-		load_data();
-		function load_data(page)
-		{
-			$.ajax({
-				url:"pagination.php",
-				method:"POST",
-				data:{page:page},
-				success:function(data){
-					$('#pagination_data').html(data);
-				}
-			});
-		}
-		$(document).on('click','.pagination_link',function(){
-			var page = $(this).attr("id");
-			load_data(page);
-		});
-	});
-</script>

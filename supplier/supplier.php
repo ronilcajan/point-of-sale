@@ -17,18 +17,10 @@
 		<div>
 			<h1 class="ml-4 pt-2">Supplier Management</h1>
 			<hr>
-			<div class="d-flex justify-content-center" style="margin-top: -15px;">
-				<?php include('../alert.php');?>
-			<table class="table table-striped w-100 border">
+			<?php include('../alert.php');?>
+			<div class="table-responsive mt-4 pl-5 pr-5">
+			<table class="table table-striped w-100 border" id="supplier_table">
 				<thead class="bg-info">
-					<tr>
-						<th scope="row"><h4>Suppliers</h4></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-						<th scope="row"></th>
-					</tr>
 					<tr>
 						<th scope="col" class="column-text">Supplier ID</th>
 						<th scope="col" class="column-text">Company Name</th>
@@ -38,10 +30,8 @@
 						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
-				<tbody id="myTable">
 					<?php 
-						if (mysqli_num_rows($result) > 0){
-							while($row = mysqli_fetch_assoc($result)){
+						while($row = mysqli_fetch_array($result)){
 				  	?>
 					<tr class="table-active">
 						<td><?php echo $row['supplier_id'];?></td>
@@ -55,25 +45,22 @@
 							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['supplier_id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
 						</td>
 					</tr>
-					<?php
-								} 
-							}else{ 
-								echo "<tr><td></td><td><p style='color:red;'>No data available!</p></td>";
-								echo "<td></td>";
-								echo "</tr>";
-							}?>
-				</tbody>
-				<tfoot>
-					
-				</tfoot>
+					<?php } ?>
 			</table>
 
 			</div>
 		</div>
 	</div>
-	<script src="../bootstrap4/jquery/jquery.js"></script>
+	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
+	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../supplier/delete_supplier.php');?>
+	<script>
+		$(document).ready(function(){
+			$('#supplier_table').dataTable();
+		})
+	</script>
 </body>
 </html>
 <div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  
@@ -86,4 +73,4 @@
 	   </div>  
 	</div>  
 </div>
-<script src="../supplier/javascript.min.js"></script>
+<script src="../supplier/javascript.js"></script>
