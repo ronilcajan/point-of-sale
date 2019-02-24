@@ -1,16 +1,15 @@
-<?php include("../server/connection.php");
-	  include('../products/update.php');
+<?php 
+	include("../server/connection.php");
+	include '../set.php';
 
-	$query  = "SELECT username FROM users WHERE position = 'admin'";
-	$res 	= mysqli_query($db, $query);
-	$row1 	= mysqli_fetch_array($res);
-	$query1 = "SELECT * FROM supplier";
-	$res2	= mysqli_query($db,$query1);
+	$query = "SELECT * FROM supplier";
+	$result	= mysqli_query($db,$query);
+
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
 		$sql  =   "SELECT * FROM products,supplier WHERE id='$id'";
-		$result   = mysqli_query($db, $sql);
-		$row  =   mysqli_fetch_array($result);
+		$result1   = mysqli_query($db, $sql);
+		$row1  =   mysqli_fetch_array($result1);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,11 +23,12 @@
 		</div>
 	<div class="sidebar">
 	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../products/products.php?username=<?php echo $row1['username'];?>'">List</button>
-	<button id="sidebar_button" onclick="window.location.href='../products/add_products.php?username=<?php echo $row1['username'];?>'">Add</button>
+	<button id="sidebar_button" onclick="window.location.href='../products/products.php'">Product List</button>
+	<button id="sidebar_button" onclick="window.location.href='../products/add_products.php'">Add Products</button>
+	<button id="sidebar_button" onclick="window.location.href='../products/import_csv.php'">Import CSV</button>
 	<button id="sidebar_button" type="button" data-toggle="popover" title="Product Management" data-content="Here you will create, update, delete and view products." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username=<?php echo $row1['username'];?>'"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
 	</div>
 </div>
 		<div class="main">
@@ -38,10 +38,11 @@
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
 				<div style="border:1px dashed black; width: 250px;height: 250px;">
-					<?php echo "<img class='img-fluid p-2 h-100 w-100' src='../images/".$row['images']."'>"; ?>
+					<?php echo "<img class='img-fluid p-2 h-100 w-100' src='../images/".$row1['images']."'>"; ?>
 				</div>
-			<form method="post" enctype="multipart/form-data">
+			<form method="post" enctype="multipart/form-data" action="../products/update.php">
 				<input type="hidden" name="size" value="1000000">
+				<input type="hidden" name="id" value="<?php echo $row1['id'];?>">
 			</div>
 			<div class="second_side table-responsive">
 					<p class="bg-danger w-50"><?php echo $msg;?></p>
@@ -49,30 +50,30 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="product_name" value="<?php echo $row['product_name'];?>"required></td>
+								<td class="pl-5 pb-2"><input type="text" name="product_name" value="<?php echo $row1['product_name'];?>"required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Sell Price:</td>
-								<td class="pl-5 pb-2"><input type="number" name="price" value="<?php echo $row['sell_price'];?>" required></td>
+								<td class="pl-5 pb-2"><input type="number" name="price" step="0.01" value="<?php echo $row1['sell_price'];?>" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Quantity:</td>
-								<td class="pl-5 pb-2"><input type="number" name="qty" value="<?php echo $row['quantity'];?>" required></td>
+								<td class="pl-5 pb-2"><input type="number" name="qty" value="<?php echo $row1['quantity'];?>" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Unit:</td>
-								<td class="pl-5 pb-2"><input type="text" name="unit" value="<?php echo $row['unit'];?>" required></td>
+								<td class="pl-5 pb-2"><input type="text" name="unit" value="<?php echo $row1['unit'];?>" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Minimum stocks:</td>
-								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row['min_stocks'];?>" required></td>
+								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Supplier:</td>
-								<td class="pl-5 pb-2"><select name='supplier' value="<?php echo $row['supplier_id'];?>">
+								<td class="pl-5 pb-2"><select name='supplier' value="<?php echo $row1['company_name'];?>">
 									<?php 
-									if(mysqli_num_rows($res2)){
-										while($row2=mysqli_fetch_array($res2)){
+									if(mysqli_num_rows($result)){
+										while($row2=mysqli_fetch_array($result)){
 									?>
 									<option value="<?php echo $row2['supplier_id'];?>" selected><?php echo $row2['company_name'];?></option>
 									<?php 
@@ -89,9 +90,8 @@
 						</tbody>
 					</table>
 					<div class="text-left mt-3">
-						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 						<button type="submit" name="update" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php?username=<?php echo $row1['username'];?>'" >Cancel</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php'" >Cancel</button>
 					</div>
 				</form>
 			</dir>

@@ -1,6 +1,7 @@
 <?php 
 	include('../server/connection.php');
 	include('../products/add.php');
+	include '../set.php';
 	$sql = "SELECT supplier_id,company_name FROM supplier";
 	$result = mysqli_query($db,$sql);
 ?>
@@ -65,7 +66,7 @@
 					</table>
 					<div class="text-left mt-4">
 						<button type="submit" name="addproducts" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../products/products.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../products/products.php" >Cancel</button>
 					</div>
 				</form>
 			</div>

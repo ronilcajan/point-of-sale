@@ -1,4 +1,4 @@
-<!-- Link for connecting to database and other PHP query -->
+
 <style>
 	input[name="image"]{
 		width: 100px;
@@ -13,7 +13,7 @@
 	<div class="modal-dialog modal-fluid" role="document">
 		<div class="modal-content" style="width:70%; margin-left: 20%;">
 	  		<div class="modal-header bg-secondary">
-				<h4 class="modal-title text-light" id="exampleModalCenterTitle" ><strong>Add Customer</strong></h4>
+				<h4 class="modal-title text-light" id="exampleModalCenterTitle" ><strong>Add New Customer</strong></h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	  		</div>
 	  	<div class="modal-body">
@@ -23,7 +23,7 @@
 		  			<div align="center">
 		  				<input type="hidden" name="size" class="form-control-sm" value="1000000">
 		  				<input type="hidden" name="user" class="form-control-sm" value="<?php echo $_GET['username'];?>">
-		  				<img class="border mb-1" width="150" height="150" src="images/user.png"/>
+		  				<img class="mb-1" width="150" height="150" src="images/user.png"/>
 		  			</div>
 		  				<small>		  				
 		  				<input class="form-control form-control-sm mb-1" type="text" name="fname" placeholder="Enter First name" required>

@@ -1,8 +1,11 @@
 <?php
 	include("../server/connection.php");
 	include '../set.php';
-	$sql = "SELECT * FROM sales,sales_product,customer WHERE sales.reciept_no = sales_product.reciept_no AND sales.customer_id=customer.customer_id	";
+	$id = $_GET['id'];
+	$sql = "SELECT * FROM sales_product,products WHERE reciept_no = '$id' AND sales_product.product_id = products.id";
 	$result = mysqli_query($db,$sql);
+	$row = mysqli_fetch_array($result);
+	$result1 = mysqli_query($db,$sql); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,26 +25,26 @@
 			<table class="table table-striped" id="sales_table" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
-						<th scope="col" class="column-text">Receipt No.</th>
-						<th scope="col" class="column-text">Username</th>
-						<th scope="col" class="column-text">Customer Name</th>
-						<th scope="col" class="column-text">Total</th>
-						<th scope="col" class="column-text">Date</th>
-						<th scope="col" class="column-text">Action</th>
+						<td colspan="3"><h2>Reciept No.&nbsp<?php echo $row['reciept_no'];?> </h2></td>
+						<td colspan="2"><h2>Total:</h2></td>
+					</tr>
+					<tr>
+						<th scope="col" class="column-text">Barcode</th>
+						<th scope="col" class="column-text">Product Name</th>
+						<th scope="col" class="column-text">Quantity</th>
+						<th scope="col" class="column-text">Price</th>
+						<th scope="col" class="column-text">Unit</th>
 					</tr>
 				</thead>
 					<?php 
-						while($row = mysqli_fetch_array($result)){
+						while($row1 = mysqli_fetch_array($result1)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['reciept_no'];?></td>
-						<td><?php echo $row['username'];?></td>
-						<td><?php echo $row['firstname'].'&nbsp'.$row['lastname'];?></td>
-						<td>₱<?php echo $row['price'];?></td>
-						<td><?php echo $row['date'];?></td>
-						<td>
-							<a name="Details" title="Details" style='font-size:10px; border-radius:5px;padding:4px;' href="reciept_details.php?id=<?php echo $row['reciept_no'];?>" class="btn btn-info btn-xs">Details</a>
-						</td>
+						<td><?php echo $row1['product_id'];?></td>
+						<td><?php echo $row1['product_name'];?></td>
+						<td><?php echo $row1['qty'];?></td>
+						<td>₱<?php echo $row1['price'];?></td>
+						<td><?php echo $row1['unit'];?></td>
 					</tr>
 					<?php } ?>
 				</table>

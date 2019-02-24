@@ -1,11 +1,9 @@
 <?php 
 	include("../cashflow/add.php");
 	include("../server/connection.php");
+	include '../set.php';
 	$sql = "SELECT * FROM cashflow ORDER BY transaction_id ASC ";
 	$result	= mysqli_query($db, $sql);
-	$deleted = isset($_GET['deleted']);
-	$added  = isset($_GET['added']);
-	$updated = isset($_GET['updated']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +14,6 @@
 	<div class="contain h-100">
 		<?php 
 			include('../cashflow/base.php');
-			include('../alert.php');
 		?>
 		<div>
 			<h1 class="ml-4 pt-2">Cash Management</h1>

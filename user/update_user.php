@@ -1,12 +1,12 @@
-<?php include("../server/connection.php");
-	  include('../user/update.php');
+<?php 
+	include("../server/connection.php");
+	include('../user/update.php');
+	include '../set.php';
+	$username = $_SESSION['username'];
 
-	$query  = "SELECT username FROM users WHERE position = 'admin'";
-	$res 	= mysqli_query($db, $query);
-	$row1 	= mysqli_fetch_assoc($res);
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
-		$sql  =   "SELECT * FROM users WHERE id = '$id'";
+		$sql  =   "SELECT * FROM users WHERE username = '$username'";
 		$result   = mysqli_query($db, $sql);
 		$row  =   mysqli_fetch_array($result);
 
@@ -23,11 +23,12 @@
 		</div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'">List</button>
-	<button id="sidebar_button" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'">Add</button>
+	<button id="sidebar_button" onclick="window.location.href='../user/profile.php'">My Profile</button>
+	<button id="sidebar_button" onclick="window.location.href='../user/user.php'">User List</button>
+	<button id="sidebar_button" onclick="window.location.href='../user/user.php'">Add User</button>
 	<button id="sidebar_button" type="button" data-toggle="popover" title="User Management" data-content="Here you will create, update, delete and view user profiles." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username=<?php echo $row1['username'];?>'"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
 	</div>
 </div>
 		<div class="main">
@@ -81,7 +82,7 @@
 					<div class="text-left mt-3">
 						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 						<button type="submit" name="update" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../user/user.php?username=<?php echo $row1['username'];?>'" >Cancel</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../user/user.php'" >Cancel</button>
 					<?php } ?>
 					</div>
 				</form>

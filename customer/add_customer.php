@@ -1,4 +1,7 @@
-<?php include('../customer/add.php');?>
+<?php 
+	include('../customer/add.php');
+	include '../set.php';
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +50,7 @@
 					</table>
 					<div class="text-left mt-4">
 						<button type="submit" name="add_customer" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../customer/customer.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../customer/customer.php'" >Cancel</button>
 					</div>
 				</form>
 			</div>

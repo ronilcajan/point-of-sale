@@ -9,31 +9,23 @@
 	  	$lastname   = mysqli_real_escape_string($db, $_POST['lastname']);
 	  	$number   	= mysqli_real_escape_string($db, $_POST['number']);
 	  	$address  	= mysqli_real_escape_string($db, $_POST['address']);
+	  	$user 		= $_SESSION['username'];
 
-	  	$query  = "SELECT username FROM users WHERE position = 'admin'";
-	  	$result = mysqli_query($db, $query);
-	  	if (mysqli_num_rows($result)>0){
-			while ($row = mysqli_fetch_assoc($result)){
-				$user = $row['username'];
-		  			if (!empty($image)){
-		  				$sql  = "UPDATE supplier SET company_name='$company',firstname='$firstname',lastname='$lastname',address='$address',contact_number='$number',image='$image' WHERE supplier_id = '$id'";
-		  				mysqli_query($db, $sql);
-		  				if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
-		  					$msg = "Image successfully uploaded!";
-		  					$logs 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Supplier $company updated',CURRENT_TIMESTAMP)";
- 							mysqli_query($db,$logs);
- 							header('location: ../supplier/supplier.php?username='.$user.'&updated');
-		  				}
-					}else{
-		  				$sql  = "UPDATE supplier SET company_name='$company',firstname='$firstname',lastname='$lastname',address='$address',contact_number='$number' WHERE supplier_id = '$id'";
-		  				mysqli_query($db, $sql);
-		  				$logs 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Supplier $company updated',CURRENT_TIMESTAMP)";
- 						mysqli_query($db,$logs);
- 						header('location: ../supplier/supplier.php?username='.$user.'&updated');
-					}
-			}
+		if (!empty($image)){
+		  	$sql  = "UPDATE supplier SET company_name='$company',firstname='$firstname',lastname='$lastname',address='$address',contact_number='$number',image='$image' WHERE supplier_id = '$id'";
+		  	mysqli_query($db, $sql);
+		  	if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+		  		$msg = "Image successfully uploaded!";
+		  		$logs 	= "INSERT INTO logs (username,purpose) VALUES('$user','Supplier $company updated')";
+ 				mysqli_query($db,$logs);
+ 				header('location: ../supplier/supplier.php?updated');
+		  	}
 		}else{
-		  		$msg = "There was a problem uploading the image!";
+		  	$sql  = "UPDATE supplier SET company_name='$company',firstname='$firstname',lastname='$lastname',address='$address',contact_number='$number' WHERE supplier_id = '$id'";
+		  	mysqli_query($db, $sql);
+		  	$logs 	= "INSERT INTO logs (username,purpose) VALUES('$user','Supplier $company updated')";
+ 			mysqli_query($db,$logs);
+ 			header('location: ../supplier/supplier.php?updated');
 		}
 	}
 	  		

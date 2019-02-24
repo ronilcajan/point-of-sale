@@ -1,8 +1,7 @@
 <?php include('../server/connection.php');
 	$msg 	= '';
 	$error  = array();
-	if(isset($_POST['add'],$_GET['username'])){
-		$user 		= $_GET['username'];
+	if(isset($_POST['add'])){
 		$company 	= mysqli_real_escape_string($db, $_POST['com_name']);
 		$firstname 	= mysqli_real_escape_string($db, $_POST['firstname']);
 		$lastname 	= mysqli_real_escape_string($db, $_POST['lastname']);
@@ -15,9 +14,9 @@
 	  	$result = mysqli_query($db, $sql);
 	  	if(move_uploaded_file($_FILES['image']['tmp_name'], $target) && $result == true){
 			$msg = "Image successfully uploaded!";
-			$query 	= "INSERT INTO logs (username,purpose,logs_time) VALUES('$user','Supplier $company added',CURRENT_TIMESTAMP)";
+			$query 	= "INSERT INTO logs (username,purpose) VALUES('$user','Supplier $company added')";
  			$insert = mysqli_query($db,$query);
-			header('location: ../supplier/supplier.php?username='.$user.'&added');
+			header('location: ../supplier/supplier.php?added');
 	  	}else{
 			$msg = "There was a problem uploading the image!";
 		}

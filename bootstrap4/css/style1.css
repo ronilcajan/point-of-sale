@@ -23,7 +23,7 @@ html,body{
 	grid-area: sidebar;
 	background-color: #5D718F;
 	display: grid;
-	grid-template-rows: 10% 10% 10% 10% auto;
+	grid-template-rows: 10% 10% 10% 10% 10% auto;
 }
 .main{
 	grid-area: main;

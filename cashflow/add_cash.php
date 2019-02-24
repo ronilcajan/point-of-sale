@@ -1,4 +1,7 @@
-<?php include('../cashflow/add.php');?>
+<?php 
+	include('../cashflow/add.php');
+	include '../set.php';
+	?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,10 +1,13 @@
 <?php 
 	include("../server/connection.php");
+	include '../set.php';
+	
 	$sql = "SELECT * FROM supplier ORDER BY supplier_id ASC ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
+	$undelete = isset($_GET['undelete']);
 ?>
 <!DOCTYPE html>
 <html>

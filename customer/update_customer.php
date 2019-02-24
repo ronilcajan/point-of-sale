@@ -1,9 +1,7 @@
 <?php include("../server/connection.php");
 	  include('../customer/update.php');
+	  include '../set.php';
 
-	$query  = "SELECT username FROM users WHERE position = 'admin'";
-	$res 	= mysqli_query($db, $query);
-	$row1 	= mysqli_fetch_array($res);
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
 		$sql  =   "SELECT * FROM customer WHERE customer_id = '$id'";
@@ -23,11 +21,11 @@
 </div>
 <div class="sidebar">
 	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../customer/customer.php?username=<?php echo $row1['username'];?>'">List</button>
-	<button id="sidebar_button" onclick="window.location.href='../customer/add_customer.php?username=<?php echo $row1['username'];?>'">Add</button>
+	<button id="sidebar_button" onclick="window.location.href='../customer/customer.php'">Customer List</button>
+	<button id="sidebar_button" onclick="window.location.href='../customer/add_customer.php'">Add Customer</button>
 	<button id="sidebar_button" type="button" data-toggle="popover" title="Customer Management" data-content="Here you will create, update, delete and customer profiles." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php?username=<?php echo $row1['username'];?>'"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
 	</div>
 </div>
 		<div class="main">
@@ -72,7 +70,7 @@
 					<div class="text-left mt-2">
 						<input type="hidden" name="id" value="<?php echo $row['customer_id'];?>">
 						<button type="submit" name="update_customer" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../customer/customer.php?username=<?php echo $row1['username'];?>'" >Cancel</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../customer/customer.php'" >Cancel</button>
 					<?php } ?>
 					</div>
 				</form>

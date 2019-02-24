@@ -6,3 +6,8 @@
 <link rel="stylesheet" type="text/css" href="../bootstrap4/css/style1.css" />
 <link rel="stylesheet" type="text/css" href="../bootstrap4/css/dataTables.bootstrap4.min.css"/>
 <script src="../bootstrap4/jquery/sweetalert.min.js"></script>
+	<style type="text/css">
+		input[name="image"]{
+			width: 250px;
+		}
+	</style>

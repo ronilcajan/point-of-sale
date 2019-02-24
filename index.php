@@ -17,7 +17,7 @@
 				<button type="button" id="admin" class="btn-lg btn-secondary" data-toggle="modal" data-target=".bd-example-modal-sm">Administrator</button>
 			</div>
 			<div class="d-inline">
-				<button type="button" id="user" class="btn-lg btn-secondary" data-toggle="modal" data-target="#modal-user">Log In</button>
+				<button type="button" id="user" class="btn-lg btn-secondary" data-toggle="modal" data-target="#modal-user">User</button>
 			</div>
 		</div>
 	</div>

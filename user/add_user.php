@@ -1,4 +1,7 @@
-<?php include('../user/add.php');?>
+<?php 
+	include('../user/add.php');
+	include '../set.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +41,7 @@
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact number:</td>
-								<td class="pl-5 pb-2"><input type="number" name="number" required></td>
+								<td class="pl-5 pb-2"><input type="text" name="number" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Password:</td>
@@ -61,7 +64,7 @@
 					</table>
 					<div class="text-left mt-4">
 						<button type="submit" name="add" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../user/user.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../user/user.php'" >Cancel</button>
 					</div>
 				</form>
 			</div>

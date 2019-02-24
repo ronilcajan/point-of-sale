@@ -1,6 +1,7 @@
 <?php 
 	include("../server/connection.php");
 	$sql = "SELECT * FROM logs";
+	include '../set.php';
 	$result	= mysqli_query($db, $sql);
 	?>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 	<div class="contain h-100">
 		<?php include('../logs/base.php');?>
 		<div>
-			<h1 class="ml-4 pt-2">Logs Management</h1>
+			<h1 class="ml-4 pt-2">Recorded Logs</h1>
 			<hr class="mt-0 mb-0">
 			<div class="table-responsive mt-4 pl-5 pr-5">
 				<table class="table table-striped border" id="logs_table" style="margin-top: -22px;">
@@ -21,6 +22,7 @@
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Activity</th>
 						<th scope="col" class="column-text">Date</th>
+						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
 					<?php 
@@ -30,6 +32,9 @@
 						<td><?php echo $row['username'];?></td>
 						<td><?php echo $row['purpose'];?></td>
 						<td><?php echo $row['logs_time'];?></td>
+						<td>
+							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data">
+						</td>
 					</tr>
 					<?php } ?>
 			</table>
@@ -61,3 +66,22 @@
 	   </div>  
 	</div>  
 </div>
+<script>
+	$(document).ready(function(){
+	/* function for activating modal to show data when click using ajax */
+	$(document).on('click', '.view_data', function(){  
+		var id = $(this).attr("id");  
+		if(id != ''){  
+			$.ajax({  
+				url:"view_logs.php",  
+				method:"POST",  
+				data:{id:id},  
+				success:function(data){  
+					$('#Contact_Details').html(data);  
+					$('#dataModal').modal('show');  
+				}  
+			});  
+		}            
+	});   
+ }); 
+</script>

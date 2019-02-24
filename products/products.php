@@ -1,10 +1,12 @@
 <?php 
 	include("../server/connection.php");
+	include '../set.php';
 	$sql = "SELECT * FROM products,supplier WHERE products.supplier_id = supplier.supplier_id ORDER BY id ASC ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
+	$undelete = isset($_GET['undelete']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +24,8 @@
 			<table class="table table-striped" id="product_table" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
+						<th scope="col" class="column-text">Barcode</th>
 						<th scope="col" class="column-text">Supplier</th>
-						<th scope="col" class="column-text">Product ID</th>
 						<th scope="col" class="column-text">Product Name</th>
 						<th scope="col" class="column-text">Price</th>
 						<th scope="col" class="column-text">Stocks</th>
@@ -36,10 +38,10 @@
 						while($row = mysqli_fetch_assoc($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['company_name'];?></td>
 						<td><?php echo $row['id'];?></td>
+						<td><?php echo $row['company_name'];?></td>
 						<td><?php echo $row['product_name'];?></td>
-						<td><?php echo $row['sell_price'];?></td>
+						<td align="right">₱&nbsp<?php echo $row['sell_price'];?></td>
 						<td><?php echo $row['quantity'];?></td>
 						<td><?php echo $row['unit'];?></td>
 						<td><?php echo $row['min_stocks'];?></td>

@@ -157,7 +157,7 @@ $(document).on('click','.cancel',function(e){
     return 0;
   }else{
     swal({
-      title: "Cancel the order?",
+      title: "Cancel orders?",
       text: "By doing this,orders will remove!",
       icon: "warning",
       buttons: ["No","Yes"],
@@ -171,8 +171,9 @@ $(document).on('click','.cancel',function(e){
   }
 });
 
-$(document).on('click','.logout', function(e){
-    swal({
+function out(){
+  var lag = "logout";
+  swal({
       title: "Logout?",
       icon: "warning",
       buttons: ["Cancel","Yes"],
@@ -180,7 +181,18 @@ $(document).on('click','.logout', function(e){
     })
     .then((value) => {
       if(value){
-        window.location.href="index.php";
+        if(lag){
+            $.ajax({
+              type: 'post',
+              data: {
+                logout:lag
+              },
+              url: 'server/connection.php',
+              success: function (data){
+                window.location.href='index.php';
+              }
+            });
+        }
       }
-  });
-});
+    })
+};

@@ -1,11 +1,16 @@
-<?php include('server/connection.php');
+<?php 
+	include('server/connection.php');
+	if(!isset($_SESSION['username'])){
+		header('location: index.php');
+	}
 	$added = isset($_GET['added']);
+	$undelete = isset($_GET['undelete']);
 	$updated = '';
 	$deleted = '';
 	$query 	= "SELECT * FROM `customer`";
 	$show	= mysqli_query($db,$query);
-	if(isset($_GET['username'])){
-		$user = $_GET['username'];
+	if(isset($_SESSION['username'])){
+		$user = $_SESSION['username'];
 		$sql = "SELECT position FROM users WHERE username='$user'";
 		$result	= mysqli_query($db, $sql);
 		if (mysqli_num_rows($result) > 0){
@@ -38,6 +43,7 @@
 							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
 							<td valign="baseline"><small><p class="p-0 ml-5">
 								<select id='custom_id' style='cursor:pointer'>
+									<option value="0">Customer</option>
 								<?php 
 									if (mysqli_num_rows($show)>0){
 										while ($row = mysqli_fetch_array($show)) {	?>
@@ -105,19 +111,19 @@
 				</table>
 			</div>
 			<div class="w-100 mt-2" id="enter_area">
-				<button id="buttons" type="button" class="cancel btn btn-secondary border">Cancel Sale</button>
+				<button id="buttons" type="button" class="cancel btn btn-secondary border">Cancel</button>
 			</div>
 		</div>
 		<div id="footer" class="w-100">
-			<button id="buttons" onclick="window.location.href='user/user.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2 ml-2">User</button>
-			<button id="buttons" onclick="window.location.href='products/products.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Product</button>
-			<button id="buttons" onclick="window.location.href='supplier/supplier.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Supplier</button>
-			<button id="buttons" onclick="window.location.href='customer/customer.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Customer</button>
-			<button id="buttons" onclick="window.location.href='logs/logs.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Logs</button>
-			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Cash-Flow</button>
-			<button id="buttons" onclick="window.location.href='sales/sales.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Sales</button>
-			<button id="buttons" onclick="window.location.href='delivery/delivery.php?username=<?php echo $_GET['username'];?>'" class="btn btn-secondary border mr-2">Deliveries</button>
-			<button id="buttons" class="logout btn btn-danger border mr-2">Logout</button> 
+			<button id="buttons" onclick="window.location.href='user/user.php'" class="btn btn-secondary border mr-2 ml-2">User</button>
+			<button id="buttons" onclick="window.location.href='products/products.php'" class="btn btn-secondary border mr-2">Product</button>
+			<button id="buttons" onclick="window.location.href='supplier/supplier.php'" class="btn btn-secondary border mr-2">Supplier</button>
+			<button id="buttons" onclick="window.location.href='customer/customer.php'" class="btn btn-secondary border mr-2">Customer</button>
+			<button id="buttons" onclick="window.location.href='logs/logs.php'" class="btn btn-secondary border mr-2">Logs</button>
+			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php'" class="btn btn-secondary border mr-2">Cash-Flow</button>
+			<button id="buttons" onclick="window.location.href='sales/sales.php'" class="btn btn-secondary border mr-2">Sales</button>
+			<button id="buttons" onclick="window.location.href='delivery/delivery.php'" class="btn btn-secondary border mr-2">Deliveries</button>
+			<input id="buttons" name="logout" type="button" value="Logout" onclick="out();" class="logout btn btn-danger border mr-2"/> 
 		</div>
 	</div>
 	<?php include('add.php');?>
