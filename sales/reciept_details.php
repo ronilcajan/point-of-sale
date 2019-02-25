@@ -25,8 +25,7 @@
 			<table class="table table-striped" id="sales_table" style="margin-top: -22px;">
 				<thead class="bg-info">
 					<tr>
-						<td colspan="3"><h2>Reciept No.&nbsp<?php echo $row['reciept_no'];?> </h2></td>
-						<td colspan="2"><h2>Total:</h2></td>
+						<td colspan="5"><h2>Reciept No.&nbsp<?php echo $row['reciept_no'];?> </h2></td>
 					</tr>
 					<tr>
 						<th scope="col" class="column-text">Barcode</th>

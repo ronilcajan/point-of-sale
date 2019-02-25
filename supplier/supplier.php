@@ -2,7 +2,7 @@
 	include("../server/connection.php");
 	include '../set.php';
 	
-	$sql = "SELECT * FROM supplier ORDER BY supplier_id ASC ";
+	$sql = "SELECT * FROM supplier WHERE supplier_id > 0 ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
@@ -38,7 +38,7 @@
 				  	?>
 					<tr class="table-active">
 						<td><?php echo $row['supplier_id'];?></td>
-						<td><?php echo $row['company_name'];?></td>
+						<td><a href="supplier_details.php?id=<?php echo $row['supplier_id'];?>"><?php echo $row['company_name'];?></a></td>
 						<td><?php echo $row['firstname'].'&nbsp'.$row['lastname'];?></td>
 						<td><?php echo $row['address'];?></td>
 						<td><?php echo $row['contact_number'];?></td>

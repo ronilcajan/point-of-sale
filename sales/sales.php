@@ -1,22 +1,30 @@
 <?php
 	include("../server/connection.php");
 	include '../set.php';
-	$sql = "SELECT * FROM sales,sales_product,customer WHERE sales.reciept_no = sales_product.reciept_no AND sales.customer_id=customer.customer_id	";
-	$result = mysqli_query($db,$sql);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php include('../templates/head1.php');?>
+
 </head>
 <body>
 	<div class="contain h-100">
 		<?php 
 			include('../sales/base.php');
 		?>
-		<div>
+		<div class="pr-1">
 			<div>
 				<h1 class="ml-4 pt-2" align="left">Sales Records</h1>
+			</div>
+			<div class="input_daterange form-group row pl-5">
+				<div class="col-md-4">
+					<input type="text" name="start_date" id="start_date" class="form-control-sm pr-5" />
+				</div>
+				<div class="col-md-4 pr-5">
+					<input type="text" name="end_date" id="end_date" class="form-control-sm" />
+				</div>
+				<input class="btn btn-info" type="button" name="search" value="Filter"/>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
 			<table class="table table-striped" id="sales_table" style="margin-top: -22px;">
@@ -25,42 +33,51 @@
 						<th scope="col" class="column-text">Receipt No.</th>
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Customer Name</th>
-						<th scope="col" class="column-text">Total</th>
+						<th scope="col" class="column-text">Quantity</th>
+						<th scope="col" class="column-text">Value</th>
 						<th scope="col" class="column-text">Date</th>
-						<th scope="col" class="column-text">Action</th>
+
 					</tr>
 				</thead>
-					<?php 
-						while($row = mysqli_fetch_array($result)){
-				  	?>
-					<tr class="table-active">
-						<td><?php echo $row['reciept_no'];?></td>
-						<td><?php echo $row['username'];?></td>
-						<td><?php echo $row['firstname'].'&nbsp'.$row['lastname'];?></td>
-						<td>₱<?php echo $row['price'];?></td>
-						<td><?php echo $row['date'];?></td>
-						<td>
-							<a name="Details" title="Details" style='font-size:10px; border-radius:5px;padding:4px;' href="reciept_details.php?id=<?php echo $row['reciept_no'];?>" class="btn btn-info btn-xs">Details</a>
-						</td>
-					</tr>
-					<?php } ?>
 				</table>
 			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="../bootstrap4/jquery/datepicker.js"></script>
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#sales_table').dataTable();
-			
-		});
-	</script>
+	
 </body>
 </html>
 <script>
+	$(document).ready(function(){
+
+			 $('.input-daterange').datepicker({
+  				todayBtn:'linked',
+  				format: "yyyy-mm-dd",
+  				autoclose: true
+ 			});
+			 fetch_data('no');
+
+ 			function fetch_data(is_date_search, start_date='', end_date=''){
+  				var dataTable = $('#sales_table').DataTable({
+   					"processing" : true,
+   					"serverSide" : true,
+   					"order" : [],
+   					"ajax" : {
+   						url:"fetch_all_data.php",
+    					type:"POST",
+    					data:{
+     						is_date_search:is_date_search, start_date:start_date, end_date:end_date
+    					}
+   					}
+  				});
+ 			}
+		});
+
+
 	$(function () {
   		$('[data-toggle="popover"]').popover()
 	});

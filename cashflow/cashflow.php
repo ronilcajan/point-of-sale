@@ -36,7 +36,7 @@
 						<td><?php echo $row['username'];?></td>
 						<td><?php echo $row['description'];?></td>
 						<td>₱&nbsp<?php echo number_format($row['amount']);?></td>
-						<td><?php echo $row['transaction_date'];?></td>
+						<td><?php echo date('d M Y, g:i A', strtotime($row['transaction_date']));?></td>
 						<td>
 							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-success btn-xs view_data">
 						</td>
