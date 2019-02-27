@@ -43,7 +43,7 @@
 							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
 							<td valign="baseline"><small><p class="p-0 ml-5">
 								<select id='custom_id' style='cursor:pointer'>
-									<option value="0">Customer</option>
+
 								<?php 
 									if (mysqli_num_rows($show)>0){
 										while ($row = mysqli_fetch_array($show)) {	?>

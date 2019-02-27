@@ -20,7 +20,7 @@
 			<hr>
 			<div class="table-responsive mt-4 pl-5 pr-5">
 			<table class="table table-striped" id="cashflow_table" style="margin-top: -22px;">
-				<thead class="bg-info">
+				<thead>
 					<tr>
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Purpose</th>

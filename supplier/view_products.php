@@ -20,7 +20,7 @@
 				</tr>
 				<tr>  
 					 <td width="50%"><label>Price :</label></td>  
-					 <td width="50%"><strong>'.$row["sell_price"].'</strong></td>  
+					 <td width="50%">₱&nbsp<strong>'.$row["sell_price"].'</strong></td>  
 				</tr>
 				<tr>
 					<td width="50%"><label>Stocks :</label></td>  

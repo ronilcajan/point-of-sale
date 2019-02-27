@@ -21,8 +21,8 @@
 			<hr>
 			<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">
-			<table class="table table-striped" id="product_table" style="margin-top: -22px;">
-				<thead class="bg-info">
+			<table class="table table-striped table-bordered" id="product_table" style="margin-top: -22px;">
+				<thead>
 					<tr>
 						<th scope="col" class="column-text">Barcode</th>
 						<th scope="col" class="column-text">Supplier</th>
@@ -34,6 +34,7 @@
 						<th scope="col" class="column-text">Actions</th>
 					</tr>
 				</thead>
+				<tbody class="table-hover">
 					<?php 
 						while($row = mysqli_fetch_assoc($result)){
 				  	?>
@@ -52,6 +53,7 @@
 						</td>
 					</tr>
 					<?php } ?>
+				</tbody>
 			</table>
 
 			</div>

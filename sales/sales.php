@@ -17,18 +17,18 @@
 			<div>
 				<h1 class="ml-4 pt-2" align="left">Sales Records</h1>
 			</div>
-			<div class="input_daterange form-group row pl-5">
+			<div class="form-group row pl-5" id="input-daterange">
 				<div class="col-md-4">
-					<input type="text" name="start_date" id="start_date" class="form-control-sm pr-5" />
+					<input type="text" name="start_date" id="start_date" class="form-control pr-5" />
 				</div>
 				<div class="col-md-4 pr-5">
-					<input type="text" name="end_date" id="end_date" class="form-control-sm" />
+					<input type="text" name="end_date" id="end_date" class="form-control" />
 				</div>
-				<input class="btn btn-info" type="button" name="search" value="Filter"/>
+				<input class="btn btn-info" type="button" id="filter" value="Filter"/>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
-			<table class="table table-striped" id="sales_table" style="margin-top: -22px;">
-				<thead class="bg-info">
+			<table class="table table-bordered table-striped" id="sales_table" style="margin-top: -22px;">
+				<thead>
 					<tr>
 						<th scope="col" class="column-text">Receipt No.</th>
 						<th scope="col" class="column-text">Username</th>
@@ -39,7 +39,10 @@
 
 					</tr>
 				</thead>
-				</table>
+				<tbody>
+					
+				</tbody>				
+			</table>
 			</div>
 		</div>
 	</div>
@@ -54,12 +57,13 @@
 <script>
 	$(document).ready(function(){
 
-			 $('.input-daterange').datepicker({
+			$('#start_date, #end_date').datepicker({
   				todayBtn:'linked',
   				format: "yyyy-mm-dd",
   				autoclose: true
  			});
-			 fetch_data('no');
+
+			fetch_data('no');
 
  			function fetch_data(is_date_search, start_date='', end_date=''){
   				var dataTable = $('#sales_table').DataTable({
@@ -75,6 +79,18 @@
    					}
   				});
  			}
+
+ 			$('#filter').click(function(){
+ 				var start_date = $('#start_date').val();
+ 				var end_date = $('#end_date').val();
+ 				if(start_date != '' && end_date != ''){
+ 					$('#sales_table').DataTable().destroy();
+ 					fetch_data('yes', start_date, end_date);
+
+ 				}else{
+ 					swal("Warning","Both Date is Required!","warning");
+ 				}
+ 			})
 		});
 
 

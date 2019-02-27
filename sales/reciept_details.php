@@ -1,7 +1,7 @@
 <?php
 	include("../server/connection.php");
 	include '../set.php';
-	$id = $_GET['id'];
+	$id = $_GET['reciept_id'];
 	$sql = "SELECT * FROM sales_product,products WHERE reciept_no = '$id' AND sales_product.product_id = products.id";
 	$result = mysqli_query($db,$sql);
 	$row = mysqli_fetch_array($result);
@@ -19,13 +19,13 @@
 		?>
 		<div>
 			<div>
-				<h1 class="ml-4 pt-2" align="left">Sales Records</h1>
+				<h1 class="ml-4 pt-2 pb-4" align="left">Sales Records</h1>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
-			<table class="table table-striped" id="sales_table" style="margin-top: -22px;">
-				<thead class="bg-info">
+			<table class="table table-striped table-bordered" id="sales_table" style="margin-top: -22px;">
+				<thead>
 					<tr>
-						<td colspan="5"><h2>Reciept No.&nbsp<?php echo $row['reciept_no'];?> </h2></td>
+						<td colspan="5"><h2>Reciept No.&nbsp<?php echo $row['reciept_no'];?></h2></td>
 					</tr>
 					<tr>
 						<th scope="col" class="column-text">Barcode</th>
@@ -35,6 +35,7 @@
 						<th scope="col" class="column-text">Unit</th>
 					</tr>
 				</thead>
+				<tbody class="table-hover">
 					<?php 
 						while($row1 = mysqli_fetch_array($result1)){
 				  	?>
@@ -46,6 +47,7 @@
 						<td><?php echo $row1['unit'];?></td>
 					</tr>
 					<?php } ?>
+					</tbody>
 				</table>
 			</div>
 		</div>

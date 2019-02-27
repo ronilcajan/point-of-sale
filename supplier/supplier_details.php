@@ -25,33 +25,35 @@
 			<hr>
 			<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">
-			<table class="table table-striped w-100 border" id="supplier_table">
-				<thead class="bg-info">
+			<table class="table table-striped table-bordered" id="supplier_table">
+				<thead>
 					<tr>
 						<th scope="col" class="column-text">Product Barcode</th>
 						<th scope="col" class="column-text">Product Name</th>
 						<th scope="col" class="column-text">Price</th>
 						<th scope="col" class="column-text">Stocks</th>
-						<th scope="col" class="column-text">Quantity</th>
 						<th scope="col" class="column-text">Unit</th>
 						<th scope="col" class="column-text">Minimum Stocks</th>
+						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
+				<tbody class="table-hover">
 					<?php 
 						while($row = mysqli_fetch_array($result)){
 				  	?>
 					<tr class="table-active">
 						<td><?php echo $row['id'];?></td>
 						<td><?php echo $row['product_name'];?></td>
-						<td><?php echo $row['sell_price'];?></td>
+						<td>₱&nbsp<?php echo $row['sell_price'];?></td>
 						<td><?php echo $row['quantity'];?></td>
 						<td><?php echo $row['unit'];?></td>
 						<td><?php echo $row['min_stocks'];?></td>
 						<td>
-							<input type="button" name="view" value="Details" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_product">
+							<input type="button" name="view" value="Details" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-info btn-xs view_product">
 						</td>
 					</tr>
 					<?php } ?>
+				</tbody>
 			</table>
 
 			</div>

@@ -23,16 +23,16 @@
 				<h1 class="ml-4">Product Management</h1>
 				<hr>
 			</div>
-			<div class="first_side ml-5 mt-5 mr-3">
-				<div class="mb-4" style="width: 260px;padding-right:20px;height: 250px; border-right: 1px solid black;">
+			<div class="first_side ml-5 mt-4 mr-3">
+				<div class="shadow-lg p-3 mb-5 bg-white rounded" style="width: 260px;padding-right:20px;height: 250px;">
 					<h3>Need to know!</h3>
 					<p>
 						In importing CSV file, please make sure the required(<span class="text-danger">*</span>) is filled up in your file in order. Images and Supplier is not required so you can edit the products anytime.
 					</p>
 				</div>
-			<form method="post" enctype="multipart/form-data" action="">
+			<form method="post" enctype="multipart/form-data">
 				<label>Upload CSV:</label>
-				<input class="form-control-sm" type="file" name="file" required>
+				<input class="form-control-sm" type="file" name="file">
 				<p class="bg-danger mt-3"><?php echo $msg;?></p>
 			</div>
 			<div class="second_side">
@@ -68,9 +68,9 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="text-left mt-4">
+					<div class="text-left mt-4 pt-2">
 						<button type="submit" name="upload" class="btn btn-secondary">Import CSV</button>
-						<button class="btn btn-danger" onclick="window.location.href='../products/products.php" >Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../products/products.php">Cancel</button>
 					</div>
 				</form>
 			</div>

@@ -23,8 +23,8 @@
 			<hr>
 				<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">
-			<table class="table table-striped" id="user_table" style="margin-top: -22px;">
-				<thead class="bg-info">
+			<table class="table table-striped table-bordered" id="user_table" style="margin-top: -22px;">
+				<thead>
 					<tr>
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Name</th>
@@ -33,6 +33,7 @@
 						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
+				<tbody class="table-hover">
 					<?php 
 						while($row = mysqli_fetch_array($result)){
 				  	?>
@@ -48,6 +49,7 @@
 						</td>
 					</tr>
 					<?php } ?>
+				</tbody>
 			</table>
 
 			</div>

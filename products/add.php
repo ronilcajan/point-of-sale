@@ -13,13 +13,17 @@
 		$username		= $_SESSION['username'];
 		
 		$sql  = "INSERT INTO products (supplier_id,product_name,sell_price,quantity,unit,min_stocks,images) VALUES ($supplier,'$product_name','$price',$qty,'$unit',$min_stocks,'$image')";
+
 	  	$result = mysqli_query($db, $sql);
+
  		if(move_uploaded_file($_FILES['image']['tmp_name'], $target) && $result == true){
+
  			$query 	= "INSERT INTO logs (username,purpose) VALUES('$username','Product $product_name Added')";
  			$insert 	= mysqli_query($db,$query);
 			$msg = "Image successfully uploaded!";
 			header('location: ../products/products.php?added');
+
 	  	}else{
-			$msg = "There was a problem uploading the image!";
+			$msg = $supplier.''.$product_name.''.$price.''.$qty.''.$unit.''.$min_stocks.''.$username;
 	  	}
 	}

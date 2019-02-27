@@ -16,8 +16,8 @@
 			<h1 class="ml-4 pt-2">Recorded Logs</h1>
 			<hr class="mt-0 mb-0">
 			<div class="table-responsive mt-4 pl-5 pr-5">
-				<table class="table table-striped border" id="logs_table" style="margin-top: -22px;">
-				<thead class="bg-info"> 
+				<table class="table table-striped table-bordered" id="logs_table" style="margin-top: -22px;">
+				<thead> 
 					<tr>
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Activity</th>
@@ -25,6 +25,7 @@
 						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
+				<tbody class="table-hover">
 					<?php 
 						while($row = mysqli_fetch_assoc($result)){
 				  	?>
@@ -37,6 +38,7 @@
 						</td>
 					</tr>
 					<?php } ?>
+				</tbody>
 			</table>
 			</div>
 		</div>

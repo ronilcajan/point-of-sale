@@ -66,7 +66,7 @@
 					</table>
 					<div class="text-left mt-4">
 						<button type="submit" name="addproducts" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../products/products.php" >Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../products/products.php'" >Cancel</button>
 					</div>
 				</form>
 			</div>

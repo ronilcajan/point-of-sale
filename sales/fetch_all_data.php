@@ -48,12 +48,12 @@
 
 	while($row = mysqli_fetch_array($result)){
 			$sub_array = array();
-			$sub_array[] = $row["reciept_no"];
+			$sub_array[] = '<a href="../sales/reciept_details.php?reciept_id='.$row["reciept_no"].'">'.$row["reciept_no"].'</a>';
 			$sub_array[] = $row["username"];
 			$sub_array[] = $row["firstname"].'&nbsp'.$row['lastname'];
 			$sub_array[] = $row["TotalQuantity"];
 			$sub_array[] = $row["TotalPrice"];
-			$sub_array[] = $row["date"];	
+			$sub_array[] = date('d M Y, g:i A', strtotime($row["date"]));	
 			$data[] = $sub_array; 
 		}
 
