@@ -61,11 +61,7 @@
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<?php include('../customer/delete_customer.php');?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#customer_table').dataTable();
-		})
-	</script>
+	<script src="../customer/javascript.js"></script>	
 </body>
 </html>
 <div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  
@@ -78,4 +74,3 @@
 	   </div>  
 	</div>  
 </div>
-<script src="../customer/javascript.js"></script>

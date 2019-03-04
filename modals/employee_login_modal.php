@@ -7,11 +7,13 @@
 			<form method="post" action="">
 			<div class="modal-body">
 				<div>
-					<input type="hidden" name="position"/>
+					
 					<input class="form-control-sm mb-2" type="text" name="username" placeholder="Enter Username" required/><br>
 					<input class="form-control-sm mb-2" type="password" name="password" placeholder="Enter Password" required/>
+					<input type="hidden" name="position" value="Employee"/>
 				</div>
 				<div class="modal-footer">
+
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="submit" name='login' class="btn btn-success">login</button>					
 				</div>

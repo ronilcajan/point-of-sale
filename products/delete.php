@@ -4,7 +4,7 @@
         $user = $_SESSION['username'];
 		$query = "DELETE FROM products WHERE id = '$id'"; 
     	$result = mysqli_query($db, $query);
-    	if($result1==true){
+    	if($result==true){
     		$logs	= "INSERT INTO logs (username,purpose) VALUES('$user','Product deleted')";
     		$insert = mysqli_query($db,$logs);
     		header("location: products.php?deleted");

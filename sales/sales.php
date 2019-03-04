@@ -19,10 +19,10 @@
 			</div>
 			<div class="form-group row pl-5" id="input-daterange">
 				<div class="col-md-4">
-					<input type="text" name="start_date" id="start_date" class="form-control pr-5" />
+					<input type="text" name="start_date" id="start_date" class="form-control pr-5" placeholder="From Date" />
 				</div>
 				<div class="col-md-4 pr-5">
-					<input type="text" name="end_date" id="end_date" class="form-control" />
+					<input type="text" name="end_date" id="end_date" class="form-control" placeholder="To Date" />
 				</div>
 				<input class="btn btn-info" type="button" id="filter" value="Filter"/>
 			</div>
@@ -51,68 +51,6 @@
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
-	
+	<script src="../sales/javascript.js"></script>
 </body>
 </html>
-<script>
-	$(document).ready(function(){
-
-			$('#start_date, #end_date').datepicker({
-  				todayBtn:'linked',
-  				format: "yyyy-mm-dd",
-  				autoclose: true
- 			});
-
-			fetch_data('no');
-
- 			function fetch_data(is_date_search, start_date='', end_date=''){
-  				var dataTable = $('#sales_table').DataTable({
-   					"processing" : true,
-   					"serverSide" : true,
-   					"order" : [],
-   					"ajax" : {
-   						url:"fetch_all_data.php",
-    					type:"POST",
-    					data:{
-     						is_date_search:is_date_search, start_date:start_date, end_date:end_date
-    					}
-   					}
-  				});
- 			}
-
- 			$('#filter').click(function(){
- 				var start_date = $('#start_date').val();
- 				var end_date = $('#end_date').val();
- 				if(start_date != '' && end_date != ''){
- 					$('#sales_table').DataTable().destroy();
- 					fetch_data('yes', start_date, end_date);
-
- 				}else{
- 					swal("Warning","Both Date is Required!","warning");
- 				}
- 			})
-		});
-
-
-	$(function () {
-  		$('[data-toggle="popover"]').popover()
-	});
-	$(document).ready(function(){
-	/* function for activating modal to show data when click using ajax */
-	$(document).on('click', '.view_data', function(){  
-		var id = $(this).attr("id");  
-		if(id != ''){  
-			$.ajax({  
-				url:"view_cashflow.php",  
-				method:"POST",  
-				data:{id:id},  
-				success:function(data){  
-					$('#Contact_Details').html(data);  
-					$('#dataModal').modal('show');  
-				}  
-			});  
-		}            
-	});   
- });  
-
-</script>

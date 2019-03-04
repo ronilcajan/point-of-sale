@@ -10,6 +10,7 @@ $(function () {
 			deleteModal.modal();
 		});
 	});
+
 	$(document).ready(function(){
 	/* function for activating modal to show data when click using ajax */
 	$(document).on('click', '.view_data', function(){  
@@ -27,3 +28,7 @@ $(function () {
 		}            
 	});   
  });  
+
+	$(document).ready(function(){
+		$('#customer_table').dataTable();
+	});
