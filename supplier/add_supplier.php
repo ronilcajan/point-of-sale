@@ -12,7 +12,7 @@
 		<?php include('../supplier/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">supplier Management</h1>
+				<h1 class="ml-4 mt-2">Supplier Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">

@@ -3,7 +3,7 @@
 	include '../set.php';
 	
 	$id = $_GET['id'];
-	$sql = "SELECT * FROM supplier,products WHERE supplier.supplier_id = '$id' AND products.supplier_id = '$id'";
+	$sql = "SELECT delivery.transaction_no,delivery.date,product_delivered.total_price,product_delivered.total_qty FROM supplier,delivery,product_delivered WHERE supplier.supplier_id = '$id' AND delivery.supplier_id = '$id' AND delivery.transaction_no = product_delivered.transaction_no";
 	$result	= mysqli_query($db, $sql);
 
 
@@ -28,12 +28,10 @@
 			<table class="table table-striped table-bordered" id="supplier_table">
 				<thead>
 					<tr>
-						<th scope="col" class="column-text">Product Barcode</th>
-						<th scope="col" class="column-text">Product Name</th>
-						<th scope="col" class="column-text">Price</th>
-						<th scope="col" class="column-text">Stocks</th>
-						<th scope="col" class="column-text">Unit</th>
-						<th scope="col" class="column-text">Minimum Stocks</th>
+						<th scope="col" class="column-text">Transaction No.</th>
+						<th scope="col" class="column-text">Total Value</th>
+						<th scope="col" class="column-text">Total Quantity</th>
+						<th scope="col" class="column-text">Date</th>
 						<th scope="col" class="column-text">Action</th>
 					</tr>
 				</thead>
@@ -42,12 +40,10 @@
 						while($row = mysqli_fetch_array($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['id'];?></td>
-						<td><?php echo $row['product_name'];?></td>
-						<td>₱&nbsp<?php echo $row['sell_price'];?></td>
-						<td><?php echo $row['quantity'];?></td>
-						<td><?php echo $row['unit'];?></td>
-						<td><?php echo $row['min_stocks'];?></td>
+						<td><?php echo $row['transaction_no'];?></td>
+						<td><?php echo $row['total_price'];?></td>
+						<td><?php echo $row['total_qty'];?></td>
+						<td><?php echo $row['date'];?></td>
 						<td>
 							<input type="button" name="view" value="Details" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-info btn-xs view_product">
 						</td>

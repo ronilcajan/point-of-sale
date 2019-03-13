@@ -2,7 +2,7 @@
 	include("../server/connection.php");
 	include '../set.php';
 	
-	$sql = "SELECT * FROM supplier WHERE supplier_id > 0 ";
+	$sql = "SELECT * FROM supplier ";
 	$result	= mysqli_query($db, $sql);
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);

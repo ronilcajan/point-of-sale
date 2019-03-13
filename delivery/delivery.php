@@ -15,17 +15,17 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../products/base.php');?>
+		<?php include('../delivery/base.php');?>
 		<div>
-			<h1 class="ml-4 pt-2">Product Management</h1>
+			<h1 class="ml-4 pt-2">Product Deliveries</h1>
 			<hr>
 			<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">
 			<table class="table table-striped table-bordered" id="product_table" style="margin-top: -22px;">
 				<thead>
 					<tr>
-						<th scope="col" class="column-text">Barcode</th>
-						<th scope="col" class="column-text">Product Name</th>
+						<th scope="col" class="column-text">Transaction No.</th>
+						<th scope="col" class="column-text"></th>
 						<th scope="col" class="column-text">Price</th>
 						<th scope="col" class="column-text">Stocks</th>
 						<th scope="col" class="column-text">Unit</th>

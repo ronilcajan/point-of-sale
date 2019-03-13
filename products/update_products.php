@@ -2,12 +2,9 @@
 	include("../server/connection.php");
 	include '../set.php';
 
-	$query = "SELECT * FROM supplier";
-	$result	= mysqli_query($db,$query);
-
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
-		$sql  =   "SELECT * FROM products,supplier WHERE id='$id'";
+		$sql  =   "SELECT * FROM products WHERE id='$id'";
 		$result1   = mysqli_query($db, $sql);
 		$row1  =   mysqli_fetch_array($result1);
 ?>
@@ -24,8 +21,7 @@
 	<div class="sidebar">
 	<button><h3>Dashboard</h3></button>
 	<button id="sidebar_button" onclick="window.location.href='../products/products.php'">Product List</button>
-	<button id="sidebar_button" onclick="window.location.href='../products/add_products.php'">Add Products</button>
-	<button id="sidebar_button" onclick="window.location.href='../products/import_csv.php'">Import CSV</button>
+	<button id="sidebar_button" onclick="window.location.href='../delivery/add_delivery.php'">Delivery</button>
 	<button id="sidebar_button" type="button" data-toggle="popover" title="Product Management" data-content="Here you will create, update, delete and view products." data-placement="bottom">Help?</button>
 	<div class="fixed-bottom">
 		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
@@ -67,21 +63,6 @@
 							<tr>
 								<td  valign="baseline">Minimum stocks:</td>
 								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" required></td>
-							</tr>
-							<tr>
-								<td  valign="baseline">Supplier:</td>
-								<td class="pl-5 pb-2"><select name='supplier' value="<?php echo $row1['company_name'];?>">
-									<?php 
-									if(mysqli_num_rows($result)){
-										while($row2=mysqli_fetch_array($result)){
-									?>
-									<option value="<?php echo $row2['supplier_id'];?>" selected><?php echo $row2['company_name'];?></option>
-									<?php 
-									} 
-								}
-							}
-							?>
-								</select></td>
 							</tr>
 							<tr>
 								<td>Change Photo:</td>

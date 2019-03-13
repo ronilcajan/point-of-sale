@@ -15,7 +15,7 @@
 		<?php include('../products/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">Product Management</h1>
+				<h1 class="ml-4">Product Deliveries</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -40,6 +40,10 @@
 								<td class="pl-5 pb-2"><input type="number" step="0.01" name="price" required></td>
 							</tr>
 							<tr>
+								<td  valign="baseline">Buy Price:</td>
+								<td class="pl-5 pb-2"><input type="number" step="0.01" name="price" required></td>
+							</tr>
+							<tr>
 								<td  valign="baseline">Quantity:</td>
 								<td class="pl-5 pb-2"><input type="number" name="qty" required></td>
 							</tr>
@@ -50,17 +54,6 @@
 							<tr>
 								<td  valign="baseline">Minimum stocks:</td>
 								<td class="pl-5 pb-2"><input type="number" name="min_stocks" required></td>
-							</tr>
-							<tr>
-								<td  valign="baseline">Supplier:</td>
-								<td class="pl-5 pb-2"><select name='supplier'>
-									<?php 
-										if(mysqli_num_rows($result)>0){
-											while($row = mysqli_fetch_array($result)){
-									?>
-									<option value="<?php echo $row['supplier_id'];?>"><?php echo $row['company_name'];?></option>
-								<?php }} ?>
-								</select></td>
 							</tr>
 						</tbody>
 					</table>

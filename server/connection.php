@@ -9,6 +9,7 @@ $db 	= mysqli_connect($host,$username,$password,$database);
 if($db == false){
 	die("Connection Failed: ".mysql_connect_error());
 }
+
 if(!isset($_SESSION)){
 	session_start();	
 }

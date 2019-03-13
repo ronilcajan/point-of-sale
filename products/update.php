@@ -11,11 +11,10 @@
 	  	$qty 		= mysqli_real_escape_string($db, $_POST['qty']);
 	  	$unit   	= mysqli_real_escape_string($db, $_POST['unit']);
 	  	$min_stocks = mysqli_real_escape_string($db, $_POST['min_stocks']);
-	  	$supplier 	= mysqli_real_escape_string($db, $_POST['supplier']);
 	  	$username	= $_SESSION['username'];
 
 		if (!empty($image)){
-		  	$sql  = "UPDATE products SET supplier_id=$supplier,product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks,images='$image' WHERE id = '$id'";
+		  	$sql  = "UPDATE products SET product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks,images='$image' WHERE id = '$id'";
 		  	mysqli_query($db, $sql);
 		  	if(move_uploaded_file($_FILES['images']['tmp_name'], $target)){
 		  		$sql 	= "INSERT INTO logs (username,purpose) VALUES('$username','Product $pro_name updated')";
@@ -23,7 +22,7 @@
  				header('location: ../products/products.php?updated');
  			}
 		}else{
-		  	$sql  = "UPDATE products SET supplier_id=$supplier,product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks WHERE id = '$id'";
+		  	$sql  = "UPDATE products SET product_name='$pro_name',sell_price=$price,quantity=$qty,unit='$unit',min_stocks=$min_stocks WHERE id = '$id'";
 		  	$result = mysqli_query($db, $sql);
  			if($result == true){
  				$query 	= "INSERT INTO logs (username,purpose) VALUES('$username','Product $pro_name updated')";
