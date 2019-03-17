@@ -2,7 +2,7 @@
 	include("../server/connection.php");
 	include '../set.php';
 	$id = $_GET['reciept_id'];
-	$sql = "SELECT * FROM sales_product,products WHERE reciept_no = '$id' AND sales_product.product_id = products.id";
+	$sql = "SELECT * FROM sales_product,products WHERE reciept_no = '$id' AND sales_product.product_id = products.product_no";
 	$result = mysqli_query($db,$sql);
 	$row = mysqli_fetch_array($result);
 	$result1 = mysqli_query($db,$sql); 

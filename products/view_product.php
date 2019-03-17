@@ -3,7 +3,7 @@
 	if(isset($_POST["id"])){  
 		$output = '';
 		$id = $_POST['id'];  
-	  	$query = "SELECT * FROM products WHERE id = '$id'";  
+	  	$query = "SELECT * FROM products WHERE product_no = '$id'";  
 	  	$result = mysqli_query($db, $query);  
 
 	  	while($row = mysqli_fetch_array($result)){

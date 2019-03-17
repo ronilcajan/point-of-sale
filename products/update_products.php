@@ -4,7 +4,7 @@
 
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
-		$sql  =   "SELECT * FROM products WHERE id='$id'";
+		$sql  =   "SELECT * FROM products WHERE product_no='$id'";
 		$result1   = mysqli_query($db, $sql);
 		$row1  =   mysqli_fetch_array($result1);
 ?>
@@ -38,7 +38,7 @@
 				</div>
 			<form method="post" enctype="multipart/form-data" action="../products/update.php">
 				<input type="hidden" name="size" value="1000000">
-				<input type="hidden" name="id" value="<?php echo $row1['id'];?>">
+				<input type="hidden" name="id" value="<?php echo $row1['product_no'];?>">
 			</div>
 			<div class="second_side table-responsive">
 					<p class="bg-danger w-50"><?php echo $msg;?></p>
@@ -64,6 +64,7 @@
 								<td  valign="baseline">Minimum stocks:</td>
 								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" required></td>
 							</tr>
+						<?php }?>
 							<tr>
 								<td>Change Photo:</td>
 								<td><input class="form-control-sm pl-5" type="file" name="images"></td>
@@ -75,7 +76,7 @@
 						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php'" >Cancel</button>
 					</div>
 				</form>
-			</dir>
+			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>

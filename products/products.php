@@ -38,16 +38,16 @@
 						while($row = mysqli_fetch_assoc($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['id'];?></td>
+						<td><?php echo $row['product_no'];?></td>
 						<td><?php echo $row['product_name'];?></td>
 						<td align="right">₱&nbsp<?php echo $row['sell_price'];?></td>
 						<td><?php echo $row['quantity'];?></td>
 						<td><?php echo $row['unit'];?></td>
 						<td><?php echo $row['min_stocks'];?></td>
 						<td>
-							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_products.php?id=<?php echo $row['id'];?>" class="btn btn-info btn-xs">Edit</a>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data">
-							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
+							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_products.php?id=<?php echo $row['product_no'];?>" class="btn btn-info btn-xs">Edit</a>
+							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['product_no'];?>" class="btn btn-success btn-xs view_data">
+							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['product_no'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
 						</td>
 					</tr>
 					<?php } ?>

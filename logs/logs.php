@@ -1,7 +1,7 @@
 <?php 
 	include("../server/connection.php");
-	$sql = "SELECT * FROM logs";
 	include '../set.php';
+	$sql = "SELECT * FROM logs ORDER BY id DESC";
 	$result	= mysqli_query($db, $sql);
 	?>
 <!DOCTYPE html>

@@ -22,13 +22,13 @@ if(isset($_POST['product'])){
 			$product_id = mysqli_real_escape_string($db, $product[$num]);
 			$qtyold = mysqli_real_escape_string($db, $quantity[$num]);
 
-			$sql1 = "SELECT quantity FROM products WHERE id='$product_id'";
+			$sql1 = "SELECT quantity FROM products WHERE product_no='$product_id'";
 			$result1 = mysqli_query($db, $sql1);
 			$qty = mysqli_fetch_array($result1);
 
 			$newqty = $qty['quantity'] - $qtyold;
 
-			$sql2 = "UPDATE products SET quantity=$newqty WHERE id='$product_id'";
+			$sql2 = "UPDATE products SET quantity=$newqty WHERE product_no='$product_id'";
 			$result2 = mysqli_query($db, $sql2);
 
 			}

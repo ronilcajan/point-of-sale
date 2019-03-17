@@ -18,7 +18,7 @@
 				</tr>
 				<tr>  
 					 <td width="50%"><label>Date :</label></td>  
-					 <td width="50%"><strong>'.$row["logs_time"].'</strong></td>  
+					 <td width="50%"><strong>'.date('d M Y, g:i A', strtotime($row['logs_time'])).'</strong></td>  
 				</tr>';  
 	  }  
 	  $output .= '  

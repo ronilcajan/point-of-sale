@@ -19,10 +19,10 @@
 			</div>
 			<div class="form-group row pl-5" id="input-daterange">
 				<div class="col-md-4">
-					<input type="text" name="start_date" id="start_date" class="form-control pr-5" placeholder="From Date" />
+					<input type="text" name="start_date" readonly id="start_date" class="form-control pr-5" placeholder="From Date" />
 				</div>
 				<div class="col-md-4 pr-5">
-					<input type="text" name="end_date" id="end_date" class="form-control" placeholder="To Date" />
+					<input type="text" name="end_date" readonly id="end_date" class="form-control" placeholder="To Date" />
 				</div>
 				<input class="btn btn-info" type="button" id="filter" value="Filter"/>
 			</div>
@@ -33,8 +33,7 @@
 						<th scope="col" class="column-text">Receipt No.</th>
 						<th scope="col" class="column-text">Username</th>
 						<th scope="col" class="column-text">Customer Name</th>
-						<th scope="col" class="column-text">Quantity</th>
-						<th scope="col" class="column-text">Value</th>
+						<th scope="col" class="column-text">Total Value</th>
 						<th scope="col" class="column-text">Date</th>
 
 					</tr>
