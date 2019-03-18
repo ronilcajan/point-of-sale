@@ -9,7 +9,7 @@ $(document).ready(function(){
 			fetch_data('no');
 
  			function fetch_data(is_date_search, start_date='', end_date=''){
-  				var dataTable = $('#sales_table').DataTable({
+  				var dataTable = $('#delivery_table').DataTable({
    					"processing" : true,
    					"serverSide" : true,
    					"order" : [],
@@ -17,7 +17,7 @@ $(document).ready(function(){
    						url:"fetch_all.php",
     					type:"POST",
     					data:{
-     						is_date_search:is_date_search, start_date:start_date, end_date:end_date
+     						is_date_search: is_date_search, start_date: start_date, end_date: end_date
     					}
    					}
   				});
@@ -27,7 +27,7 @@ $(document).ready(function(){
  				var start_date = $('#start_date').val();
  				var end_date = $('#end_date').val();
  				if(start_date != '' && end_date != ''){
- 					$('#sales_table').DataTable().destroy();
+ 					$('#delivery_table').DataTable().destroy();
  					fetch_data('yes', start_date, end_date);
 
  				}else{

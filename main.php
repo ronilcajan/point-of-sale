@@ -42,7 +42,7 @@
 						<tr>
 							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
 							<td valign="baseline"><small><p class="p-0 ml-5">
-								<select id='custom_id' style='cursor:pointer'>
+								<select id='custom_id' style='cursor:pointer' class="form-control form-control-sm">
 
 								<?php 
 									if (mysqli_num_rows($show)>0){
@@ -50,8 +50,9 @@
 								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
 								<?php }}?>
 								</p></small></select>
-								<button class="btn-sm btn-info border" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info">+New</span></button>
+								
 							</td>
+							<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info">+New</span></button></td>
 						</tr>
 					</tbody>
 				</table>

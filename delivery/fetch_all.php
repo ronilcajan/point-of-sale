@@ -2,9 +2,9 @@
 
 	include("../server/connection.php");
 
-	$column = array('transaction_no','username','firstname','lastname','TotalPrice','date');
+	$column = array('transaction_no','username','company_name','TotalPrice','date');
 
-	$query = "SELECT delivery.transaction_no,sum(price) AS TotalPrice,sum(qty) AS TotalQuantity,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id ";
+	$query = "SELECT product_delivered.transaction_no,supplier.company_name,username,sum(buy_price) AS TotalPrice,sum(total_qty) AS TotalQuantity,date FROM product_delivered JOIN delivery ON product_delivered.transaction_no=delivery.transaction_no JOIN supplier ON delivery.supplier_id = supplier.supplier_id JOIN products ON product_delivered.product_id = products.product_no ";
 
 	if($_POST['is_date_search'] == "yes"){
 		$query .= 'WHERE delivery.date BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'"'; 
@@ -12,21 +12,20 @@
 
 	if (isset($_POST["search"]["value"]) && !empty($_POST["search"]["value"])) {
 		$query .= '
-			WHERE sales.reciept_no LIKE "%' .$_POST["search"]["value"].'%"
+			WHERE product_delivered.transaction_no LIKE "%' .$_POST["search"]["value"].'%"
 			OR username LIKE "%' .$_POST["search"]["value"].'%"
-			OR firstname LIKE "%' .$_POST["search"]["value"].'%"
-			OR lastname LIKE "%' .$_POST["search"]["value"]. '%"
+			OR company_name LIKE "%' .$_POST["search"]["value"].'%"
 		';
 	}else{
 		$query .= '';
 	}
 
-	$query .= "GROUP BY reciept_no ";
+	$query .= "GROUP BY transaction_no ";
 
 	if(isset($_POST['order'])){
 		$query .= 'ORDER BY '.$column[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' ';
 	}else{
-		$query .= 'ORDER BY reciept_no DESC ';
+		$query .= ' ORDER BY transaction_no DESC ';
 	}
 
 	$query1 = '';
@@ -48,16 +47,16 @@
 
 	while($row = mysqli_fetch_array($result)){
 			$sub_array = array();
-			$sub_array[] = '<a href="../sales/reciept_details.php?reciept_id='.$row["reciept_no"].'">'.$row["reciept_no"].'</a>';
+			$sub_array[] = '<a href="../delivery/delivery_details.php?transaction_no='.$row["transaction_no"].'">'.$row["transaction_no"].'</a>';
 			$sub_array[] = $row["username"];
-			$sub_array[] = $row["firstname"].'&nbsp'.$row['lastname'];
-			$sub_array[] = number_format($row["TotalPrice"] * $row["TotalQuantity"],2);
+			$sub_array[] = $row["company_name"];
+			$sub_array[] = number_format($row["TotalPrice"] * $row["TotalQuantity"]);
 			$sub_array[] = date('d M Y, g:i A', strtotime($row["date"]));	
 			$data[] = $sub_array; 
 		}
 
 	function get_all_data($db){
-		$query = "SELECT sales_product.reciept_no,sum(price) AS TotalPrice,sum(qty) AS TotalQuantity,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id GROUP BY reciept_no";
+		$query = "SELECT product_delivered.transaction_no,supplier.company_name,username,sum(buy_price) AS TotalPrice,sum(total_qty) AS TotalQuantity,date FROM product_delivered JOIN delivery ON product_delivered.transaction_no=delivery.transaction_no JOIN supplier ON delivery.supplier_id = supplier.supplier_id JOIN products ON product_delivered.product_id = products.product_no GROUP BY transaction_no";
 		$result = mysqli_query($db, $query);
 		return mysqli_num_rows($result);
 	}
@@ -68,4 +67,5 @@
 		"recordsFiltered" => $number_filter_row,
 		"data" 		=> $data
 	);
+
 	print json_encode($output);

@@ -27,7 +27,7 @@
 				<input class="btn btn-info" type="button" id="filter" value="Filter"/>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
-			<table class="table table-bordered table-striped" id="sales_table" style="margin-top: -22px;">
+			<table class="table table-bordered table-striped" id="delivery_table" style="margin-top: -22px;">
 				<thead>
 					<tr>
 						<th scope="col" class="column-text">Transaction No.</th>
