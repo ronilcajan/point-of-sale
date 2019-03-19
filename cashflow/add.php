@@ -6,7 +6,7 @@
 		$purpose 	= mysqli_real_escape_string($db, $_POST['purpose']);
 		$amount 	= mysqli_real_escape_string($db, $_POST['amount']);
 		
-		$sql  = "INSERT INTO cashflow (description,amount,username,transaction_date) VALUES ('$purpose','$amount','$user')";
+		$sql  = "INSERT INTO cashflow (description,amount,username) VALUES ('$purpose','$amount','$user')";
 	  	$result = mysqli_query($db, $sql);
  		if($result == true){
  			$query 	= "INSERT INTO logs (username,purpose) VALUES('$user','$purpose')";

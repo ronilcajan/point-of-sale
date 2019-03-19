@@ -14,10 +14,10 @@
 		</div>
 		<div class="fixed-bottom mb-2">
 			<div class="d-inline">
-				<button type="button" id="admin" class="btn-lg btn-secondary" data-toggle="modal" data-target=".bd-example-modal-sm">Administrator</button>
+				<button type="button" id="admin" class="btn-lg btn-secondary" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-user-tie"></i> Administrator</button>
 			</div>
 			<div class="d-inline">
-				<button type="button" id="user" class="btn-lg btn-secondary" data-toggle="modal" data-target="#modal-user">User</button>
+				<button type="button" id="user" class="btn-lg btn-secondary" data-toggle="modal" data-target="#modal-user"><i class="fas fa-user"></i> User</button>
 			</div>
 		</div>
 	</div>

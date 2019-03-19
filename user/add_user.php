@@ -12,7 +12,7 @@
 		<?php include('../user/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">User Management</h1>
+				<h1 class="ml-4 pt-2"><i class="fas fa-users"></i> User Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -29,42 +29,46 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Username:</td>
-								<td class="pl-5 pb-2"><input type="text" name="username" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-user-circle"></i></span></div><input type="text" name="username" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="firstname" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="lastname" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact number:</td>
-								<td class="pl-5 pb-2"><input type="text" name="number" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input type="text" name="number" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Password:</td>
-								<td class="pl-5 pb-2"><input type="password" name="password" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span></div><input type="password" name="password" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Confirm Password:</td>
-								<td class="pl-5 pb-2"><input type="password" name="password1" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock"></i></span></div><input type="password" name="password1" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Position:</td>
+
 								<td class="pl-5 pb-2">
-									<select name="position">
+									<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+									<i class="fas fa-user-tag"></i></span></div>
+									<select name="position" class="form-control-sm form-control">
 										<option value="Admin">Admin</option>
 										<option value="Employee">Employee</option>
 									</select>
+								</div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-4">
-						<button type="submit" name="add" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../user/user.php'" >Cancel</button>
+						<button type="submit" name="add" class="btn btn-secondary"><i class="fas fa-check-circle"></i> Submit</button>
+						<button class="btn btn-danger" onclick="window.location.href='../user/user.php'" ><i class="fas fa-ban"></i> Cancel</button>
 					</div>
 				</form>
 			</div>

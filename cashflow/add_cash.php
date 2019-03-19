@@ -14,7 +14,7 @@
 		?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">Cash Management</h1>
+				<h1 class="ml-4"><i class="fas fa-money-bill-alt" style="color:#2196F3;"></i> Cash Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -29,18 +29,18 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Purpose:</td>
-								<td class="pl-5 pb-2"><textarea name="purpose" required cols="23" rows="8">Cash-in</textarea></td>
+								<td class="pl-5 pb-2"><textarea name="purpose" required cols="28" rows="8" class="form-control">Cash-in</textarea></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Amount:</td>
-								<td class="pl-5 pb-2"><input type="number" name="amount"></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">₱</span></div><input type="number" name="amount" class="form-control" required></div></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-5" style="margin-top: 50px;">
-						<input type="hidden" name="username" value="<?php echo $_GET['username'];?>"/>
-						<button type="submit" name="add_customer" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../cashflow/cashflow.php?username=<?php echo $_GET['username'	];?>'" >Cancel</button>
+						<input type="hidden" name="username" value="<?php echo $_SESSION['username'];?>"/>
+						<button type="submit" name="add_customer" class="btn btn-secondary"><i class="fas fa-check-circle"></i> Submit</button>
+						<button class="btn btn-danger ml-2" onclick="window.location.href='../cashflow/cashflow.php" ><i class="fas fa-ban"></i> Cancel</button>
 					</div>
 				</form>
 			</dir>

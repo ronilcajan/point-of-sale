@@ -19,7 +19,7 @@
 	<div class="contain h-100">
 		<?php include('../user/base.php');?>
 		<div>
-			<h1 class="ml-4 pt-2">User Management</h1>
+			<h1 class="ml-4 pt-2"><i class="fas fa-users"></i> User Management</h1>
 			<hr>
 				<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">
@@ -43,9 +43,9 @@
 						<td><?php echo $row['position'];?></td>
 						<td><?php echo $row['contact_number'];?></td>
 						<td>
-							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_user.php?id=<?php echo $row['id'];?>" class="btn btn-info btn-xs">Edit</a>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data">
-							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
+							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_user.php?id=<?php echo $row['id'];?>" class="btn btn-info"><i class="fas fa-user-edit"></i></a>
+							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data"><i class="fas fa-eye"></i></button>
+							<button type="button" name="delete" title="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['id'];?>" class="delete btn btn-danger" data-toggle="#deleteModal" title="Delete"><i class="fas fa-trash"></i></button>
 						</td>
 					</tr>
 					<?php } ?>
@@ -77,7 +77,7 @@
   	$('[data-toggle="popover"]').popover()
 	});
 	$(function(){
-		$('input.delete').click(function(e){
+		$('button.delete').click(function(e){
 			e.preventDefault();
 			var link = this;
 			var deleteModal = $("#deleteModal");

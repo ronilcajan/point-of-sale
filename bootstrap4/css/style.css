@@ -10,7 +10,7 @@ html,body{
 }
 #admin, #user{
 	border:2px solid;
-	width: 160px;
+	width: 180px;
 	margin-right: 10px;
 }
 #admin:hover,#user:hover{

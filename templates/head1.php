@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../bootstrap4/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../bootstrap4/css/style1.css" />
 <link rel="stylesheet" type="text/css" href="../bootstrap4/css/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" href="../bootstrap4/css/all.min.css"/>
 <script src="../bootstrap4/jquery/sweetalert.min.js"></script>
 	<style type="text/css">
 		input[name="image"]{

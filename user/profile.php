@@ -19,7 +19,7 @@
 		<?php include('../user/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">User Management</h1>
+				<h1 class="ml-4 pt-2"><i class="fas fa-users"></i> User Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -33,21 +33,19 @@
 						<p><?php include('../error.php');?></p>
 						<tbody>
 							<tr>
-								<td class="pb-3"><?php echo "<h1>".$row['firstname']."&nbsp".$row['lastname']."</h1>"; ?></td>
+								<td class="pb-3"><?php echo "<h3><i class='fas fa-user-circle text-secondary'></i> ".$row['firstname']."&nbsp".$row['lastname']."</h3>"; ?></td>
 							</tr>
 							<tr>
-								<td  valign="baseline"><h4>My Number</h4></td>
-								<td class="pl-5 pb-4"><h4><?php echo $row['contact_number'];?></h4></td>
+								<td class="pb-3"><h4><i class="fas fa-phone"></i> <?php echo $row['contact_number'];?></h4></td>
 							</tr>
 							<tr>
-								<td  valign="baseline"><h4>My Position:</h4></td>
-								<td class="pl-5 pb-3"><h4><?php echo $row['position'];?></h4></td>
+								<td class="pb-3"><h4><i class="fas fa-user-shield"></i> <?php echo $row['position'];?></h4></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-4">
-						<a title="Edit" href="update_user.php?id=<?php echo $row['id'];?>" class="btn btn-info">Edit ?</a>
-						<button type="button" id="user" class="btn btn-success" data-toggle="modal" data-target="#modal-user">Change Password</button>
+						<a title="Edit" href="update_user.php?id=<?php echo $row['id'];?>" class="btn btn-info"><i class="fas fa-user-edit"></i> Edit </a>
+						<button type="button" id="user" title="Change Password?" class="btn btn-success" data-toggle="modal" data-target="#modal-user"><i class="fas fa-edit"></i> Change Password</button>
 					</div>
 				</form>
 			<?php } ?>

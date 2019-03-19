@@ -33,11 +33,11 @@
 					<tbody>
 						<tr>
 							<td valign="baseline"><small>User Logged on:<small></td>
-							<td valign="baseline"><small><p class="pt-3 ml-5"><?php echo $row['position'];}}}?></p><small></td>
+							<td valign="baseline"><small><p class="pt-3 ml-5"><i class="fas fa-user-shield"></i> <?php echo $row['position'];}}}?></p><small></td>
 						</tr>
 						<tr>
 							<td valign="baseline"><small class="pb-1">Date:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-clock">&nbsp</i><span id='time'></span></p><small></td>
 						</tr>
 						<tr>
 							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
@@ -52,7 +52,7 @@
 								</p></small></select>
 								
 							</td>
-							<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info">+New</span></button></td>
+							<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -83,7 +83,7 @@
 				</form>
 			</div>
 			<div id="table_buttons">
-				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2">Finish</button>
+				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2"><i class="fas fa-handshake"></i> Finish</button>
 				<div>
 					<ul class="text-white d-flex justify-content-center mt-3">
 						<p>Total:&nbsp&nbsp<li id="totalValue1">₱ 0.00</li></p>
@@ -92,10 +92,11 @@
 			</div>
 		</div>
 		<div id="sidebar">
-			<div>
-   				<input class="form-control w-100" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
-   			</div>
-			<div class="mt-0" id="product_area" class="table-responsive-sm" >
+			<div class="mt-1 ">
+			<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span></div>
+   				<input class="form-control" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
+   			</div></div>
+			<div id="product_area" class="table-responsive-sm mt-2" >
 				<table class="w-100 table-striped font-weight-bold" style="cursor: pointer;" id="table1">
 					<thead>
 						<tr claclass='text-center'><b>
@@ -112,19 +113,19 @@
 				</table>
 			</div>
 			<div class="w-100 mt-2" id="enter_area">
-				<button id="buttons" type="button" class="cancel btn btn-secondary border">Cancel</button>
+				<button id="buttons" type="button" class="cancel btn btn-secondary border"><i class="fas fa-ban"></i> Cancel</button>
 			</div>
 		</div>
 		<div id="footer" class="w-100">
-			<button id="buttons" onclick="window.location.href='user/user.php'" class="btn btn-secondary border mr-2 ml-2">User</button>
-			<button id="buttons" onclick="window.location.href='products/products.php'" class="btn btn-secondary border mr-2">Product</button>
-			<button id="buttons" onclick="window.location.href='supplier/supplier.php'" class="btn btn-secondary border mr-2">Supplier</button>
-			<button id="buttons" onclick="window.location.href='customer/customer.php'" class="btn btn-secondary border mr-2">Customer</button>
-			<button id="buttons" onclick="window.location.href='logs/logs.php'" class="btn btn-secondary border mr-2">Logs</button>
-			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php'" class="btn btn-secondary border mr-2">Cash-Flow</button>
-			<button id="buttons" onclick="window.location.href='sales/sales.php'" class="btn btn-secondary border mr-2">Sales</button>
-			<button id="buttons" onclick="window.location.href='delivery/delivery.php'" class="btn btn-secondary border mr-2">Deliveries</button>
-			<input id="buttons" name="logout" type="button" value="Logout" onclick="out();" class="logout btn btn-danger border mr-2"/> 
+			<button id="buttons" onclick="window.location.href='user/user.php'" class="btn btn-secondary border mr-2 ml-2"><i class="fas fa-users"></i> User</button>
+			<button id="buttons" onclick="window.location.href='products/products.php'" class="btn btn-secondary border mr-2"><i class="fas fa-box-open"></i> Product</button>
+			<button id="buttons" onclick="window.location.href='supplier/supplier.php'" class="btn btn-secondary border mr-2"><i class="fas fa-user-tie"></i> Supplier</button>
+			<button id="buttons" onclick="window.location.href='customer/customer.php'" class="btn btn-secondary border mr-2"><i class="fas fa-user-friends"></i> Customer</button>
+			<button id="buttons" onclick="window.location.href='logs/logs.php'" class="btn btn-secondary border mr-2"><i class="fas fa-globe"></i> Logs</button>
+			<button id="buttons" onclick="window.location.href='cashflow/cashflow.php'" class="btn btn-secondary border mr-2"><i class="fas fa-money-bill-wave"></i> Cash-Flow</button>
+			<button id="buttons" onclick="window.location.href='sales/sales.php'" class="btn btn-secondary border mr-2"><i class="fas fa-shopping-cart"></i> Sales</button>
+			<button id="buttons" onclick="window.location.href='delivery/delivery.php'" class="btn btn-secondary border mr-2"><i class="fas fa-truck"></i> Deliveries</button>
+			<button id="buttons" name="logout" type="button" onclick="out();" class="logout btn btn-danger border mr-2"><i class="fas fa-sign-out-alt"></i> Logout</button> 
 		</div>
 	</div>
 	<?php include('add.php');?>
