@@ -13,7 +13,7 @@
 	<div class="contain h-100">
 		<?php include('../logs/base.php');?>
 		<div>
-			<h1 class="ml-4 pt-2">Recorded Logs</h1>
+			<h1 class="ml-4 pt-2"><i class="fas fa-globe"></i> Recorded Logs</h1>
 			<hr class="mt-0 mb-0">
 			<div class="table-responsive mt-4 pl-5 pr-5">
 				<table class="table table-striped table-bordered" id="logs_table" style="margin-top: -22px;">
@@ -34,7 +34,7 @@
 						<td><?php echo $row['purpose'];?></td>
 						<td><?php echo date('d M Y, g:i A', strtotime($row['logs_time']));?></td>
 						<td>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data">
+							<button type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['id'];?>" class="btn btn-success btn-xs view_data"><i class="fas fa-eye fa-lg"></i></button>
 						</td>
 					</tr>
 					<?php } ?>

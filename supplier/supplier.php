@@ -8,6 +8,7 @@
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
 	$undelete = isset($_GET['undelete']);
+	$error = '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
 	<div class="contain h-100">
 		<?php include('../supplier/base.php');?>
 		<div>
-			<h1 class="ml-4 pt-2">Supplier Management</h1>
+			<h1 class="ml-4 pt-2"><i class="fas fa-user-tie"></i> Supplier Management</h1>
 			<hr>
 			<?php include('../alert.php');?>
 			<div class="table-responsive mt-4 pl-5 pr-5">

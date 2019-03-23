@@ -19,13 +19,13 @@
 		?>
 		<div>
 			<div>
-				<h1 class="ml-4 pt-2 pb-4" align="left">Delivery Records</h1>
+				<h1 class="ml-4 pt-2 pb-4" align="left"><i class="fas fa-truck"></i> Delivery Records</h1>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
 			<table class="table table-striped table-bordered" id="sales_table" style="margin-top: -22px;">
 				<thead>
 					<tr>
-						<td colspan="5"><h2>Transaction No.&nbsp<?php echo $row['transaction_no'];?></h2></td>
+						<td colspan="5"><h2>Transaction No.&nbsp<span style="color: blue;"><?php echo $row['transaction_no'];?></span></h2></td>
 					</tr>
 					<tr>
 						<th scope="col" class="column-text">Barcode</th>
@@ -34,6 +34,7 @@
 						<th scope="col" class="column-text">Price</th>
 						<th scope="col" class="column-text">Unit</th>
 						<th scope="col" class="column-text">Tax Added</th>
+						<th scope="col" class="column-text">Sell Price</th>
 					</tr>
 				</thead>
 				<tbody class="table-hover">
@@ -43,10 +44,11 @@
 					<tr class="table-active">
 						<td><?php echo $row1['product_no'];?></td>
 						<td><?php echo $row1['product_name'];?></td>
-						<td><?php echo $row1['quantity'];?></td>
-						<td>₱<?php echo $row1['sell_price'];?></td>
+						<td><?php echo $row1['total_qty'];?></td>
+						<td>₱<?php echo $row1['buy_price'];?></td>
 						<td><?php echo $row1['unit'];?></td>
-						<td><?php echo $row1['tax_rate'];?></td>
+						<td><?php echo $row1['tax_rate'];?>%</td>
+						<td>₱<?php echo $row1['sell_price'];?></td>
 					</tr>
 					<?php } ?>
 					</tbody>

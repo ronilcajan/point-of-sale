@@ -1,7 +1,7 @@
 <?php 
 	include("../server/connection.php");
 	include '../set.php';
-	
+
   	if (isset($_GET['id'])){
 		$id   =   $_GET['id'];
 		$sql  =   "SELECT * FROM users WHERE id = '$id'";
@@ -59,7 +59,7 @@
 							</tr>
 							<tr>
 								<td  valign="baseline">Position:</td>
-								<td class="pl-5 pb-2 ">
+								<td class="pl-5 pb-2">
 									<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
 									<i class="fas fa-user-tag"></i></span></div>
 									<select name="position" class="form-control form-control-sm">
@@ -75,7 +75,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="text-left mt-4">
+					<div class="text-left mt-3">
 						<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 						<input type="hidden" name="user" value="<?php echo $row['username'];?>">
 						<button type="submit" name="update" class="btn btn-secondary"><i class="fas fa-user-edit"></i> Update</button>

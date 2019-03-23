@@ -23,7 +23,7 @@
 		<?php include('../delivery/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4">Product Management</h1>
+				<h1 class="ml-4 pt-2" align="left"><i class="fas fa-truck"></i> Deliveries</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-4 mr-3">
@@ -35,7 +35,7 @@
 				</div>
 			<form method="POST" enctype="multipart/form-data" action="../delivery/upload.php">
 				
-				<label><small>Upload CSV:</small></label>
+				<label><i class="fas fa-file-upload"></i> <small>Upload CSV:</small></label>
 				<input class="form-control-sm" type="file" name="file" required />
 				<p class="bg-danger mt-3"><?php echo $msg;?></p>
 			</div>
@@ -47,11 +47,14 @@
 						<tbody>
 							<tr>
 								<td valign="baseline"><small>Transaction No.</small></td>
-								<td class="pl-5 pb-1"><input type="text" name="transaction_no" placeholder="Enter Transaction No" class="form-control-sm form-control" required /></td>
+								<td class="pl-5 pb-1"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-hands-helping"></i></span></div><input type="text" name="transaction_no" class="form-control-sm form-control" value="<?php echo strtoupper(uniqid())?>" required readonly /></div></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Supplier Name:</small></td>
 								<td class="pl-5 pb-1">
+									<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-user-tie"></i></span></div>
 									<select name="supplier" style='cursor:pointer' class='form-control-sm form-control' required>
 									<?php 
 									if (mysqli_num_rows($result)>0) {
@@ -60,50 +63,50 @@
 									<option value="<?php echo $row['supplier_id']; ?>"><?php echo $row['company_name'];?></option>
 								<?php
 								}}?>
-									</select>
+									</select></td>
 								</td>
 
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Product Barcode:</small></td>
-								<td class="pl-5 pb-1"><input type="text" name="product_name" readonly></td>
+								<td class="pl-5 pb-1"><input type="text" name="product_name" class="form-control form-control-sm" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Product Name:</small></td>
-								<td class="pl-5 pb-1"><input type="text" name="product_name" readonly></td>
+								<td class="pl-5 pb-1"><input type="text" class="form-control form-control-sm"  name="product_name" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Buy Price:</small></td>
-								<td class="pl-5 pb-1"><input type="number" step="0.01" name="buy_price" readonly></td>
+								<td class="pl-5 pb-1"><input type="number" class="form-control form-control-sm"  step="0.01" name="buy_price" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Tax Rate:</small></td>
-								<td class="pl-5 pb-1"><input type="number" step="0.01" name="price" readonly></td>
+								<td class="pl-5 pb-1"><input type="number" class="form-control form-control-sm"  step="0.01" name="price" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Quantity:</small></td>
-								<td class="pl-5 pb-1"><input type="number" name="qty" readonly></td>
+								<td class="pl-5 pb-1"><input type="number" class="form-control form-control-sm"  name="qty" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Unit:</small></td>
-								<td class="pl-5 pb-1"><input type="text" name="unit" readonly></td>
+								<td class="pl-5 pb-1"><input type="text" class="form-control form-control-sm"  name="unit" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Minimum stocks:</small></td>
-								<td class="pl-5 pb-1"><input type="number" name="min_stocks" readonly></td>
+								<td class="pl-5 pb-1"><input type="number" class="form-control form-control-sm"  name="min_stocks" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-2 pt-1">
 						<input type="submit" name="upload" class="btn btn-secondary" value="Done"/>
-						<button class="btn btn-danger" onclick="window.location.href='../delivery/delivery.php">Cancel</button>
+						<button class="btn btn-danger" onclick="window.location.href='../delivery/delivery.php"><i class="fas fa-ban"></i> Cancel</button>
 					</div>
 				</form>
 			</div>

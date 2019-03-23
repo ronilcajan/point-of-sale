@@ -1,15 +1,3 @@
-$(function () {
-  		$('[data-toggle="popover"]').popover()
-	});
-	$(function(){
-		$('button.delete').click(function(e){
-			e.preventDefault();
-			var link = this;
-			var deleteModal = $("#deleteModal");
-			deleteModal.find('input[name=id]').val(link.dataset.id);
-			deleteModal.modal();
-		});
-	});
 
 	$(document).ready(function(){
 	/* function for activating modal to show data when click using ajax */
@@ -17,7 +5,7 @@ $(function () {
 		var id = $(this).attr("id");  
 		if(id != ''){  
 			$.ajax({  
-				url:"view_customer.php",  
+				url:"view_products.php",  
 				method:"POST",  
 				data:{id:id},  
 				success:function(data){  
@@ -29,6 +17,6 @@ $(function () {
 	});   
  });  
 
-	$(document).ready(function(){
-		$('#customer_table').dataTable();
-	});
+$(document).ready(function(){
+	$('#product_table').dataTable();
+})

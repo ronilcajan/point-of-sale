@@ -20,14 +20,14 @@ $(document).ready(function(){
 		html_code += '<td <span id="sr-no">'+count+'</span></td>';
 		html_code += '<td><input type="text" name="barcode" id="barcode'+count+'" class="form-control form-control-sm input-sm barcode" placeholder="Barcode"/></td>';
 		html_code += '<td><input type="text" name="product_name" id="product_name'+count+'" placeholder="Title" class="product_name form-control form-control-sm input-sm"/></td>';
-		html_code += '<td><input type="text" name="quantity" id="quantity'+count+'" data-srno="'+count+'" placeholder="Qty"  class="form-control form-control-sm nput-sm quantity" /></td>';
-		html_code += '<td><input type="text" name="buy_price" id="buy_price'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm buy_price"></td>';
-		html_code += '<td><input type="text" name="unit" id="unit'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm unit"></td>';
-		html_code += '<td><input type="text" name="tax_rate" id="tax_rate'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm tax_rate"></td>';
-		html_code += '<td><input type="text" name="min_qty" id="min_qty'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>';
-		html_code += '<td><input type="text" name="sell_price" readonly id="sell_price'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm sell_price number_only"></td>';		
-		html_code += '<td><input type="text" name="total_amount" readonly id="total_amount'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm total_amount"></td>';
-		html_code += '<td><button type="button" name="remove_row" id="'+count+'" class="btn btn-sm btn-danger btn-xs remove_row">-</button></td></tr>';
+		html_code += '<td><input type="number" name="quantity" id="quantity'+count+'" data-srno="'+count+'" placeholder="Qty"  class="form-control form-control-sm nput-sm quantity" /></td>';
+		html_code += '<td><input type="text" name="buy_price" placeholder="Price" id="buy_price'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm buy_price"></td>';
+		html_code += '<td><input type="text" name="unit" id="unit'+count+'" placeholder="Kilograms" data-srno="'+count+'" class="form-control form-control-sm input-sm unit"></td>';
+		html_code += '<td><input type="number" name="tax_rate" id="tax_rate'+count+'" placeholder="%" data-srno="'+count+'" class="form-control form-control-sm input-sm tax_rate"></td>';
+		html_code += '<td><input type="number" name="min_qty" id="min_qty'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>';
+		html_code += '<td><input type="text" name="sell_price" readonly id="sell_price'+count+'" placeholder="Price+Tax" data-srno="'+count+'" class="form-control form-control-sm input-sm sell_price number_only"></td>';		
+		html_code += '<td><input type="text" name="total_amount" readonly id="total_amount'+count+'" placeholder="Sum" data-srno="'+count+'" class="form-control form-control-sm input-sm total_amount"></td>';
+		html_code += '<td><button type="button" name="remove_row" id="'+count+'" class="btn btn-sm btn-danger btn-xs remove_row"><i class="fas fa-minus-circle"></i></button></td></tr>';
 		$("#invoice-item-table").append(html_code);
 	});
 	$(document).on('click','.remove_row',function(){
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		}
 		$('#final_total_amount').text('₱ '+final_product_amount);
 	}
-	$(document).on('blur', '.buy_price', function(){
+	$(document).on('blur', '.min_qty', function(){
 		final_total(count);
 	});
 	$(document).on('click','#create_delivery',function(){
@@ -187,13 +187,7 @@ $(document).ready(function(){
 			method: "POST",
 			data: {barcode:barcode,product_name:product_name,quantity:quantity,buy_price:buy_price,unit:unit,tax_rate:tax_rate,min_qty:min_qty,sell_price:sell_price,supplier:supplier,transaction_no:transaction_no,order_date:order_date},
 			success: function(data){
-				swal({
-                  title: "Delivery Transaction Added!",
-                    icon: "success",
-                    buttons: "Okay",
-                  })
-                .then((okay)=>{
-                })
+				window.location.href='../delivery/delivery.php';
 			}
 		});
 

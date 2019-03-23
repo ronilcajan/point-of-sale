@@ -7,6 +7,7 @@
 	$undelete = isset($_GET['undelete']);
 	$updated = '';
 	$deleted = '';
+	$error = "";
 	$query 	= "SELECT * FROM `customer`";
 	$show	= mysqli_query($db,$query);
 	if(isset($_SESSION['username'])){
@@ -25,6 +26,7 @@
 	<link rel="icon" type="image/png" sizes="180x180" href="images/icon.png">
 	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap4/css/style2.css">
+	<link rel="stylesheet" href="bootstrap4/css/all.min.css"/>
 	<script src="bootstrap4/jquery/sweetalert.min.js"></script>
 </head>
 <body>
@@ -39,16 +41,16 @@
 					<tbody>
 						<tr>
 							<td valign="baseline"><small>User Logged on:<small></td>
-							<td valign="baseline"><small><p class="pt-3 ml-5"><?php echo $row['position'];}}}?></p><small></td>
+							<td valign="baseline"><small><p class="pt-3 ml-5"><i class="fas fa-user-shield"></i> <?php echo $row['position'];}}}?></p><small></td>
 						</tr>
 						<tr>
 							<td valign="baseline"><small class="pb-1">Date:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><span id='time'></p><small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-calendar-alt">&nbsp</i><span id='time'></span></p><small></td>
 						</tr>
 						<tr>
 							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
 							<td valign="baseline"><small><p class="p-0 ml-5">
-								<select id='custom_id' style='cursor:pointer'>
+								<select id='custom_id' style='cursor:pointer' class="form-control form-control-sm">
 
 								<?php 
 									if (mysqli_num_rows($show)>0){
@@ -56,15 +58,14 @@
 								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
 								<?php }}?>
 								</p></small></select>
-								<button class="btn-sm btn-info border" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info">+New</span></button>
-							</td>
+								<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="header_price border p-0">
 				<h5>Grand Total</h5>
-				<p class="pb-0 mr-2" style="float: right; font-size: 40px;" id="totalValue">₱ 0.00</p>
+				<p class="pb-0 mr-2 mb-2" style="float: right; font-size: 40px;" id="totalValue">₱ 0.00</p>
 			</div>
 		</div>
 		<div id="content" class="mr-2">
@@ -88,7 +89,7 @@
 				</form>
 			</div>
 			<div id="table_buttons">
-				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2">Finish</button>
+				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2"><i class="fas fa-handshake"></i> Finish</button>
 				<div>
 					<ul class="text-white d-flex justify-content-center mt-3">
 						<p>Total:&nbsp&nbsp<li id="totalValue1">₱ 0.00</li></p>
@@ -97,10 +98,11 @@
 			</div>
 		</div>
 		<div id="sidebar">
-			<div>
-   				<input class="form-control w-100" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
-   			</div>
-			<div class="mt-0" id="product_area" class="table-responsive-sm" >
+			<div class="mt-1">
+			<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span></div>
+   			<input class="form-control" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();"/>
+   			</div></div>
+			<div class="mt-0" id="product_area" class="table-responsive-sm mt-2" >
 				<table class="w-100 table-striped font-weight-bold" style="cursor: pointer;" id="table1">
 					<thead>
 						<tr claclass='text-center'><b>
@@ -117,14 +119,14 @@
 				</table>
 			</div>
 			<div class="w-100 mt-2" id="enter_area">
-				<button id="buttons" type="button" class="cancel btn btn-secondary border">Cancel</button>
+				<button id="buttons" type="button" class="cancel btn btn-secondary border"><i class="fas fa-ban"></i> Cancel</button>
 			</div>
 		</div>
 		<div id="footer" class="w-100" align="center" style="">
-			<button id="buttons" onclick="window.location.href='user/user.php'" class="btn btn-secondary border mr-2 ml-2">User</button>
-			<button id="buttons" onclick="window.location.href='products/products.php'" class="btn btn-secondary border mr-2">Product</button>
-			<button id="buttons" onclick="window.location.href='supplier/supplier.php'" class="btn btn-secondary border mr-2">Supplier</button>
-			<input id="buttons" name="logout" type="button" value="Logout" onclick="out();" class="logout btn btn-danger border mr-2"/> 
+			<button id="buttons" onclick="window.location.href='employee/profile.php'" class="btn btn-secondary border mr-2 ml-2"><i class="fas fa-user-circle"></i> My Profile</button>
+			<button id="buttons" onclick="window.location.href='employee/inventory.php'" class="btn btn-secondary border mr-2"><i class="fas fa-box-open"></i> Inventory</button>
+			<button id="buttons" onclick="window.location.href='employee/cashflow.php'" class="btn btn-secondary border mr-2"><i class="fas fa-money-bill-wave"></i> Cash-Flow</button>
+			<button id="buttons" name="logout" type="button" onclick="out();" class="logout btn btn-danger border mr-2"/> <i class="fas fa-sign-out-alt"></i> Logout</div>
 		</div>
 	</div>
 	<?php include('add.php');?>

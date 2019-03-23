@@ -4,6 +4,7 @@
 		header('location: index.php');
 	}
 	$added = isset($_GET['added']);
+	$error = isset($_GET['error']);
 	$undelete = isset($_GET['undelete']);
 	$updated = '';
 	$deleted = '';
@@ -37,20 +38,11 @@
 						</tr>
 						<tr>
 							<td valign="baseline"><small class="pb-1">Date:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-clock">&nbsp</i><span id='time'></span></p><small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-calendar-alt">&nbsp</i><span id='time'></span></p><small></td>
 						</tr>
 						<tr>
-							<td valign="baseline"><input type="hidden" id="uname" value="<?php echo $user; ?>" /><small>Customer Name:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5">
-								<select id='custom_id' style='cursor:pointer' class="form-control form-control-sm">
-
-								<?php 
-									if (mysqli_num_rows($show)>0){
-										while ($row = mysqli_fetch_array($show)) {	?>
-								<option value="<?php echo $row['customer_id']; ?>"><?php echo $row['firstname'];?></option>
-								<?php }}?>
-								</p></small></select>
-								
+							<td valign="baseline"><small class="mt-5">Customer Name:<small></td>
+							<td valign="baseline"><small><div class="content p-0 ml-5"><input type="text" class="form-control form-control-sm customer_search" autocomplete="off" data-provide="typeahead" id="customer_search" placeholder="Customer Search" name="customer"/></div>
 							</td>
 							<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></td>
 						</tr>
@@ -94,7 +86,7 @@
 		<div id="sidebar">
 			<div class="mt-1 ">
 			<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span></div>
-   				<input class="form-control" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();">
+   				<input class="form-control" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();"/>
    			</div></div>
 			<div id="product_area" class="table-responsive-sm mt-2" >
 				<table class="w-100 table-striped font-weight-bold" style="cursor: pointer;" id="table1">

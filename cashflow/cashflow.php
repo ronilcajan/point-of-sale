@@ -16,7 +16,7 @@
 			include('../cashflow/base.php');
 		?>
 		<div>
-			<h1 class="ml-4 pt-2"><i class="fas fa-money-bill-alt" style="color:#2196F3;"></i> Cash Management</h1>
+			<h1 class="ml-4 pt-2"><i class="fas fa-money-bill-alt"></i> Cash Management</h1>
 			<hr>
 			<div class="table-responsive mt-4 pl-5 pr-5">
 			<table class="table table-striped" id="cashflow_table" style="margin-top: -22px;">
@@ -38,7 +38,7 @@
 						<td>₱&nbsp<?php echo number_format($row['amount']);?></td>
 						<td><?php echo date('d M Y, g:i A', strtotime($row['transaction_date']));?></td>
 						<td>
-							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-light btn-sm view_data"/><i class="fas fa-eye fa-lg" style="color:#2196F3;"></i></button>
+							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['transaction_id'];?>" class="btn btn-success btn-sm view_data"/><i class="fas fa-eye fa-lg"></i></button>
 						</td>
 					</tr>
 					<?php } ?>

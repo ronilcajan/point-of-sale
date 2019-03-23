@@ -25,12 +25,15 @@
 		  				<input type="hidden" name="user" class="form-control-sm" value="<?php echo $_GET['username'];?>">
 		  				<img class="mb-1" width="150" height="150" src="images/user.png"/>
 		  			</div>
-		  				<small>		  				
-		  				<input class="form-control form-control-sm mb-1" type="text" name="fname" placeholder="Enter First name" required>
-		  				<input class="form-control form-control-sm mb-1" type="text" name="lname" placeholder="Enter Last name" required>
-		  				<input class="form-control form-control-sm mb-1" type="text" name="number" placeholder="Enter Phone number" required>
-		  				<textarea type="text" class="form-control form-control-sm mb-1" name="address" placeholder="Enter Address" required></textarea>
-		  				<label>Choose Picture:</label><input type="file" class="form-control-sm" name="image" required/>
+		  				<small><div class="input-group mb-2"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div>		  				
+		  				<input class="form-control form-control-sm" type="text" name="fname" placeholder="Enter First name" required></div>
+		  				<div class="input-group mb-2"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div>
+		  				<input class="form-control form-control-sm" type="text" name="lname" placeholder="Enter Last name" required></div>
+		  				<div class="input-group mb-2"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div>
+		  				<input class="form-control form-control-sm" type="text" name="number" placeholder="Enter Phone number" required></div>
+		  				<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div>
+		  				<textarea type="text" class="form-control form-control-sm" name="address" placeholder="Enter Address" required></textarea></div>
+		  				<label>Choose Picture:<i class="fas fa-file-upload"></i></label><input type="file" class="form-control-sm" name="image" required/>
 		  				</small>
 
 		  			</div>
@@ -38,7 +41,7 @@
 			</div>
 		</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">&times&nbspCancel</button>
+				<button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
 				<button  type="submit" name="submit" class="btn btn-secondary" form="modal-form">Submit</button>
 			</div>
 		</div>

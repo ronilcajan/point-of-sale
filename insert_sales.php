@@ -1,15 +1,20 @@
 <?php include 'server/connection.php';
 if(isset($_POST['product'])){
-	$user = $_POST['user'];
+	$user = $_SESSION['username'];
 	$price = $_POST['price'];
 	$product = $_POST['product'];
 	$customer = $_POST['customer'];
 	$quantity = $_POST['quantity'];
 	$reciept = array();
+	
 	$query = '';
+	$customer_id = mysqli_query($db, "SELECT customer_id FROM customer WHERE CONCAT(firstname,' ',lastname) LIKE '$customer'");
+	$cust_id 	= mysqli_fetch_array($customer_id);
+	$cust_id_new = $cust_id['customer_id'];
 
-	$sql = "INSERT INTO sales(customer_id,username) VALUES($customer,'$user')";
+	$sql = "INSERT INTO sales(customer_id,username) VALUES($cust_id_new,'$user')";
 	$result = mysqli_query($db,$sql);
+
 	if($result == true){
 		$select = "SELECT reciept_no FROM sales ORDER BY reciept_no DESC LIMIT 1";
 		$res = mysqli_query($db,$select);

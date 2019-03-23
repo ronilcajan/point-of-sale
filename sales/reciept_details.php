@@ -19,7 +19,7 @@
 		?>
 		<div>
 			<div>
-				<h1 class="ml-4 pt-2 pb-4" align="left">Sales Records</h1>
+				<h1 class="ml-4 pt-2 pb-4" align="left"><i class="fas fa-shopping-cart"></i> Sales Records</h1>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
 			<table class="table table-striped table-bordered" id="sales_table" style="margin-top: -22px;">

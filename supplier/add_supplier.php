@@ -12,7 +12,7 @@
 		<?php include('../supplier/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4 mt-2">Supplier Management</h1>
+				<h1 class="ml-4 mt-2"><i class="fas fa-user-tie"></i> Supplier Management</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
@@ -30,29 +30,29 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Company Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="com_name" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-building"></i></span></div><input type="text" name="com_name" class="form-control-sm form-control" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="firstname" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" class="form-control-sm form-control" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="lastname" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" class="form-control-sm form-control" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Address:</td>
-								<td class="pl-5 pb-2"><textarea name="address" required cols="23"></textarea></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div><textarea name="address" required  class="form-control-sm form-control"cols="23"></textarea></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact Number:</td>
-								<td class="pl-5 pb-2"><input type="text" name="number" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input type="text" name="number" class="form-control-sm form-control" required></div></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-4">
-						<button type="submit" name="add" class="btn btn-secondary">Submit</button>
-						<button class="btn btn-danger" onclick="window.location.href='../supplier/supplier.php'" >Cancel</button>
+						<button type="submit" name="add" class="btn btn-secondary"><i class="fas fa-thumbs-up"></i> Submit</button>
+						<button class="btn btn-danger" onclick="window.location.href='../supplier/supplier.php'" ><i class="fas fa-ban"></i> Cancel</button>
 					</div>
 				</form>
 			</div>

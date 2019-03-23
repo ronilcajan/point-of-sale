@@ -16,19 +16,19 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../user/base.php');?>
+		<?php include('../employee/base.php');?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4 pt-2"><i class="fas fa-users"></i> User Management</h1>
+				<h1 class="ml-4 pt-2"><i class="fas fa-users"></i> My Profile</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
 				<div style="width: 250px;height: 250px;">
 					<?php echo "<img class='img-fluid p-2 h-100 w-100' src='../images/".$row['image']."'>";?>
 				</div>
-			<form method="post" enctype="multip+ ':' + seconds + ' ' art/form-data">
+			<form method="post" enctype="multipart/form-data">
 			</div>
-			<div class="second_side mt-2">
+			<div class="second_side">
 					<table class="table-responsive mt-5">
 						<p><?php include('../error.php');?></p>
 						<tbody>
@@ -44,7 +44,7 @@
 						</tbody>
 					</table>
 					<div class="text-left mt-4">
-						<a title="Edit" href="../user/update_profile.php?id=<?php echo $row['id'];?>" class="btn btn-info"><i class="fas fa-user-edit"></i> Edit </a>
+						<a title="Edit" href="update_user.php?id=<?php echo $row['id'];?>" class="btn btn-info"><i class="fas fa-user-edit"></i> Edit </a>
 						<button type="button" id="user" title="Change Password?" class="btn btn-success" data-toggle="modal" data-target="#modal-user"><i class="fas fa-edit"></i> Change Password</button>
 					</div>
 				</form>

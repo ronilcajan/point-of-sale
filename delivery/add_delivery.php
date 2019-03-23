@@ -26,6 +26,8 @@
 								<div class="row mb-1">
 									<div class="col-md-4">
 										<b>SUPPLIER(From)</b><br/>
+										<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-user-tie"></i></span></div>
 										<select name="order_reciever_name" id="order_reciever_name" class="form-control"	>
 										<?php
 										while($row = mysqli_fetch_assoc($result)){
@@ -34,11 +36,13 @@
 										<?php
 										} 
 										?>
-										</select>
+										</select></div>
 									</div>
 									<div class="col-md-4">
 										Transaction No.
-										<input type="text" name="order_no" id="order_no" class="form-control input-sm" placeholder="Enter Transaction no."/>
+										<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-hands-helping"></i></span></div>
+										<input type="text" name="order_no" id="order_no" class="form-control input-sm" required readonly value="<?php echo strtoupper(uniqid()) ?>"/></div>
 									</div>
 								</div>
 								<table id="invoice-item-table" class="table table-bordered table-sm">
@@ -53,12 +57,12 @@
 										<th>Minimum Qty</th>
 										<th>Sell Price</th>
 										<th>Total Amount</th>
-										<th><button type="button" name="add_row" id="add_row" class="btn btn-success btn-sm btn-xs">+</button></th>
+										<th><button type="button" name="add_row" id="add_row" class="btn btn-success btn-sm btn-xs"><i class="fas fa-plus-circle"></i> </button></th>
 									</tr>
 									<tr>
 										<td><span id="sr_no">1</span></td>
 										<td><input type="text" name="barcode" id="barcode1" class="form-control form-control-sm input-sm barcode" placeholder="Barcode"/></td>
-										<td><input type="text" name="product_name" id="product_name1" class="form-control form-control-sm  input-sm product_name" placeholder="Title"/></td>
+										<td><input type="text" name="product_name" id="product_name1" class="form-control form-control-sm input-sm product_name" placeholder="Title"/></td>
 										<td><input type="number" min="1" name="quantity" id="quantity1" data-srno="1" class="form-control form-control-sm input-sm quantity" placeholder="Qty" /></td>
 										<td><input type="text" step="0.01" name="buy_price" id="buy_price1" data-srno="1" class="form-control form-control-sm input-sm buy_price" placeholder="Price" /></td>
 										<td><input type="text" min="1.00" name="unit" id="unit1" data-srno="1" class="form-control form-control-sm  input-sm unit" placeholder="Kilograms"></td>

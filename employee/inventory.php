@@ -7,7 +7,7 @@
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
 	$undelete = isset($_GET['undelete']);
-	$error = isset($_GET['error']);
+	$error = '';
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../products/base.php');?>
+		<?php include('../employee/base2.php');?>
 		<div>
 			<h1 class="ml-4 pt-2"><i class="fas fa-box-open"></i> Product Management</h1>
 			<hr>
@@ -46,9 +46,8 @@
 						<td><?php echo $row['unit'];?></td>
 						<td><?php echo $row['min_stocks'];?></td>
 						<td>
-							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_products.php?id=<?php echo $row['product_no'];?>" class="btn btn-info btn-xs"><i class="fas fa-user-edit"></i></a>
-							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['product_no'];?>" class="btn btn-success btn-xs view_data"><i class="fas fa-eye"></i></button>
-							<button type="button" name="delete" title="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['product_no'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete"><i class="fas fa-trash"></i></button>
+							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['product_no'];?>" class="btn btn-success view_data"><i class="fas fa-eye"></i></button>
+	
 						</td>
 					</tr>
 					<?php } ?>
@@ -75,4 +74,4 @@
 	   </div>  
 	</div>  
 </div>
-<script src="../products/javascript.js"></script>
+<script src="../employee/javascript.js"></script>

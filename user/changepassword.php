@@ -13,8 +13,8 @@
 					<input class="form-control-sm mb-2" type="password" name="confirmpass" placeholder="Confirm Password" required/>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-					<button type="submit" name='changepass' class="btn btn-success">change</button>					
+					<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
+					<button type="submit" name='changepass' class="btn btn-success">Change</button>					
 				</div>
 			</form>
 			</div>

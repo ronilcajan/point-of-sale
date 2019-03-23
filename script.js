@@ -14,6 +14,31 @@ function loadproducts(){
 	}
 };
 
+$(document).ready(function(){
+
+  $('#customer_search').typeahead({
+
+    source: function(query, result)
+    {
+
+        $.ajax({
+          url: 'loadcustomer.php',
+          method: "POST",
+          data:{
+            query:query
+          },
+          dataType: "json",
+          success:function(data)
+          {
+            result($.map(data,function(item){
+              return item;
+            }));
+          }
+        })
+    }
+  });
+});
+
 function GrandTotal(){
   var TotalValue = 0;
   var TotalPriceArr = $('#tableData tr .totalPrice').get()
@@ -46,7 +71,7 @@ $('body').on('click','.js-add',function(){
             swal("Error","Please enter a number!","error");
     		  }else{
     				var total = parseInt(value,10) * parseFloat(price);
-    				$('#tableData').append("<tr class='prd'><td class='barcode text-center'>"+barcode+"</td><td class='text-center'>"+product+"</td><td class='price text-center'>"+accounting.formatMoney(price,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center'>"+unit+"</td><td class='qty text-center'>"+value+"</td><td class='totalPrice text-right'>"+accounting.formatMoney(total,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center p-1'><button class='btn btn-danger btn-sm' type='button' id='delete-row'>&times</button><tr>");
+    				$('#tableData').append("<tr class='prd'><td class='barcode text-center'>"+barcode+"</td><td class='text-center'>"+product+"</td><td class='price text-center'>"+accounting.formatMoney(price,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center'>"+unit+"</td><td class='qty text-center'>"+value+"</td><td class='totalPrice text-right'>"+accounting.formatMoney(total,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center p-1'><button class='btn btn-danger btn-sm' type='button' id='delete-row'><i class='fas fa-times-circle'></i></button><tr>");
 	          GrandTotal();
         }
 			}
@@ -80,15 +105,21 @@ $(document).on('click','.Enter',function(){
 
   var TotalPriceArr = $('#tableData tr .totalPrice').get();
 
+  if($.trim($('#customer_search').val()).length == 0){
+      swal("Warning","Please Enter Customer Name!","warning");
+      return false;
+    }
+
   if (TotalPriceArr == 0){
-    return 0;
+    swal("Warning","No products ordered!","warning");
+    return false;
   }else{
 
     var product = [];
     var quantity = [];
     var price = [];
     var user = $('#uname').val();
-    var customer = $('#custom_id').val();
+    var customer = $('#customer_search').val();
 
     $('.barcode').each(function(){
       product.push($(this).text());
@@ -142,6 +173,9 @@ $(document).on('click','.Enter',function(){
                     location.reload();
                   }
                 })
+              },
+              error:function(data){
+                swal("Error","Please contact the developer for this error!","error");
               }
             });
           }

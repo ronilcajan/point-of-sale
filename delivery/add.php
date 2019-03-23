@@ -15,10 +15,11 @@
 		$user 		= $_SESSION['username'];
 		$transaction = array();
 		$insert = '';
-		$insert1 = '';
 
 		$sql = "INSERT INTO delivery(transaction_no,supplier_id,username) VALUES('$transaction_no',$supplier,'$user')";
 		$result = mysqli_query($db, $sql);
+		$insert1 = "INSERT INTO logs (username,purpose) VALUES('$user','Delivery Added')";
+		mysqli_query($db, $insert1);
 		if($result == true){
 			for($count = 0; $count<count($_POST['barcode']); $count++){
 						$transaction[] = $transaction_no;
@@ -39,7 +40,7 @@
 				if(mysqli_num_rows($result1)>0){
 					while($row = mysqli_fetch_array($result1)){
 						$newqty = $row['quantity'] + $qty_1;
-						$query1 = "UPDATE products SET quantity = $newqty WHERE product_no = '$barcode_1";
+						$query1 = "UPDATE products SET quantity = $newqty WHERE product_no = '$barcode_1'";
 						mysqli_query($db, $query1);
 					}
 				}else{
@@ -52,6 +53,7 @@
 					INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate)
 					VALUES('$transaction1','$barcode_1',$qty_1,$buy_price_1,$tax_1);
 					";
+ 
 				}
 			}
 		}else{
@@ -63,14 +65,15 @@
 		       		if ($result = mysqli_store_result($db)) {
 		            	echo "Inserted";
 		            	mysqli_free_result($result);
-		        	}
-		            
+
+		            }
 	        		if (mysqli_more_results($db)) {
 	            		echo "inserted";
 	        		}
 	    		}while (mysqli_more_results($db) && mysqli_next_result($db));
 			}
-		}			
+		}
+		echo $insert;			
 	}else{
 		echo 'No Product';
 }	

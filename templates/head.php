@@ -5,4 +5,5 @@
 <link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="bootstrap4/css/style.css">
 <link rel="stylesheet" href="bootstrap4/css/all.min.css"/>
+<link rel="stylesheet" href="bootstrap4/css/typeahead.css"/>
 <script src="bootstrap4/jquery/sweetalert.min.js"></script>

@@ -1,5 +1,5 @@
 <?php 
-	include('../cashflow/add.php');
+	include('../employee/add.php');
 	include '../set.php';
 	?>
 <!DOCTYPE html>
@@ -10,11 +10,11 @@
 <body>
 	<div class="contain h-100">
 		<?php 
-			include('../cashflow/base.php');
+			include('../employee/base3.php');
 		?>
 		<div class="main">
 			<div class="side">
-				<h1 class="ml-4"><i class="fas fa-money-bill-alt"></i> Cash Management</h1>
+				<h1 class="ml-4"><i class="fas fa-money-bill-alt"></i> Cash</h1>
 				<hr>
 			</div>
 			<div class="first_side ml-5 mt-5 mr-3">
