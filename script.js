@@ -174,7 +174,8 @@ $(document).on('click','.Enter',function(){
                   }
                 })
               },
-              error:function(data){
+              error: function (jqXHR, textStatus, errorThrown) { 
+                errorFunction();
                 swal("Error","Please contact the developer for this error!","error");
               }
             });

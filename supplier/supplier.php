@@ -45,9 +45,9 @@
 						<td><?php echo $row['address'];?></td>
 						<td><?php echo $row['contact_number'];?></td>
 						<td>
-							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_supplier.php?id=<?php echo $row['supplier_id'];?>" class="btn btn-info btn-xs">Edit</a>
-							<input type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['supplier_id'];?>" class="btn btn-success btn-xs view_data">
-							<input type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['supplier_id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete">
+							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_supplier.php?id=<?php echo $row['supplier_id'];?>" class="btn btn-info btn-xs"><i class="fas fa-user-edit"></i></a>
+							<button type="button" name="view" value="View" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['supplier_id'];?>" class="btn btn-success btn-xs view_data"><i class="fas fa-eye"></i></button>
+							<button type="button" name="delete" title="Delete" value="Delete" style='font-size:10px; border-radius:5px;padding:4px;' data-id="<?php echo $row['supplier_id'];?>"  class="delete btn btn-danger btn-xs" data-toggle="#deleteModal" title="Delete"><i class="fas fa-trash"></i></button>
 						</td>
 					</tr>
 					<?php } ?>

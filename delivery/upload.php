@@ -8,20 +8,23 @@ include('../server/connection.php');
 		$target   		= "../csv_files/".basename($_FILES['file']['name']);
 		$supplier = $_POST['supplier'];
 		$transaction = $_POST['transaction_no'];
-		$trans = $_POST['transaction_no'];
 		$user = $_SESSION['username'];
 		$add = '';
 
 		if($_FILES['file']['name']){
 			$filename = explode(".", $_FILES['file']['name']);
-
-			$query = "INSERT INTO delivery (transaction_no,supplier_id,username) VALUES('$transaction',$supplier,'$user')";
+			$show_company = "SELECT supplier_id FROM supplier WHERE company_name = '$supplier'";
+			$show_company1 = mysqli_query($db, $show_company);
+			$row = mysqli_fetch_array($show_company1);
+			$supplier_id = $row['supplier_id'];
+			$query = "INSERT INTO delivery (transaction_no,supplier_id,username) VALUES('$transaction',$supplier_id,'$user')";
 			$insert = mysqli_query($db,$query);
 			if($insert == true){
 				
 				if($filename[1] == 'csv'){
 					$handle = fopen($target, "r");
-					while ($data = fgetcsv($handle)) {
+					fgets($handle);
+					while ($data = fgetcsv($handle,10000,",")) {
 						$barcode 		= mysqli_real_escape_string($db , $data[0]);
 						$product_name 	= mysqli_real_escape_string($db , $data[1]);
 						$buy_price 		= mysqli_real_escape_string($db , $data[2]);
@@ -32,7 +35,7 @@ include('../server/connection.php');
 						$sell     = $tax_rate/100;
 						$sell_price = $buy_price * $sell;
 
-						$query1 = "SELECT product_no,quantity FROM products WHERE product_no='$barcode'";
+						$query1 = "SELECT quantity FROM products WHERE product_no='$barcode'";
 						$select = mysqli_query($db, $query1);
 
 						if(mysqli_num_rows($select)>0){
@@ -41,12 +44,14 @@ include('../server/connection.php');
 								$insert = "UPDATE products SET quantity=$newqty, sell_price=$sell_price WHERE product_no='$barcode'";
 								mysqli_query($db, $insert);
 							}
+							$delivered = "INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate) VALUES('$transaction','$barcode',$quantity,$buy_price,$tax_rate)";
+							mysqli_query($db, $delivered);
 						}else{
 							$add = "INSERT INTO products(product_no,product_name,sell_price,quantity,unit,min_stocks) VALUES ('$barcode','$product_name',$sell_price,$quantity,'$unit',$min_stocks)";
 
 							mysqli_query($db, $add);
 
-		  					$add1 = "INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate) VALUES('$transaction1','$barcode',$quantity,$buy_price,$tax_rate)";
+		  					$add1 = "INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate) VALUES('$transaction','$barcode',$quantity,$buy_price,$tax_rate)";
 		  					mysqli_query($db, $add1);
 		  					
 						}	
@@ -57,7 +62,7 @@ include('../server/connection.php');
 						fclose($handle);
 						$logs 	= "INSERT INTO logs (username,purpose) VALUES('$user','Delivery Added')";
  						mysqli_query($db,$logs);
-						header('location: ../delivery/delivery.php?added="1"');
+						header('location: ../delivery/delivery.php?success="1"');
 					}else{
 						array_push($error, "Something went wrong!");
 						

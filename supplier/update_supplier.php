@@ -21,12 +21,12 @@
 			<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
 		</div>
 <div class="sidebar">
-	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../supplier/supplier.php'">Supplier List</button>
-	<button id="sidebar_button" onclick="window.location.href='../supplier/supplier.php'">Add Supplier</button>
-	<button id="sidebar_button" type="button" data-toggle="popover" title="Supplier Management" data-content="Here you will create, update, delete and view supplier profiles." data-placement="bottom">Help?</button>
+	<button><h3><i class="fas fa-tachometer-alt"></i> Dashboard</h3></button>
+	<button id="sidebar_button" onclick="window.location.href='../supplier/supplier.php'"><i class="fas fa-list-ul"></i> Supplier List</button>
+	<button id="sidebar_button" onclick="window.location.href='../supplier/supplier.php'"><i class="fas fa-user-plus"></i> Add Supplier</button>
+	<button id="sidebar_button" type="button" data-toggle="popover" title="Supplier Management" data-content="Here you will create, update, delete and view supplier profiles." data-placement="bottom"><i class="fas fa-question"></i>  Help</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><i class="fas fa-arrow-alt-circle-left"></i> Back</button>
 	</div>
 </div>
 		<div class="main">
@@ -47,33 +47,33 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Company Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="com_name" value="<?php echo $row['company_name'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-building"></i></span></div><input type="text" name="com_name" class="form-control-sm form-control" value="<?php echo $row['company_name'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="firstname" value="<?php echo $row['firstname'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" class="form-control-sm form-control" value="<?php echo $row['firstname'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><input type="text" name="lastname" value="<?php echo $row['lastname'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" class="form-control-sm form-control" value="<?php echo $row['lastname'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Address:</td>
-								<td class="pl-5 pb-2"><textarea name="address" required cols="23"><?php echo $row['address'];?></textarea></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div><textarea name="address" class="form-control-sm form-control" required cols="23"><?php echo $row['address'];?></textarea></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact Number:</td>
-								<td class="pl-5 pb-2"><input type="text" name="number" value="<?php echo $row['contact_number'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input class="form-control-sm form-control" type="text" name="number" value="<?php echo $row['contact_number'];?>" required></div></td>
 							</tr>
-								<td>Change Photo:</td>
+								<td><i class="fas fa-file-upload"></i> Change Photo:</td>
 								<td><input class="form-control-sm pl-5" type="file" name="image"></td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-3">
 						<input type="hidden" name="id" value="<?php echo $row['supplier_id'];?>">
-						<button type="submit" name="update" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../supplier/supplier.php'" >Cancel</button>
+						<button type="submit" name="update" class="btn btn-secondary"><i class="fas fa-thumbs-up"></i> Update</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../supplier/supplier.php'" ><i class="fas fa-ban"></i> Cancel</button>
 					<?php } ?>
 					</div>
 				</form>

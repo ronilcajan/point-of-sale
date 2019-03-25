@@ -10,14 +10,18 @@
 		$tax		= $_POST['tax_rate'];
 		$min_qty 	= $_POST['min_qty'];
 		$sell_price = $_POST['sell_price'];
-		$supplier 	= $_POST['supplier'];
-		$transaction_no = $_POST['transaction_no'];
-		$user 		= $_SESSION['username'];
+		$supplier 	= mysqli_real_escape_string($db,$_POST['supplier']);
+		$transaction_no = mysqli_real_escape_string($db,$_POST['transaction_no']);
+		$user 		= mysqli_real_escape_string($db,$_SESSION['username']);
 		$transaction = array();
 		$insert = '';
-
-		$sql = "INSERT INTO delivery(transaction_no,supplier_id,username) VALUES('$transaction_no',$supplier,'$user')";
+		$search = "SELECT supplier_id FROM supplier WHERE company_name = '$supplier'";
+		$show = mysqli_query($db,$search);
+		$row = mysqli_fetch_array($show);
+		$supplier_1 = $row['supplier_id'];
+		$sql = "INSERT INTO delivery(transaction_no,supplier_id,username) VALUES('$transaction_no',$supplier_1,'$user')";
 		$result = mysqli_query($db, $sql);
+
 		$insert1 = "INSERT INTO logs (username,purpose) VALUES('$user','Delivery Added')";
 		mysqli_query($db, $insert1);
 		if($result == true){
@@ -40,9 +44,13 @@
 				if(mysqli_num_rows($result1)>0){
 					while($row = mysqli_fetch_array($result1)){
 						$newqty = $row['quantity'] + $qty_1;
-						$query1 = "UPDATE products SET quantity = $newqty WHERE product_no = '$barcode_1'";
+						$query1 = "UPDATE products SET product_name='$product_1',sell_price = $sell_price_1,quantity = $newqty,unit = '$unit_1',min_stocks=$min_qty_1 WHERE product_no = '$barcode_1'";
 						mysqli_query($db, $query1);
 					}
+					$insert .= "
+					INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate)
+					VALUES('$transaction1','$barcode_1',$qty_1,$buy_price_1,$tax_1);
+					";
 				}else{
 					$insert .= "
 					INSERT INTO products(product_no,product_name,sell_price,quantity,unit,min_stocks) 
@@ -56,6 +64,7 @@
  
 				}
 			}
+			echo $query1,$sql;
 		}else{
 			echo "error";
 		}
@@ -75,5 +84,5 @@
 		}
 		echo $insert;			
 	}else{
-		echo 'No Product';
+		echo 'No Product',$result;
 }	

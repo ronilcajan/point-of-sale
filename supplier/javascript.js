@@ -2,7 +2,7 @@ $(function () {
   		$('[data-toggle="popover"]').popover()
 	});
 	$(function(){
-		$('input.delete').click(function(e){
+		$('button.delete').click(function(e){
 			e.preventDefault();
 			var link = this;
 			var deleteModal = $("#deleteModal");

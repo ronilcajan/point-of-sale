@@ -53,7 +53,28 @@ $(document).ready(function(){
 		count -= 1;
 		$('#quantity').val(count);
 	});
+	function barcode_load(count){
+			var barcode = $("#barcode"+count).val();
+			$.ajax({
+				url: "../delivery/loadbarcode.php",
+				data : {
+					barcode:barcode
+				},
+				method : "POST",
+				dataType: "json",
+				success :function(data){
+					for(x in data){
+						$('#product_name'+count).val(data.product_name);
+						$('#quantity'+count).val(data.quantity);
+						$('#buy_price'+count).val(data.buy_price);
+						$('#unit'+count).val(data.unit);
+						$('#tax_rate'+count).val(data.tax_rate);
+						$('#sell_price'+count).val(data.sell_price);
+					}
+				}
+			});
 
+	}
 	function final_total(count){
 		var final_product_amount = 0;
 		for(j=1;j<=count;j++){
@@ -92,6 +113,9 @@ $(document).ready(function(){
 	$(document).on('blur', '.min_qty', function(){
 		final_total(count);
 	});
+	$(document).on('change', '.barcode', function(){
+		barcode_load(count);
+	});
 	$(document).on('click','#create_delivery',function(){
 
 		var barcode = [];
@@ -103,7 +127,7 @@ $(document).ready(function(){
 		var min_qty = [];
 		var sell_price = [];
 		var total_amount = [];
-		var supplier = $('#order_reciever_name').val();
+		var supplier = $('#supplier_search').val();
 		var transaction_no = $('#order_no').val();
 		var order_date = $('#order_date').val();
 		$('.barcode').each(function(){
@@ -131,7 +155,7 @@ $(document).ready(function(){
 			sell_price.push($(this).val().replace("P",""));
 		});
 
-		if($.trim($('#order_reciever_name').val()).length == 0){
+		if($.trim($('#supplier_search').val()).length == 0){
 			swal("Warning","Please Enter Reciever Name!","warning");
 			return false;
 		}
@@ -187,9 +211,35 @@ $(document).ready(function(){
 			method: "POST",
 			data: {barcode:barcode,product_name:product_name,quantity:quantity,buy_price:buy_price,unit:unit,tax_rate:tax_rate,min_qty:min_qty,sell_price:sell_price,supplier:supplier,transaction_no:transaction_no,order_date:order_date},
 			success: function(data){
-				window.location.href='../delivery/delivery.php';
+				alert(data);
+				window.location.href='../delivery/delivery.php?success="1"';
 			}
 		});
 
 	})
+});
+
+$(document).ready(function(){
+
+  $('#supplier_search').typeahead({
+
+    source: function(query, result)
+    {
+
+        $.ajax({
+          url: '../delivery/loadsupplier.php',
+          method: "POST",
+          data:{
+            query:query
+          },
+          dataType: "json",
+          success:function(data)
+          {
+            result($.map(data,function(item){
+              return item;
+            }));
+          }
+        })
+    }
+  });
 });

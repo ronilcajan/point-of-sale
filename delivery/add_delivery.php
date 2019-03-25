@@ -1,8 +1,7 @@
 <?php 
 	include('../server/connection.php');	
 	include '../set.php';
-	$sql = "SELECT supplier_id,company_name FROM supplier";
-	$result = mysqli_query($db,$sql);
+	$success = isset($_GET['success']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,14 +11,19 @@
 		#invoice-item-table tr th{
 			font-size: 12px;
 		}
+		ul.typeahead.dropdown-menu{
+			margin-top: 0px;
+		}
 	</style>
 </head>
 <body>
+	
 	<div class="contain h-100">
 		<?php include('../delivery/base.php');?>
 		<div>
+			<div class="mt-1 ml-5"><label><b>New Supplier:</b></label><button class="btn-sm btn-info border" data-toggle="modal" data-target=".modal"  style="padding:5px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></div>
 			<form method="post" id="invoice_id">
-				<div class="table-responsive mt-4 pl-5 pr-5">
+				<div class="table-responsive mt-1 pl-5 pr-5">
 					<table class="table table-striped table-bordered table-sm">
 						<tr>
 							<td>
@@ -28,15 +32,7 @@
 										<b>SUPPLIER(From)</b><br/>
 										<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
 										<i class="fas fa-user-tie"></i></span></div>
-										<select name="order_reciever_name" id="order_reciever_name" class="form-control"	>
-										<?php
-										while($row = mysqli_fetch_assoc($result)){
-										?>
-											<option value="<?php echo $row['supplier_id'];?>"><?php echo $row['company_name'];?></option>
-										<?php
-										} 
-										?>
-										</select></div>
+										<input type="text" class="form-control form-control-sm supplier_search" autocomplete="off" data-provide="typeahead" id="supplier_search" placeholder="Supplier Search" name="supplier"/></div>
 									</div>
 									<div class="col-md-4">
 										Transaction No.
@@ -85,10 +81,13 @@
 				</form>
 		</div>
 	</div>
-
+	
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
 	<script src="../bootstrap4/jquery/datepicker.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
+	<script src="../bootstrap4/js/typeahead1.js"></script>
 	<script src="../delivery/javascript.js"></script>
+
 </body>
 </html>
+<?php include('../delivery/add_supplier.php');?>

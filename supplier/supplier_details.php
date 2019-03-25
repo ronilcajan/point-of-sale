@@ -3,7 +3,7 @@
 	include '../set.php';
 	
 	$id = $_GET['id'];
-	$sql = "SELECT * FROM supplier,delivery,products,product_delivered WHERE supplier.supplier_id = '$id' AND delivery.supplier_id = '$id' AND products.product_no = product_delivered.product_id GROUP BY products.product_no";
+	$sql = "SELECT * FROM supplier,delivery,product_delivered,products WHERE supplier.supplier_id = '$id' AND delivery.supplier_id = '$id' AND delivery.transaction_no = product_delivered.transaction_no AND products.product_no = product_delivered.product_id GROUP BY products.product_no";
 	$result	= mysqli_query($db, $sql);
 
 
@@ -44,7 +44,7 @@
 						while($row = mysqli_fetch_array($result)){
 				  	?>
 					<tr class="table-active">
-						<td><?php echo $row['transaction_no'];?></td>
+						<td><?php echo $row['product_no'];?></td>
 						<td><?php echo $row['product_name'];?></td>
 						<td><?php echo $row['sell_price'];?></td>
 						<td><?php echo $row['quantity'];?></td>

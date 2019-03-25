@@ -1,6 +1,7 @@
 <?php
 	include("../server/connection.php");
 	include '../set.php';
+	$success = isset($_GET['success']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,10 @@
 	<div class="contain h-100">
 		<?php 
 			include('../delivery/base.php');
+
+			if($success){
+			echo '<script>swal("Success","Successfully Added!","success");</script>';
+			}
 		?>
 		<div class="pr-1">
 			<div>

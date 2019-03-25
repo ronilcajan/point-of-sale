@@ -1,12 +1,9 @@
 <?php 
 	include('../server/connection.php');
 	include '../set.php';
-
+	$success = isset($_GET['success']);
 	$error = array();
 	$alert = array();
-
-	$sql = "SELECT supplier_id,company_name FROM supplier";
-	$result = mysqli_query($db,$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +17,11 @@
 </head>
 <body>
 	<div class="contain h-100">
-		<?php include('../delivery/base.php');?>
+		<?php include('../delivery/base.php');
+			if($success){
+			echo '<script>swal("Success","Successfully Added!","success");</script>';
+			}
+		?>
 		<div class="main">
 			<div class="side">
 				<h1 class="ml-4 pt-2" align="left"><i class="fas fa-truck"></i> Deliveries</h1>
@@ -55,17 +56,9 @@
 								<td class="pl-5 pb-1">
 									<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">
 										<i class="fas fa-user-tie"></i></span></div>
-									<select name="supplier" style='cursor:pointer' class='form-control-sm form-control' required>
-									<?php 
-									if (mysqli_num_rows($result)>0) {
-										while ($row = mysqli_fetch_assoc($result)) {
-									?>
-									<option value="<?php echo $row['supplier_id']; ?>"><?php echo $row['company_name'];?></option>
-								<?php
-								}}?>
-									</select></td>
+									<input type="text" class="form-control form-control-sm supplier_search" autocomplete="off" data-provide="typeahead" id="supplier_search" placeholder="Supplier Search" name="supplier"/></td>
 								</td>
-
+								<td valign="baseline"><div class="ml-3"><button class="btn-sm btn-info border" data-toggle="modal" data-target=".modal"  style="padding:1px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></div></td>
 							</tr>
 							<tr>
 								<td valign="baseline"><small>Product Barcode:</small></td>
@@ -113,11 +106,10 @@
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="../bootstrap4/jquery/datepicker.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
-	<script>
-		$(function () {
-  			$('[data-toggle="popover"]').popover()
-	})
-	</script>
+	<script src="../bootstrap4/js/typeahead1.js"></script>
+	<script src="../delivery/javascript.js"></script>
 </body>
 </html> 
+<?php include('../delivery/add_supplier1.php');?>
