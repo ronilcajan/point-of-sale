@@ -21,6 +21,7 @@
 		if ($password != $password1){
 		  array_push($error, "The Password did not match"); 
 		}
+
 		if (count($error) == 0){
 			$password = md5($password1);
 			$sql  = "INSERT INTO users (username,firstname,lastname,position,contact_number,password,image) VALUES ('$username','$firstname','$lastname','$position','$number','$password','$image')";

@@ -10,6 +10,9 @@ if(isset($_POST['product'])){
 	$query = '';
 	$customer_id = mysqli_query($db, "SELECT customer_id FROM customer WHERE CONCAT(firstname,' ',lastname) LIKE '$customer'");
 	$cust_id 	= mysqli_fetch_array($customer_id);
+	if($cust_id == false){
+		echo "failure";
+	}else{
 	$cust_id_new = $cust_id['customer_id'];
 
 	$sql = "INSERT INTO sales(customer_id,username) VALUES($cust_id_new,'$user')";
@@ -54,16 +57,17 @@ if(isset($_POST['product'])){
 			}
 		} 
 	}else{
-		echo "error";
+		echo "failure";
 	}
 	
 	if ($query != ''){
 		if(mysqli_multi_query($db,$query)){
-			echo "Item Inserted";
+			echo "success";
 		}else{
-			echo "Error";
+			echo "failure";
 		}
 	}else{
-		echo 'No Product';
+		echo 'failure';
 	}
+}
 }

@@ -17,3 +17,7 @@
 	if($error){
 		echo '<script>swal("","Cannot Delete this item!","warning");</script>';
 	}
+	if($failure){
+		echo '<script>swal("Unsuccesful","Customer not found!","error");</script>';
+	}
+

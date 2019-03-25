@@ -2,6 +2,7 @@
 	include('../server/connection.php');
 	include '../set.php';
 	$success = isset($_GET['success']);
+	$failure = isset($_GET['failure']);
 	$error = array();
 	$alert = array();
 ?>
@@ -20,6 +21,9 @@
 		<?php include('../delivery/base.php');
 			if($success){
 			echo '<script>swal("Success","Successfully Added!","success");</script>';
+			}
+			if($failure){
+			echo '<script>swal("Error","Supplier name not found!","error");</script>';
 			}
 		?>
 		<div class="main">

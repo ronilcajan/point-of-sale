@@ -29,11 +29,11 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Purpose:</td>
-								<td class="pl-5 pb-2"><textarea name="purpose" required cols="28" rows="8" class="form-control">Cash-in</textarea></td>
+								<td class="pl-5 pb-2"><textarea name="purpose" required placeholder="Enter Purpose" cols="28" rows="8" class="form-control">Cash-in</textarea></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Amount:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">₱</span></div><input type="number" name="amount" class="form-control" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">₱</span></div><input type="number" name="amount" class="form-control" placeholder="Enter amount" required></div></td>
 							</tr>
 						</tbody>
 					</table>

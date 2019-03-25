@@ -47,19 +47,19 @@
 						<tbody>
 							<tr>
 								<td valign="baseline">First Name:</td>
-								<td class="pl-5 pb-1"><input type="text" name="fname" value="<?php echo $row['firstname'];?>" required></td>
+								<td class="pl-5 pb-1"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="fname" value="<?php echo $row['firstname'];?>" class="form-control-sm form-control" pattern="[A-Za-z]+" title="Name must not contain numbers or spaces e.g John12" required></div></td>
 							</tr>
 							<tr>
 								<td valign="baseline">Last Name:</td>
-								<td class="pl-5 pb-1"><input type="text" name="lname" value="<?php echo $row['lastname'];?>" required></td>
+								<td class="pl-5 pb-1"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lname" value="<?php echo $row['lastname'];?>" class="form-control form-control-sm" pattern="[A-Za-z]+" title="Name must not contain numbers or spaces e.g John12" required></div></td>
 							</tr>
 							<tr>
 								<td valign="baseline">Address:</td>
-								<td class="pl-5 pb-1"><textarea name="address" required cols="23"><?php echo $row['address'];?></textarea></td>
+								<td class="pl-5 pb-1"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div><textarea name="address" pattern="[A-Za-z0-9]+" class="form-control form-control-sm" required cols="23"><?php echo $row['address'];?></textarea></div></td>
 							</tr>
 							<tr>
 								<td valign="baseline">Contact Number:</td>
-								<td class="pl-5 pb-1"><input type="text" name="number" value="<?php echo $row['contact_number'];?>" required></td>
+								<td class="pl-5 pb-1"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input type="text" name="number" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Phone Number (Format: +99(99)9999-9999)' class="form-control-sm form-control" value="<?php echo $row['contact_number'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td>Change Photo:</td>
@@ -69,8 +69,8 @@
 					</table>
 					<div class="text-left mt-2">
 						<input type="hidden" name="id" value="<?php echo $row['customer_id'];?>">
-						<button type="submit" name="update_customer" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../customer/customer.php'" >Cancel</button>
+						<button type="submit" name="update_customer" class="btn btn-secondary"><i class="fas fa-thumbs-up"></i> Update</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../customer/customer.php'" ><i class="fas fa-ban"></i> Cancel</button>
 					<?php } ?>
 					</div>
 				</form>

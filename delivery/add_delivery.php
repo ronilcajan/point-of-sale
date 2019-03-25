@@ -2,6 +2,7 @@
 	include('../server/connection.php');	
 	include '../set.php';
 	$success = isset($_GET['success']);
+	$failure = isset($_GET['failure']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,11 @@
 <body>
 	
 	<div class="contain h-100">
-		<?php include('../delivery/base.php');?>
+		<?php include('../delivery/base.php');
+		if($failure){
+			echo '<script>swal("Unsuccesful","Customer not found!","error");</script>';
+		}
+		?>
 		<div>
 			<div class="mt-1 ml-5"><label><b>New Supplier:</b></label><button class="btn-sm btn-info border" data-toggle="modal" data-target=".modal"  style="padding:5px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></div>
 			<form method="post" id="invoice_id">
@@ -57,13 +62,13 @@
 									</tr>
 									<tr>
 										<td><span id="sr_no">1</span></td>
-										<td><input type="text" name="barcode" id="barcode1" class="form-control form-control-sm input-sm barcode" placeholder="Barcode"/></td>
+										<td><input type="text" name="barcode" id="barcode1" class="form-control form-control-sm input-sm barcode" placeholder="Barcode" pattern="[A-Za-z]+" title="No number on product name"/></td>
 										<td><input type="text" name="product_name" id="product_name1" class="form-control form-control-sm input-sm product_name" placeholder="Title"/></td>
 										<td><input type="number" min="1" name="quantity" id="quantity1" data-srno="1" class="form-control form-control-sm input-sm quantity" placeholder="Qty" /></td>
-										<td><input type="text" step="0.01" name="buy_price" id="buy_price1" data-srno="1" class="form-control form-control-sm input-sm buy_price" placeholder="Price" /></td>
-										<td><input type="text" min="1.00" name="unit" id="unit1" data-srno="1" class="form-control form-control-sm  input-sm unit" placeholder="Kilograms"></td>
-										<td><input type="number" name="tax_rate" id="tax_rate1" data-srno="1" class="form-control form-control-sm  input-sm tax_rate" placeholder="%"/></td>
-										<td><input type="number" min="1" name="min_qty" id="min_qty1" data-srno="1" class="form-control form-control-sm  input-sm min_qty" placeholder="Qty" /></td>
+										<td><input type="number" step="0.01" min="0.00" name="buy_price" id="buy_price1" data-srno="1" class="form-control form-control-sm input-sm buy_price" placeholder="Price" /></td>
+										<td><input type="text" name="unit" id="unit1" data-srno="1" class="form-control form-control-sm  input-sm unit" pattern="[A-Za-z0-9]+" placeholder="Kilograms"></td>
+										<td><input type="number" min="0" name="tax_rate" id="tax_rate1" data-srno="1" class="form-control form-control-sm  input-sm tax_rate" placeholder="%"/></td>
+										<td><input type="number" min="1" name="min_qty" id="min_qty1" data-srno="1" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>
 										<td><input type="text" name="sell_price" readonly id="sell_price1" data-srno="1" class="form-control form-control-sm input-sm sell_price" placeholder="Price+Tax"></td>
 										<td><input type="text" name="total_amount" readonly id="total_amount1" data-srno="1" class="form-control input-sm form-control-sm total_amount" placeholder="Sum"></td>
 									</tr>								

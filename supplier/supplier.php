@@ -9,6 +9,7 @@
 	$updated = isset($_GET['updated']);
 	$undelete = isset($_GET['undelete']);
 	$error = '';
+	$failure = "";
 ?>
 <!DOCTYPE html>
 <html>

@@ -8,6 +8,8 @@
 	$undelete = isset($_GET['undelete']);
 	$updated = '';
 	$deleted = '';
+	$failure = isset($_GET['failure']);
+	
 	$query 	= "SELECT * FROM `customer`";
 	$show	= mysqli_query($db,$query);
 	if(isset($_SESSION['username'])){

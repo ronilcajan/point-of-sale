@@ -47,23 +47,23 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Company Name:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-building"></i></span></div><input type="text" name="com_name" class="form-control-sm form-control" value="<?php echo $row['company_name'];?>" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-building"></i></span></div><input type="text" name="com_name" pattern="[A-Za-z0-9]+" title="Name must not contain numbers or spaces. e.g John12" class="form-control-sm form-control" value="<?php echo $row['company_name'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" class="form-control-sm form-control" value="<?php echo $row['firstname'];?>" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" pattern="[A-Za-z]+" title="Name must not contain numbers or spaces e.g John12" class="form-control-sm form-control" value="<?php echo $row['firstname'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" class="form-control-sm form-control" value="<?php echo $row['lastname'];?>" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" pattern="[A-Za-z]+" title="Name must not contain numbers or spaces e.g John12" class="form-control-sm form-control" value="<?php echo $row['lastname'];?>" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Address:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div><textarea name="address" class="form-control-sm form-control" required cols="23"><?php echo $row['address'];?></textarea></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span></div><textarea name="address" pattern="[A-Za-z0-9]+" class="form-control-sm form-control" required cols="23"><?php echo $row['address'];?></textarea></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact Number:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input class="form-control-sm form-control" type="text" name="number" value="<?php echo $row['contact_number'];?>" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input class="form-control-sm form-control" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Phone Number (Format: +99(99)9999-9999)' type="text" name="number" value="<?php echo $row['contact_number'];?>" required></div></td>
 							</tr>
 								<td><i class="fas fa-file-upload"></i> Change Photo:</td>
 								<td><input class="form-control-sm pl-5" type="file" name="image"></td>

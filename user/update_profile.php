@@ -47,15 +47,15 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Firstname:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" value="<?php echo $row['firstname'];?>" class="form-control form-control-sm" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="firstname" pattern="[A-Za-z]+" title="Name must not contain numbers or spaces. e.g John12" value="<?php echo $row['firstname'];?>" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Lastname:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="lastname" value="<?php echo $row['lastname'];?>" class="form-control form-control-sm" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input pattern="[A-Za-z]+" title="Name must not contain numbers or spaces. e.g John12" type="text" name="lastname" value="<?php echo $row['lastname'];?>" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Contact number:</td>
-								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input type="number" name="number" value="<?php echo $row['contact_number'];?>" class="form-control form-control-sm" required></div></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span></div><input type="text" name="number" pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Phone Number (Format: +99(99)9999-9999)' value="<?php echo $row['contact_number'];?>" class="form-control form-control-sm" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Position:</td>

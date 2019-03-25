@@ -112,7 +112,7 @@ $(document).on('click','.Enter',function(){
 
   if (TotalPriceArr == 0){
     swal("Warning","No products ordered!","warning");
-    return false;
+    return false; 
   }else{
 
     var product = [];
@@ -163,20 +163,22 @@ $(document).on('click','.Enter',function(){
               method:"POST",
               data:{product:product, price:price, user:user, customer:customer, quantity:quantity},
               success: function(data){
-                swal({
-                  title: "Change is " + accounting.formatMoney(change,{symbol:"₱",format: "%s %v"}),
+                
+                if( data == "success"){
+                  swal({
+                    title: "Change is " + accounting.formatMoney(change,{symbol:"₱",format: "%s %v"}),
                     icon: "success",
                     buttons: "Okay",
                   })
-                .then((okay)=>{
-                  if(okay){
-                    location.reload();
-                  }
-                })
-              },
-              error: function (jqXHR, textStatus, errorThrown) { 
-                errorFunction();
-                swal("Error","Please contact the developer for this error!","error");
+                  .then((okay)=>{
+                    if(okay){
+                      location.reload();
+                    }
+                  })
+                }else{
+                  window.location.href='main.php?'+data;
+                }
+                
               }
             });
           }

@@ -57,6 +57,7 @@
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
+	<script src="../bootstrap4/js/typeahead1.js"></script>
 	<script src="../delivery/script.js"></script>
 </body>
 </html>
