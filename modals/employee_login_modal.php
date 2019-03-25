@@ -7,8 +7,8 @@
 			<form method="post" action="">
 			<div class="modal-body">
 				<div>
-					<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span></div>
-					<input class="form-control-sm form-control" type="text" name="username" placeholder="Enter Username" required/></div><br>
+					<div class="input-group mb-1"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span></div>
+					<input class="form-control-sm form-control" type="text" name="username" placeholder="Enter Username" required/></div>
 					<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span></div>
 					<input class="form-control-sm form-control" type="password" name="password" placeholder="Enter Password" required/>
 					<input type="hidden" name="position" value="Employee"/></div>

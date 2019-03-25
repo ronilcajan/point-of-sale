@@ -23,7 +23,7 @@ $(document).ready(function(){
 		html_code += '<td><input type="number" name="quantity" min="1" id="quantity'+count+'" data-srno="'+count+'" placeholder="Qty"  class="form-control form-control-sm nput-sm quantity" /></td>';
 		html_code += '<td><input type="number" name="buy_price" min="0.00" step="0.00" placeholder="Price" id="buy_price'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm buy_price"></td>';
 		html_code += '<td><input type="text" name="unit" pattern="[A-Za-z]+" title="No number on unit" id="unit'+count+'" placeholder="Kilograms" data-srno="'+count+'" class="form-control form-control-sm input-sm unit"></td>';
-		html_code += '<td><input type="number" name="tax_rate" id="tax_rate'+count+'" placeholder="%" data-srno="'+count+'" class="form-control form-control-sm input-sm tax_rate"></td>';
+		html_code += '<td><input type="number" name="tax_rate" min="1" id="tax_rate'+count+'" placeholder="%" data-srno="'+count+'" class="form-control form-control-sm input-sm tax_rate"></td>';
 		html_code += '<td><input type="number" name="min_qty" min="1" id="min_qty'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>';
 		html_code += '<td><input type="text" name="sell_price" readonly id="sell_price'+count+'" placeholder="Price+Tax" data-srno="'+count+'" class="form-control form-control-sm input-sm sell_price number_only"></td>';		
 		html_code += '<td><input type="text" name="total_amount" readonly id="total_amount'+count+'" placeholder="Sum" data-srno="'+count+'" class="form-control form-control-sm input-sm total_amount"></td>';

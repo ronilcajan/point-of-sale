@@ -26,7 +26,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
-					<button type="submit" name='changepass' class="btn btn-success">Change</button>					
+					<button type="submit" name='changepass' class="btn btn-success"><i class="fas fa-user-edit"></i> Change</button>					
 				</div>
 			</form>
 			</div>

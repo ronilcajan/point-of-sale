@@ -67,7 +67,7 @@
 										<td><input type="number" min="1" name="quantity" id="quantity1" data-srno="1" class="form-control form-control-sm input-sm quantity" placeholder="Qty" /></td>
 										<td><input type="number" step="0.01" min="0.00" name="buy_price" id="buy_price1" data-srno="1" class="form-control form-control-sm input-sm buy_price" placeholder="Price" /></td>
 										<td><input type="text" name="unit" id="unit1" data-srno="1" class="form-control form-control-sm  input-sm unit" pattern="[A-Za-z0-9]+" placeholder="Kilograms"></td>
-										<td><input type="number" min="0" name="tax_rate" id="tax_rate1" data-srno="1" class="form-control form-control-sm  input-sm tax_rate" placeholder="%"/></td>
+										<td><input type="number" min="1" name="tax_rate" id="tax_rate1" data-srno="1" class="form-control form-control-sm  input-sm tax_rate" placeholder="%"/></td>
 										<td><input type="number" min="1" name="min_qty" id="min_qty1" data-srno="1" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>
 										<td><input type="text" name="sell_price" readonly id="sell_price1" data-srno="1" class="form-control form-control-sm input-sm sell_price" placeholder="Price+Tax"></td>
 										<td><input type="text" name="total_amount" readonly id="total_amount1" data-srno="1" class="form-control input-sm form-control-sm total_amount" placeholder="Sum"></td>

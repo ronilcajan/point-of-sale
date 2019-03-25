@@ -8,6 +8,7 @@
 	$updated = '';
 	$deleted = '';
 	$error = "";
+	$failure = isset($_GET['failure']);
 	$query 	= "SELECT * FROM `customer`";
 	$show	= mysqli_query($db,$query);
 	if(isset($_SESSION['username'])){
