@@ -58,26 +58,14 @@
 			</div>
 		</div>
 	</div>
+	<?php include('../supplier/view_modal.php');?>
+	<?php include('../supplier/delete_supplier.php');?>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
-	<?php include('../supplier/delete_supplier.php');?>
-	<script>
-		$(document).ready(function(){
-			$('#supplier_table').dataTable();
-		})
-	</script>
+	<script type="text/javascript" src="../supplier/script.js"></script>
+	
 </body>
 </html>
-<div id="dataModal" class="modal fade bd-example-modal-md" data-backdrop="static" data-keyboard="false">  
-	<div class="modal-dialog modal-md"  role="document">  
-		<div class="modal-content">   
-		<div class="modal-body d-inline" id="Contact_Details"></div> 
-			<div class="modal-footer"> 
-				<input type="button" class="btn btn-default btn-success" data-dismiss="modal" value="Okay">   
-			</div>  
-	   </div>  
-	</div>  
-</div>
-<script src="../supplier/javascript.js"></script>
+

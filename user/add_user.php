@@ -33,7 +33,7 @@
 				<input type="hidden" name="size" class="form-control-sm" value="1000000">
 				<input class="form-control-sm" type="file" name="image" required>
 			</div>
-			<div class="second_side">
+			<div class="second_side ml-4">
 					<table class="table-responsive mt-5">
 						<p><?php include('../error.php');?></p>
 						<tbody>

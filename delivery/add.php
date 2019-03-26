@@ -18,11 +18,12 @@
 
 		$search = "SELECT supplier_id FROM supplier WHERE company_name = '$supplier'";
 		$show = mysqli_query($db,$search);
-		$row = mysqli_fetch_array($show);
+		
 
-		if($show == false){
+		if(mysqli_num_rows($show) == 0){
 			echo "failure";
 		}else{
+			$row = mysqli_fetch_array($show);
 			$supplier_1 = $row['supplier_id'];
 			$sql = "INSERT INTO delivery(transaction_no,supplier_id,username) VALUES('$transaction_no',$supplier_1,'$user')";
 			$result = mysqli_query($db, $sql);

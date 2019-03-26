@@ -114,6 +114,6 @@
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<script src="../bootstrap4/js/typeahead1.js"></script>
 	<script src="../delivery/javascript.js"></script>
+	<?php include('../delivery/add_supplier1.php');?>
 </body>
 </html> 
-<?php include('../delivery/add_supplier1.php');?>

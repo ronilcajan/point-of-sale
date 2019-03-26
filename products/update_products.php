@@ -19,12 +19,12 @@
 			<img class="img-fluid w-100 mt-2 ml-1" src="../images/logo.png" >
 		</div>
 	<div class="sidebar">
-	<button><h3>Dashboard</h3></button>
-	<button id="sidebar_button" onclick="window.location.href='../products/products.php'">Product List</button>
-	<button id="sidebar_button" onclick="window.location.href='../delivery/add_delivery.php'">Delivery</button>
-	<button id="sidebar_button" type="button" data-toggle="popover" title="Product Management" data-content="Here you will create, update, delete and view products." data-placement="bottom">Help?</button>
+	<button><h3><i class="fas fa-tachometer-alt"></i>  Dashboard</h3></button>
+	<button id="sidebar_button" onclick="window.location.href='../products/products.php'"><i class="fas fa-list-ul"></i> Product List</button>
+	<button id="sidebar_button" onclick="window.location.href='../delivery/add_delivery.php'"><i class="fas fa-truck"></i> Delivery</button>
+	<button id="sidebar_button" type="button" data-toggle="popover" title="Product Management" data-content="Here you will create, update, delete and view products." data-placement="bottom"><i class="fas fa-question"></i> Help</button>
 	<div class="fixed-bottom">
-		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><img src="../images/reply.svg"></button>
+		<button class="btn m-2 p-2" id="sidebar_button" onclick="window.location.href='../main.php'"><i class="fas fa-arrow-alt-circle-left"></i> Back</button>
 	</div>
 </div>
 		<div class="main">
@@ -46,23 +46,23 @@
 						<tbody>
 							<tr>
 								<td  valign="baseline">Name:</td>
-								<td class="pl-5 pb-2"><input type="text" name="product_name" value="<?php echo $row1['product_name'];?>"required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="product_name" class="form-control-sm form-control" value="<?php echo $row1['product_name'];?>"required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Sell Price:</td>
-								<td class="pl-5 pb-2"><input type="number" name="price" step="0.01" value="<?php echo $row1['sell_price'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="number" name="price" step="0.01" value="<?php echo $row1['sell_price'];?>" class="form-control form-control-sm" required></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Quantity:</td>
-								<td class="pl-5 pb-2"><input type="number" name="qty" value="<?php echo $row1['quantity'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="number" name="qty" value="<?php echo $row1['quantity'];?>" class="form-control-sm form-control" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Unit:</td>
-								<td class="pl-5 pb-2"><input type="text" name="unit" value="<?php echo $row1['unit'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="unit" value="<?php echo $row1['unit'];?>" class="form-control-sm form-control" required></div></td>
 							</tr>
 							<tr>
 								<td  valign="baseline">Minimum stocks:</td>
-								<td class="pl-5 pb-2"><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" required></td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" class="form-control-sm form-control" required></div></td>
 							</tr>
 						<?php }?>
 							<tr>
@@ -72,8 +72,8 @@
 						</tbody>
 					</table>
 					<div class="text-left mt-3">
-						<button type="submit" name="update" class="btn btn-secondary">Update</button>
-						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php'" >Cancel</button>
+						<button type="submit" name="update" class="btn btn-secondary"><i class="fas fa-thumbs-up"></i> Update</button>
+						<button type="button" class="btn btn-danger" onclick="window.location.href='../products/products.php'" ><i class="fas fa-ban"></i> Cancel</button>
 					</div>
 				</form>
 			</div>

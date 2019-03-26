@@ -41,7 +41,7 @@
 			<form method="post" enctype="multipart/form-data" action="../user/update.php">
 				<input type="hidden" name="size" value="1000000">
 			</div>
-			<div class="second_side">
+			<div class="second_side ml-4">
 					<p class="bg-danger w-50"><?php echo $msg;?></p>
 					<table class="mt-5">
 						<tbody>

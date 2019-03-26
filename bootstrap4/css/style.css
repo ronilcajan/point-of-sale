@@ -31,7 +31,7 @@ html,body{
 	grid-template-columns: 25% auto 40%;
 }
 #header_image{
-	height: 100px;
+	height: 80px;
 }
 ul{
 	list-style-type: none;

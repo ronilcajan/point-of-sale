@@ -35,16 +35,16 @@
 				<table class="table-responsive-sm">
 					<tbody>
 						<tr>
-							<td valign="baseline"><small>User Logged on:<small></td>
-							<td valign="baseline"><small><p class="pt-3 ml-5"><i class="fas fa-user-shield"></i> <?php echo $row['position'];}}}?></p><small></td>
+							<td valign="baseline"><small>User Logged on:</small></td>
+							<td valign="baseline"><small><p class="pt-3 ml-5"><i class="fas fa-user-shield"></i> <?php echo $row['position'];}}}?></p></small></td>
 						</tr>
 						<tr>
-							<td valign="baseline"><small class="pb-1">Date:<small></td>
-							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-calendar-alt">&nbsp</i><span id='time'></span></p><small></td>
+							<td valign="baseline"><small class="pb-1">Date:</small></td>
+							<td valign="baseline"><small><p class="p-0 ml-5"><i class="fas fa-calendar-alt">&nbsp</i><span id='time'></span></p></small></td>
 						</tr>
 						<tr>
-							<td valign="baseline"><small class="mt-5">Customer Name:<small></td>
-							<td valign="baseline"><small><div class="content p-0 ml-5"><input type="text" class="form-control form-control-sm customer_search" autocomplete="off" data-provide="typeahead" id="customer_search" placeholder="Customer Search" name="customer"/></div>
+							<td valign="baseline"><small class="mt-5">Customer Name:</small></td>
+							<td valign="baseline"><small><div class="content p-0 ml-5"><input type="text" class="form-control form-control-sm customer_search" autocomplete="off" data-provide="typeahead" id="customer_search" placeholder="Customer Search" name="customer"/></small></div>
 							</td>
 							<td valign="baseline"><button class="btn-sm btn-info border ml-2" data-toggle="modal" data-target=".bd-example-modal-md" style="padding-top: 1px; padding-bottom: 2px;"><span class="badge badge-info"><i class="fas fa-user-plus"></i> New</span></button></td>
 						</tr>

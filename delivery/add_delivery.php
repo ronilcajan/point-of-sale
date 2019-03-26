@@ -62,7 +62,7 @@
 									</tr>
 									<tr>
 										<td><span id="sr_no">1</span></td>
-										<td><input type="text" name="barcode" id="barcode1" class="form-control form-control-sm input-sm barcode" placeholder="Barcode" pattern="[A-Za-z]+" title="No number on product name"/></td>
+										<td><input type="text" name="barcode" id="barcode1" class="form-control form-control-sm input-sm barcode" placeholder="Barcode"/></td>
 										<td><input type="text" name="product_name" id="product_name1" class="form-control form-control-sm input-sm product_name" placeholder="Title"/></td>
 										<td><input type="number" min="1" name="quantity" id="quantity1" data-srno="1" class="form-control form-control-sm input-sm quantity" placeholder="Qty" /></td>
 										<td><input type="number" step="0.01" min="0.00" name="buy_price" id="buy_price1" data-srno="1" class="form-control form-control-sm input-sm buy_price" placeholder="Price" /></td>

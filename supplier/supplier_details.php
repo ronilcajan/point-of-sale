@@ -6,7 +6,7 @@
 	$sql = "SELECT * FROM supplier,delivery,product_delivered,products WHERE supplier.supplier_id = '$id' AND delivery.supplier_id = '$id' AND delivery.transaction_no = product_delivered.transaction_no AND products.product_no = product_delivered.product_id GROUP BY products.product_no";
 	$result	= mysqli_query($db, $sql);
 
-
+	$failure = "";
 	$deleted = isset($_GET['deleted']);
 	$added  = isset($_GET['added']);
 	$updated = isset($_GET['updated']);
