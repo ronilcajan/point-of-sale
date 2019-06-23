@@ -1,5 +1,5 @@
 <?php 
-
+include('server/connection.php');
 $error		= array();
 
 if (isset($_POST['login'])){

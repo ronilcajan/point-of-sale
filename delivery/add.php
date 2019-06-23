@@ -20,17 +20,19 @@
 		$show = mysqli_query($db,$search);
 		
 
-		if(mysqli_num_rows($show) == 0){
+		if(mysqli_num_rows($show) == 0 || $show == false){
 			echo "failure";
+
 		}else{
+
 			$row = mysqli_fetch_array($show);
 			$supplier_1 = $row['supplier_id'];
 			$sql = "INSERT INTO delivery(transaction_no,supplier_id,username) VALUES('$transaction_no',$supplier_1,'$user')";
 			$result = mysqli_query($db, $sql);
 
 			$insert1 = "INSERT INTO logs (username,purpose) VALUES('$user','Delivery Added')";
-			mysqli_query($db, $insert1);
-			if($result == true){
+			$res = mysqli_query($db, $insert1);
+			if($res == true){
 				for($count = 0; $count<count($_POST['barcode']); $count++){
 					$transaction[] = $transaction_no;
 				}
@@ -69,21 +71,20 @@
 						";
 					}
 				}
-			}else{
-				echo "failure";
 			}
 			if($insert != ''){
 				if (mysqli_multi_query($db, $insert)) {
 	    			do {
-			       		if ($result = mysqli_store_result($db)) {
-			            	echo "success";
-			            	mysqli_free_result($result);
+			       		if ($insert = mysqli_store_result($db)) {
+			            	mysqli_free_result($insert);
 
 			            }
 		        		if (mysqli_more_results($db)) {
-		            		echo "success";
 		        		}
 		    		}while (mysqli_more_results($db) && mysqli_next_result($db));
+		    		echo "success";
+				}else{
+					echo "failure";
 				}
 			}else{
 				echo "failure";

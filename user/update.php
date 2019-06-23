@@ -10,7 +10,7 @@
 	  	$lastname   = mysqli_real_escape_string($db, $_POST['lastname']);
 	  	$number   	= mysqli_real_escape_string($db, $_POST['number']);
 	  	$position  	= mysqli_real_escape_string($db, $_POST['position']);
-	  	$username 	= mysqli_real_escape_string($db, $_POST['user']);
+	  	$username 	= mysqli_real_escape_string($db, $_SESSION['user']);
 
 		if (!empty($image)){
 		  	$sql  = "UPDATE users SET firstname='$firstname',lastname='$lastname',position='$position',contact_number='$number',image='$image' WHERE id = '$id'";

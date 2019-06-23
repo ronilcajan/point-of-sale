@@ -39,6 +39,7 @@ include('../server/connection.php');
 							$min_stocks 	= mysqli_real_escape_string($db , $data[6]);
 							$sell     = $tax_rate/100;
 							$sell_price = $buy_price * $sell;
+							$sell_total = $sell_price + $buy_price;
 
 							$query1 = "SELECT quantity FROM products WHERE product_no='$barcode'";
 							$select = mysqli_query($db, $query1);
@@ -52,7 +53,7 @@ include('../server/connection.php');
 								$delivered = "INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate) VALUES('$transaction','$barcode',$quantity,$buy_price,$tax_rate)";
 								mysqli_query($db, $delivered);
 							}else{
-								$add = "INSERT INTO products(product_no,product_name,sell_price,quantity,unit,min_stocks) VALUES ('$barcode','$product_name',$sell_price,$quantity,'$unit',$min_stocks)";
+								$add = "INSERT INTO products(product_no,product_name,sell_price,quantity,unit,min_stocks) VALUES ('$barcode','$product_name',$sell_total,$quantity,'$unit',$min_stocks)";
 
 								mysqli_query($db, $add);
 
