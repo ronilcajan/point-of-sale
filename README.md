@@ -14,4 +14,3 @@ The expected ouput of this project are:</h5>
 <li>Inventory</li>
 <li>And other addition in the future.</li>
 </ul>
-<h5>This project is still in progress.</h5>
