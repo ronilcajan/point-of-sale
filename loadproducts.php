@@ -12,6 +12,7 @@
 				echo "<td>₱".$row['sell_price']."</td>";
 				echo "<td>".$row['unit']."</td>";
 				echo "<td>".$row['quantity']."</td>";
+				echo "<td>".$row['location']."</td>";
 			}
 		}
 		else{

@@ -8,8 +8,10 @@ if (isset($_POST['login'])){
 	$username 	= mysqli_real_escape_string($db, $_POST['username']);
 	
 
+
 	if($username != '' AND $password != '' AND $position != ''){
 		$query 		= "SELECT * FROM users WHERE username = '$username' AND position = '$position' AND password = '$password'";
+		
 		$result 	= mysqli_query($db, $query);
 
 		if(mysqli_num_rows($result) == 1){

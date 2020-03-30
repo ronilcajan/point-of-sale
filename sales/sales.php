@@ -35,6 +35,7 @@
 						<th scope="col" class="column-text">Receipt No.</th>
 						<th scope="col" class="column-text">Cashier</th>
 						<th scope="col" class="column-text">Customer Name</th>
+						<th scope="col" class="column-text">Discount(%)</th>
 						<th scope="col" class="column-text">Total Value</th>
 						<th scope="col" class="column-text">Date</th>
 

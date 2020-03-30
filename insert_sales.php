@@ -1,6 +1,8 @@
 <?php include 'server/connection.php';
 if(isset($_POST['product'])){
 	$user = $_SESSION['username'];
+	$discount = $_POST['discount'];
+	$total = $_POST['totalvalue'];
 	$price = $_POST['price'];
 	$product = $_POST['product'];
 	$customer = $_POST['customer'];
@@ -16,7 +18,7 @@ if(isset($_POST['product'])){
 		$cust_id 	= mysqli_fetch_array($customer_id);
 		$cust_id_new = $cust_id['customer_id'];
 
-		$sql = "INSERT INTO sales(customer_id,username) VALUES($cust_id_new,'$user')";
+		$sql = "INSERT INTO sales(customer_id,username,discount,total) VALUES($cust_id_new,'$user',$discount, $total)";
 		$result = mysqli_query($db,$sql);
 
 		if($result == true){

@@ -78,10 +78,13 @@
 			</div>
 			<div id="table_buttons">
 				<button id="buttons" type="button" name='enter' class="Enter btn btn-secondary border ml-2"><i class="fas fa-handshake"></i> Finish</button>
-				<div>
-					<ul class="text-white d-flex justify-content-center mt-3">
-						<p>Total:&nbsp&nbsp<li id="totalValue1">₱ 0.00</li></p>
+				<div class="">
+				<small>
+					<ul class="text-white justify-content-center">
+						<li class="d-flex mb-0">Total (₱): <p id="totalValue1" class="mb-0 ml-5 pl-3">0.00</p></li>
+						<li class="mb-0 mt-0">Discount (₱): <input style="width: 100px" class="text-right" type="number" name="discount" value="" min="1" placeholder="Enter Discount" id="discount"></li>
 					</ul>
+				</small>
 				</div>
 			</div>
 		</div>
@@ -99,6 +102,7 @@
 							<td>Price</td>
 							<td>Unit</td>
 							<td>Stocks</td>
+							<td>Location</td>
 						</tr></b>
 						<tbody id="products">
 							

@@ -27,6 +27,8 @@ $(document).ready(function(){
 		html_code += '<td><input type="number" name="min_qty" min="1" id="min_qty'+count+'" data-srno="'+count+'" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>';
 		html_code += '<td><input type="text" name="sell_price" readonly id="sell_price'+count+'" placeholder="Price+Tax" data-srno="'+count+'" class="form-control form-control-sm input-sm sell_price number_only"></td>';		
 		html_code += '<td><input type="text" name="total_amount" readonly id="total_amount'+count+'" placeholder="Sum" data-srno="'+count+'" class="form-control form-control-sm input-sm total_amount"></td>';
+		html_code += '<td><input type="text" name="remarks" id="remarks'+count+'" placeholder="Remarks" data-srno="'+count+'" class="form-control form-control-sm input-sm remarks"></td>';
+		html_code += '<td><input type="text" name="location" id="location'+count+'" placeholder="Location" data-srno="'+count+'" class="form-control form-control-sm input-sm location"></td>';
 		html_code += '<td><button type="button" name="remove_row" id="'+count+'" class="btn btn-sm btn-danger btn-xs remove_row"><i class="fas fa-minus-circle"></i></button></td></tr>';
 		$("#invoice-item-table").append(html_code);
 	});
@@ -127,6 +129,8 @@ $(document).ready(function(){
 		var min_qty = [];
 		var sell_price = [];
 		var total_amount = [];
+		var remarks = [];
+		var location = [];
 		var supplier = $('#supplier_search').val();
 		var transaction_no = $('#order_no').val();
 		var order_date = $('#order_date').val();
@@ -153,6 +157,12 @@ $(document).ready(function(){
 		});
 		$('.sell_price').each(function(){
 			sell_price.push($(this).val().replace("P",""));
+		});
+		$('.remarks').each(function(){
+			remarks.push($(this).val());
+		});
+		$('.location').each(function(){
+			location.push($(this).val());
 		});
 
 		if($.trim($('#supplier_search').val()).length == 0){
@@ -209,7 +219,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: "../delivery/add.php",
 			method: "POST",
-			data: {barcode:barcode,product_name:product_name,quantity:quantity,buy_price:buy_price,unit:unit,tax_rate:tax_rate,min_qty:min_qty,sell_price:sell_price,supplier:supplier,transaction_no:transaction_no,order_date:order_date},
+			data: {remarks:remarks,location:location,barcode:barcode,product_name:product_name,quantity:quantity,buy_price:buy_price,unit:unit,tax_rate:tax_rate,min_qty:min_qty,sell_price:sell_price,supplier:supplier,transaction_no:transaction_no,order_date:order_date},
 			success: function(data){
 				if(data=="success"){
 					window.location.href='../delivery/delivery.php?success="1"';
@@ -218,6 +228,7 @@ $(document).ready(function(){
 				}
 			}
 		});
+		return false;
 
 	})
 });

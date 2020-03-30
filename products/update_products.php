@@ -64,6 +64,14 @@
 								<td  valign="baseline">Minimum stocks:</td>
 								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="number" name="min_stocks" value="<?php echo $row1['min_stocks'];?>" class="form-control-sm form-control" required></div></td>
 							</tr>
+							<tr>
+								<td  valign="baseline">Remarks:</td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="remarks" value="<?php echo $row1['remarks'];?>" class="form-control-sm form-control" required></div></td>
+							</tr>
+							<tr>
+								<td  valign="baseline">Location:</td>
+								<td class="pl-5 pb-2"><div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-pen-alt"></i></span></div><input type="text" name="location" value="<?php echo $row1['location'];?>" class="form-control-sm form-control" required></div></td>
+							</tr>
 						<?php }?>
 							<tr>
 								<td>Change Photo:</td>

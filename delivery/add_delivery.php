@@ -58,6 +58,8 @@
 										<th>Minimum Qty</th>
 										<th>Sell Price</th>
 										<th>Total Amount</th>
+										<th>Remarks</th>
+										<th>Location</th>
 										<th><button type="button" name="add_row" id="add_row" class="btn btn-success btn-sm btn-xs"><i class="fas fa-plus-circle"></i> </button></th>
 									</tr>
 									<tr>
@@ -71,6 +73,8 @@
 										<td><input type="number" min="1" name="min_qty" id="min_qty1" data-srno="1" class="form-control form-control-sm input-sm min_qty" placeholder="Qty" /></td>
 										<td><input type="text" name="sell_price" readonly id="sell_price1" data-srno="1" class="form-control form-control-sm input-sm sell_price" placeholder="Price+Tax"></td>
 										<td><input type="text" name="total_amount" readonly id="total_amount1" data-srno="1" class="form-control input-sm form-control-sm total_amount" placeholder="Sum"></td>
+										<td><input type="text" name="remarks" id="remarks1" data-srno="1" class="form-control input-sm form-control-sm remarks" placeholder="Remarks"></td>
+										<td><input type="text" name="location" id="location1" data-srno="1" class="form-control input-sm form-control-sm location" placeholder="Location"></td>
 									</tr>								
 								</table>
 							</td>

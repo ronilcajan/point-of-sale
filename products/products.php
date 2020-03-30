@@ -32,6 +32,8 @@
 						<th scope="col" class="column-text">Stocks</th>
 						<th scope="col" class="column-text">Unit</th>
 						<th scope="col" class="column-text">Minimum Stocks</th>
+						<th scope="col" class="column-text">Remarks</th>
+						<th scope="col" class="column-text">Location</th>
 						<th scope="col" class="column-text">Actions</th>
 					</tr>
 				</thead>
@@ -46,6 +48,8 @@
 						<td><?php echo $row['quantity'];?></td>
 						<td><?php echo $row['unit'];?></td>
 						<td><?php echo $row['min_stocks'];?></td>
+						<td><?php echo $row['remarks'];?></td>
+						<td><?php echo $row['location'];?></td>
 						<td>
 							<a name="edit" title="Edit" style='font-size:10px; border-radius:5px;padding:4px;' href="update_products.php?id=<?php echo $row['product_no'];?>" class="btn btn-info btn-xs"><i class="fas fa-user-edit"></i></a>
 							<button type="button" name="view" style='font-size:10px; border-radius:5px;padding:4px;' id="<?php echo $row['product_no'];?>" class="btn btn-success btn-xs view_data"><i class="fas fa-eye"></i></button>

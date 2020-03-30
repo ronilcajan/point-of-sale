@@ -2,9 +2,9 @@
 
 	include("../server/connection.php");
 
-	$column = array('reciept_no','username','firstname','lastname','TotalPrice','date');
+	$column = array('reciept_no','username','firstname','lastname','discount','TotalPrice','date');
 
-	$query = "SELECT sales_product.reciept_no,sum(price*qty) AS TotalPrice,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id ";
+	$query = "SELECT sales_product.reciept_no,sales.discount , sales.total as TotalPrice,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id ";
 
 	if($_POST['is_date_search'] == "yes"){
 		$query .= 'WHERE sales.date BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'"'; 
@@ -51,13 +51,14 @@
 			$sub_array[] = '<a href="../sales/reciept_details.php?reciept_id='.$row["reciept_no"].'">'.$row["reciept_no"].'</a>';
 			$sub_array[] = $row["username"];
 			$sub_array[] = $row["firstname"].'&nbsp'.$row['lastname'];
+			$sub_array[] = $row["discount"];
 			$sub_array[] = number_format($row["TotalPrice"],2);
 			$sub_array[] = date('d M Y, g:i A', strtotime($row["date"]));	
 			$data[] = $sub_array; 
 		}
 
 	function get_all_data($db){
-		$query = "SELECT sales_product.reciept_no,sum(price*qty) AS TotalPrice,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id GROUP BY reciept_no";
+		$query = "SELECT sales_product.reciept_no,sales.discount, sales.total AS TotalPrice,username,date,customer.firstname,customer.lastname FROM sales_product JOIN sales ON sales_product.reciept_no=sales.reciept_no JOIN customer ON sales.customer_id = customer.customer_id GROUP BY reciept_no";
 		$result = mysqli_query($db, $query);
 		return mysqli_num_rows($result);
 	}

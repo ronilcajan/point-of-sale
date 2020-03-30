@@ -39,15 +39,32 @@ $(document).ready(function(){
   });
 });
 
+
 function GrandTotal(){
   var TotalValue = 0;
   var TotalPriceArr = $('#tableData tr .totalPrice').get()
+  var discount = $('#discount').val();
+
   $(TotalPriceArr).each(function(){
     TotalValue +=parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
   });
+
+  if(discount != null){
+    var f_discount = 0;
+
+    f_discount = TotalValue - discount;
+
+    $("#totalValue").text(accounting.formatMoney(f_discount,{symbol:"₱",format: "%s %v"}));
+    $("#totalValue1").text(accounting.formatMoney(TotalValue,{format: "%v"}));
+  }else{
     $("#totalValue").text(accounting.formatMoney(TotalValue,{symbol:"₱",format: "%s %v"}));
-    $("#totalValue1").text(accounting.formatMoney(TotalValue,{symbol:"₱",format: "%s %v"}));
+    $("#totalValue1").text(accounting.formatMoney(TotalValue,{format: "%v"}));
+  }
 };
+
+$(document).on('change', '#discount', function(){
+  GrandTotal();
+});
 
 $('body').on('click','.js-add',function(){
 			var totalPrice = 0;
@@ -71,7 +88,7 @@ $('body').on('click','.js-add',function(){
             swal("Error","Please enter a number!","error");
     		  }else{
     				var total = parseInt(value,10) * parseFloat(price);
-    				$('#tableData').append("<tr class='prd'><td class='barcode text-center'>"+barcode+"</td><td class='text-center'>"+product+"</td><td class='price text-center'>"+accounting.formatMoney(price,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center'>"+unit+"</td><td class='qty text-center'>"+value+"</td><td class='totalPrice text-right'>"+accounting.formatMoney(total,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center p-1'><button class='btn btn-danger btn-sm' type='button' id='delete-row'><i class='fas fa-times-circle'></i></button><tr>");
+    				$('#tableData').append("<tr class='prd'><td class='barcode text-center'>"+barcode+"</td><td class='text-center'>"+product+"</td><td class='price text-center'>"+accounting.formatMoney(price,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center'>"+unit+"</td><td class='qty text-center'>"+value+"</td><td class='totalPrice text-center'>"+accounting.formatMoney(total,{symbol:"₱",format: "%s %v"})+"</td><td class='text-center p-1'><button class='btn btn-danger btn-sm' type='button' id='delete-row'><i class='fas fa-times-circle'></i></button><tr>");
 	          GrandTotal();
         }
 			}
@@ -120,6 +137,7 @@ $(document).on('click','.Enter',function(){
     var price = [];
     var user = $('#uname').val();
     var customer = $('#customer_search').val();
+    var discount = $('#discount').val();
 
     $('.barcode').each(function(){
       product.push($(this).text());
@@ -148,11 +166,11 @@ $(document).on('click','.Enter',function(){
         }else{
 
           var change = 0;
-          var TotalValue = 0;
-          var TotalPriceArr = $('#tableData tr .totalPrice').get()
-          $(TotalPriceArr).each(function(){
-            TotalValue += parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
-          });
+          // var TotalPriceArr = $('#tableData tr .totalPrice').get()
+          // $(TotalPriceArr).each(function(){
+          //   TotalValue += parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
+          // });
+          var TotalValue = parseFloat($('#totalValue').text().replace(/,/g, "").replace("₱",""));
 
           if(TotalValue > qtynum){
             swal("Error","Can't process a smaller number","error");
@@ -161,7 +179,7 @@ $(document).on('click','.Enter',function(){
             $.ajax({
               url:"insert_sales.php",
               method:"POST",
-              data:{product:product, price:price, user:user, customer:customer, quantity:quantity},
+              data:{totalvalue:TotalValue, product:product, price:price, user:user, customer:customer, quantity:quantity, discount:discount},
               success: function(data){
                 
                 if( data == "success"){
@@ -172,7 +190,7 @@ $(document).on('click','.Enter',function(){
                   })
                   .then((okay)=>{
                     if(okay){
-                      location.reload();
+                      window.location.href='main.php';
                     }
                   })
                 }else{

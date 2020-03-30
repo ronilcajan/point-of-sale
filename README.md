@@ -12,6 +12,5 @@ The expected ouput of this project are:</h5>
 <li>Records Cashin/Cashout</li>
 <li>Can View Logs</li>
 <li>Inventory</li>
-<li>Discount</li>
 <li>And other addition in the future.</li>
 </ul>
