@@ -99,6 +99,16 @@
 								<td class="pl-5 pb-1"><input type="number" class="form-control form-control-sm"  name="min_stocks" readonly></td>
 								<td><p class="text-danger">*</p></td>
 							</tr>
+							<tr>
+								<td valign="baseline"><small>Remarks:</small></td>
+								<td class="pl-5 pb-1"><input type="text" class="form-control form-control-sm"  name="remarks" readonly></td>
+								<td><p class="text-danger">*</p></td>
+							</tr>
+							<tr>
+								<td valign="baseline"><small>Location:</small></td>
+								<td class="pl-5 pb-1"><input type="text" class="form-control form-control-sm"  name="remarks" readonly></td>
+								<td><p class="text-danger">*</p></td>
+							</tr>
 						</tbody>
 					</table>
 					<div class="text-left mt-2 pt-1">
