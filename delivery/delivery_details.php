@@ -17,12 +17,12 @@
 		<?php 
 			include('../delivery/base.php');
 		?>
-		<div>
+		<div class="">
 			<div>
 				<h1 class="ml-4 pt-2 pb-4" align="left"><i class="fas fa-truck"></i> Delivery Records</h1>
 			</div>
 			<div class="table-responsive pl-5 pr-5">
-			<table class="table table-striped table-bordered" id="sales_table" style="margin-top: -22px;">
+			<table class="table table-sm table-striped table-bordered" id="sales_table" style="margin-top: -22px;">
 				<thead>
 					<tr>
 						<td colspan="5"><h2>Transaction No.&nbsp<span style="color: blue;"><?php echo $row['transaction_no'];?></span></h2></td>
@@ -60,34 +60,6 @@
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#sales_table').dataTable();
-			
-		});
-	</script>
+	<script src="../delivery/javascript.js"></script>
 </body>
 </html>
-<script>
-	$(function () {
-  		$('[data-toggle="popover"]').popover()
-	});
-	$(document).ready(function(){
-	/* function for activating modal to show data when click using ajax */
-	$(document).on('click', '.view_data', function(){  
-		var id = $(this).attr("id");  
-		if(id != ''){  
-			$.ajax({  
-				url:"view_cashflow.php",  
-				method:"POST",  
-				data:{id:id},  
-				success:function(data){  
-					$('#Contact_Details').html(data);  
-					$('#dataModal').modal('show');  
-				}  
-			});  
-		}            
-	});   
- });  
-
-</script>

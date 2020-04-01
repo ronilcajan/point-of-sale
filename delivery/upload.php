@@ -5,7 +5,7 @@ include('../server/connection.php');
 	$alert = array();
 	
 	if(isset($_POST['upload'])){
-		$target   		= "../csv_files/".basename($_FILES['file']['name']);
+		$target   		= basename($_FILES['file']['name']);
 		$supplier = $_POST['supplier'];
 		$transaction = $_POST['transaction_no'];
 		$user = $_SESSION['username'];
@@ -49,7 +49,7 @@ include('../server/connection.php');
 							if(mysqli_num_rows($select)>0){
 								while($row = mysqli_fetch_array($select)){
 									$newqty = $row['quantity'] + $quantity;
-									$insert = "UPDATE products SET quantity=$newqty, sell_price=$sell_price WHERE product_no='$barcode'";
+									$insert = "UPDATE products SET quantity=$newqty, sell_price=$sell_total WHERE product_no='$barcode'";
 									mysqli_query($db, $insert);
 								}
 								$delivered = "INSERT INTO product_delivered(transaction_no,product_id,total_qty,buy_price,tax_rate) VALUES('$transaction','$barcode',$quantity,$buy_price,$tax_rate)";
