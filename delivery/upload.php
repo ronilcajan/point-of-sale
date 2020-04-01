@@ -5,7 +5,7 @@ include('../server/connection.php');
 	$alert = array();
 	
 	if(isset($_POST['upload'])){
-		$target   		= basename($_FILES['file']['name']);
+		$target   		= $_FILES['file']['tmp_name'];
 		$supplier = $_POST['supplier'];
 		$transaction = $_POST['transaction_no'];
 		$user = $_SESSION['username'];
@@ -65,7 +65,7 @@ include('../server/connection.php');
 							}	
 						}
 
-					if(move_uploaded_file($_FILES['file']['tmp_name'], $target) == true ){
+					if(move_uploaded_file($_FILES['file']['tmp_name'], '../csv_files/'.basename($target)) == true ){
 						array_push($alert, "Successfully Imported!");
 						fclose($handle);
 						$logs 	= "INSERT INTO logs (username,purpose) VALUES('$user','Delivery Added')";
