@@ -1,0 +1,10 @@
+Barcode12,Name,Buy Price,Tax Rate,QTY,Unit,Min.Stocks,Remarks,Location
+113,Loop2,20,10,100,pcs,10,Expiry,box3
+114,Loop3,20,10,100,pcs,10,Expiry,box5
+115,Loop4,20,10,100,pcs,10,Expiry,box7
+116,Loop5,20,10,100,pcs,10,Expiry,box9
+117,Loop6,20,10,100,pcs,10,Expiry,box11
+118,Loop7,20,10,100,pcs,10,Expiry,box13
+119,Loop8,20,10,100,pcs,10,Expiry,box15
+120,Loop9,20,10,100,pcs,10,Expiry,box17
+121,Loop10,20,10,100,pcs,10,Expiry,box19
