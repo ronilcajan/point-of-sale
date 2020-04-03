@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<div id="content" class="mr-2">
-			<div id="price_column" class="m-2 table-responsive-sm">
+			<div id="price_column" class="m-2 table-responsive-sm table-wrapper-scroll-y my-custom-scrollbar-a">
 				<form method="POST" action="">
 				<table class="table-striped w-100 font-weight-bold" style="cursor: pointer;" id="table2">
 					<thead>
@@ -93,7 +93,7 @@
 			<div class="input-group"><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span></div>
    				<input class="form-control" type="text" placeholder="Product Search" aria-label="Search" id="search" name="search" onkeyup="loadproducts();"/>
    			</div></div>
-			<div id="product_area" class="table-responsive-sm mt-2" >
+			<div id="product_area" class="table-responsive-sm mt-2 table-wrapper-scroll-y my-custom-scrollbar" >
 				<table class="w-100 table-striped font-weight-bold" style="cursor: pointer;" id="table1">
 					<thead>
 						<tr claclass='text-center'><b>
