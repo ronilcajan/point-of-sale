@@ -40,6 +40,7 @@ $(document).ready(function(){
 	$(function () {
   		$('[data-toggle="popover"]').popover()
 	});
+	
 	$(document).ready(function(){
 	/* function for activating modal to show data when click using ajax */
 	$(document).on('click', '.view_data', function(){  
@@ -57,3 +58,31 @@ $(document).ready(function(){
 		}            
 	});   
  });  
+
+
+
+setInterval(function(){
+	total();
+}, 1000);
+
+function total(){
+	$(document).ready(function(){
+		var discount = 0;
+		var sales = 0;
+
+			$('#sales_table tbody tr td:nth-child(4)').each(function(){
+				discount += parseInt($(this).text());
+			});
+
+			$('#sales_table tbody tr td:nth-child(5)').each(function(){
+				sales += parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
+			});
+
+		$('#sales_table tfoot #discount').text(discount);
+		$('#sales_table tfoot #sales').text(formatNumber(sales));
+	});
+}
+
+function formatNumber(num){
+	return '₱' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,')
+}

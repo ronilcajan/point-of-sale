@@ -46,7 +46,7 @@ function GrandTotal(){
   var discount = $('#discount').val();
 
   $(TotalPriceArr).each(function(){
-    TotalValue +=parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
+    TotalValue += parseFloat($(this).text().replace(/,/g, "").replace("₱",""));
   });
 
   if(discount != null){

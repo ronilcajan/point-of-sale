@@ -36,23 +36,31 @@
 						<th scope="col" class="column-text">Cashier</th>
 						<th scope="col" class="column-text">Customer Name</th>
 						<th scope="col" class="column-text">Discount(%)</th>
-						<th scope="col" class="column-text">Total Value</th>
+						<th scope="col" class="column-text">Value(₱)</th>
 						<th scope="col" class="column-text">Date</th>
 
 					</tr>
 				</thead>
 				<tbody>
 					
-				</tbody>				
+				</tbody>
+				<tfoot>
+					<th colspan="3" class="text-right">Total:</th>
+					<th id="discount"></th>
+					<th id="sales"></th>
+					<th></th>
+				</tfoot>				
 			</table>
 			</div>
 		</div>
 	</div>
 	<script src="../bootstrap4/jquery/jquery.min.js"></script>
+	<script src="bootstrap4/jquery/accounting.min.js"></script>
 	<script src="../bootstrap4/jquery/datepicker.js"></script>
 	<script src="../bootstrap4/js/jquery.dataTables.js"></script>
 	<script src="../bootstrap4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="../bootstrap4/js/bootstrap.bundle.min.js"></script>
 	<script src="../sales/javascript.js"></script>
+
 </body>
 </html>
