@@ -2,6 +2,10 @@
 
 This is a simple POS and Inventory system built with PHP, Bootstrap, Jquery and MySQL as Database
 
+## Demo
+
+Demo Link: [Youtube Video](https://www.youtube.com/watch?v=JNHXUDmNwag)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
