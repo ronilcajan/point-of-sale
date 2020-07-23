@@ -22,7 +22,7 @@
 	<div class="contain h-100">
 		<?php 
 			include('../customer/base.php');
-			include('../alert.php');
+			//include('../alert.php');
 		?>
 		<div>
 			<h1 class="ml-4 pt-2"><i class="fas fa-user-friends"></i> Customer Management</h1>
