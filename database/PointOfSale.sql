@@ -360,7 +360,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `position`, `contact_number`, `image`, `password`) VALUES
 (7, 'admin', 'Juan', 'Cruz', 'admin', '+63(09)1234-1234', 'Myprofile.jpg', '21232f297a57a5a743894a0e4a801fc3'),
-(13, 'employ1', 'Chris', 'Doe', 'Employee', '+63(09)1234-1234', 'men-in-black.png', '7566c2ba785a2cb830c4edc1f5f70dec');
+(13, 'user', 'Chris', 'Doe', 'Employee', '+63(09)1234-1234', 'men-in-black.png', md5('user'));
 
 --
 -- Indexes for dumped tables
